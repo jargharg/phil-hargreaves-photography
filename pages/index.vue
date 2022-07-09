@@ -11,6 +11,7 @@
         stroke-linejoin: round;
         stroke-miterlimit: 2;
         fill-rule: nonzero;
+        opacity: 0;
       "
     >
       <g ref="phil">
@@ -112,6 +113,9 @@ export default {
     onMounted(() => {
       gsap
         .timeline({ repeat: -1 })
+        .set(logo.value, {
+          opacity: 1,
+        })
         .from(phil.value.querySelectorAll('path'), {
           opacity: 0,
           stagger: 0.07,

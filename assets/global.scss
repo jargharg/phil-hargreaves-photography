@@ -1,0 +1,24 @@
+@import url("https://use.typekit.net/xol1nzx.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-brand-secondary;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-5 md:px-10;
+    max-width: 1400px;
+  }
+}

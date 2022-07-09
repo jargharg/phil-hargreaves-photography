@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
+    "preview": "nuxt start",
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {

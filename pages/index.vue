@@ -112,7 +112,7 @@ export default {
 
     onMounted(() => {
       gsap
-        .timeline({ repeat: -1 })
+        .timeline()
         .set(logo.value, {
           opacity: 1,
         })
@@ -139,11 +139,6 @@ export default {
           },
           '-=0.6',
         )
-        .to(logo.value.querySelectorAll('path'), {
-          opacity: 0,
-          duration: 2,
-          stagger: 0.05,
-        })
     })
 
     return {

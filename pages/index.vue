@@ -157,6 +157,6 @@ export default {
 }
 
 .logo {
-  @apply block fill-brand-primary max-w-5xl;
+  @apply block fill-brand-primary max-w-5xl w-full;
 }
 </style>

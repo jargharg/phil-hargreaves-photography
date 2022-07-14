@@ -1,0 +1,20 @@
+name = "playground"
+type = "javascript"
+account_id = "880727da76bee1a445d7d9aba10cdb2a"
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2022-07-14"
+
+[site]
+bucket = ".output/public"
+entry-point = ".output"
+
+[build]
+command = ""
+upload.format = "service-worker"
+
+[miniflare]
+global_async_io = true
+global_timers = true
+glboal_random = true

@@ -3,9 +3,11 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  target: 'static',
-
   buildModules: ['@nuxtjs/tailwindcss'],
+
+  nitro: {
+    preset: 'cloudflare',
+  },
 
   css: [
     '@/assets/global.scss',
@@ -14,4 +16,8 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/setupGsap.client',
   ],
+
+  build: {
+    transpile: ['gsap'],
+  },
 })

@@ -5,8 +5,9 @@ module.exports = {
 
     extend: {
       fontFamily: {
-        serif: ['retiro-std-48pt', 'serif'],
-        sans: ['acumin-pro', 'sans-serif'],
+        serif: ['contralto-big', 'serif'],
+        'serif-small': ['contralto-small', 'serif'],
+        sans: ['acumin-pro-wide', 'Helvetica', 'sans-serif'],
       },
 
       colors: {

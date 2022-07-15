@@ -14,22 +14,4 @@ export default defineNuxtConfig({
   plugins: [
     '@/plugins/setupGsap.client',
   ],
-
-  pageTransition: {
-    enter (el, onComplete) {
-      gsap.timeline({ onComplete }).from(el, {
-        opacity: 0,
-        duration: 3,
-        ease: 'linear',
-      })
-    },
-
-    leave (el, onComplete) {
-      gsap.timeline({ onComplete }).to(el, {
-        opacity: 0,
-        duration: 3,
-        ease: 'linear',
-      })
-    },
-  },
 })

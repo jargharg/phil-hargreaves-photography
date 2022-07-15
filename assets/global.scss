@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-brand-secondary;
+  @apply bg-brand-primary;
 }
 
 *,
@@ -19,6 +19,6 @@ body {
 @layer utilities {
   .container {
     @apply mx-auto px-5 md:px-10;
-    max-width: 1400px;
+    max-width: 1340px;
   }
 }

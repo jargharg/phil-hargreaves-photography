@@ -38,6 +38,8 @@
         laoreet."
       </QuoteBlock>
 
+      <TestimonialsBlock />
+
       <MakeABookingCallOut />
 
       <TextBoxWithImage
@@ -121,7 +123,9 @@
 </template>
 
 <script>
+import TestimonialsBlock from '../components/TestimonialsBlock.vue'
 export default {
+  components: { TestimonialsBlock },
   setup () {
     const container = ref(null)
     return { container }

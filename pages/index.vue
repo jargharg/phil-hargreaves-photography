@@ -3,7 +3,7 @@
     <div class="h-screen w-full">
       <img
         class="h-full w-full object-cover mx-auto"
-        src="placeholder-images/header-bg-1.jpg"
+        src="/placeholder-images/header-bg-1.jpg"
         alt=""
       >
     </div>

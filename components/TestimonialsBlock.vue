@@ -50,21 +50,6 @@ import { computed, onMounted, onUnmounted } from 'vue'
 
 export default {
   props: {
-    image: {
-      type: Object,
-      required: true,
-    },
-
-    ctaText: {
-      type: String,
-      default: 'Read more',
-    },
-
-    ctaLink: {
-      type: String,
-      default: '',
-    },
-
     imagePosition: {
       type: String,
       default: 'right',

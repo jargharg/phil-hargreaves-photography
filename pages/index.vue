@@ -3,7 +3,7 @@
     <div class="h-screen w-full">
       <img
         class="h-full w-full object-cover mx-auto"
-        src="assets/header-bg-1.jpg"
+        src="public/header-bg-1.jpg"
         alt=""
       >
     </div>
@@ -14,7 +14,7 @@
       </TextMarquee>
 
       <TextBoxWithImage
-        :image="{ src: '/assets/phil-hargreaves.jpg', alt: 'Phil Hargreaves' }"
+        :image="{ src: '/public/phil-hargreaves.jpg', alt: 'Phil Hargreaves' }"
       >
         <p class="mb-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare
@@ -45,7 +45,7 @@
       <TextBoxWithImage
         cta-text="Read more"
         cta-link="/about-your-photoshoot"
-        :image="{ src: '/assets/studio.jpg', alt: 'The studio' }"
+        :image="{ src: '/public/studio.jpg', alt: 'The studio' }"
       >
         <h2 class="font-serif-small font-bold text-3xl mb-6">
           About Your Photoshoot
@@ -71,7 +71,7 @@
       <TextBoxWithImage
         cta-text="Explore"
         cta-link="/gallery"
-        :image="{ src: '/assets/gallery.jpg', alt: 'Gallery of images' }"
+        :image="{ src: '/public/gallery.jpg', alt: 'Gallery of images' }"
         image-position="right"
       >
         <h2 class="font-serif-small font-bold text-3xl mb-6">
@@ -99,7 +99,7 @@
         cta-text="Get in touch"
         cta-link="/contact"
         :image="{
-          src: '/assets/contact.jpg',
+          src: '/public/contact.jpg',
           alt: 'A dog on a light blue background',
         }"
       >

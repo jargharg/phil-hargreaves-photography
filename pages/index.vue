@@ -44,11 +44,11 @@
 
       <TextBoxWithImage
         cta-text="Read more"
-        cta-link="/studio"
+        cta-link="/about-your-photoshoot"
         :image="{ src: '/assets/studio.jpg', alt: 'The studio' }"
       >
         <h2 class="font-serif-small font-bold text-3xl mb-6">
-          The Studio
+          About Your Photoshoot
         </h2>
         <p class="mb-8">
           Morbi lectus mauris, interdum nec odio ut, congue imperdiet ligula.

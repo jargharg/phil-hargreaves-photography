@@ -15,7 +15,7 @@
           ref="elImage"
           class="w-2/3 md:w-full mx-auto -mt-24 md:-my-8 md:mr-5 flex-1"
         >
-          <img src="/public/testimonial-portrait.jpg" alt="Black-and-white picture of a dalmatian" class="w-full h-full object-cover">
+          <img src="/placeholder-images/testimonial-portrait.jpg" alt="Black-and-white picture of a dalmatian" class="w-full h-full object-cover">
         </figure>
 
         <div class="pt-4 pb-8 md:py-16 flex-1" :class="{ 'md:pb-8': hasCta }">

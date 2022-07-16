@@ -52,12 +52,13 @@ export default {
             scrub: 0.1,
             start: () => innerHeight / 4 + ' top',
             end: () => innerHeight + ' top',
+
           },
         })
         .from(logo.value.$el, {
-          scale: 2,
-          x: () => innerWidth / 2 - logo.value.$el.clientWidth * 0.75,
-          yPercent: 40,
+          scale: () => Math.min(2, (innerWidth / logo.value.$el.clientWidth) * 0.9),
+          x: () => innerWidth / 2 - logo.value.$el.clientWidth * 0.5,
+          yPercent: 60,
           duration: 1,
         })
         .to(header.value, {
@@ -73,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  @apply p-6 text-center fixed w-full top-0 left-0 transition-opacity z-50 flex justify-between text-brand-secondary;
+  @apply p-4 text-center fixed w-full top-0 left-0 transition-opacity z-50 flex justify-between text-brand-secondary;
 
   &__logo {
     @apply block w-full;

@@ -1,13 +1,13 @@
 <template>
-  <aside ref="elContainer" class="max-w-4xl mx-auto px-10">
-    <p ref="elQuote" class="text-4xl font-serif italic mb-4">
+  <aside ref="elContainer" class="max-w-4xl mx-auto px-10 my-16 md:my-36">
+    <p ref="elQuote" class="text-2xl md:text-4xl font-serif-small md:font-serif italic">
       <slot />
     </p>
 
     <p
       v-if="attribution"
       ref="elAttribution"
-      class="uppercase tracking-widest font-light"
+      class="text-sm md:text-base uppercase tracking-widest font-light mt-2 md:mt-4"
     >
       — {{ attribution }}
     </p>
@@ -40,7 +40,7 @@ export default {
             trigger: elContainer.value,
             start: '10vh bottom',
             end: 'center center',
-            scrub: 0.5,
+            scrub: 0.2,
           },
         })
         .from(elQuote.value, {

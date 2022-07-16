@@ -10,6 +10,10 @@ module.exports = {
         sans: ['acumin-pro-wide', 'Helvetica', 'sans-serif'],
       },
 
+      screens: {
+        sm: '450px',
+      },
+
       colors: {
         'brand-secondary': '#F8E5CE',
         'brand-primary': '#112233',

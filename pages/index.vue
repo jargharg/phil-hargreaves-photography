@@ -38,14 +38,7 @@
         laoreet."
       </QuoteBlock>
 
-      <CallOut>
-        <p class="mb-4 font-light">
-          Ready for your photoshoot?
-        </p>
-        <nuxt-link to="/contact" class="font-bold uppercase tracking-widest hover:underline">
-          Make a booking &rarr;
-        </nuxt-link>
-      </CallOut>
+      <MakeABookingCallOut />
 
       <TextBoxWithImage
         cta-text="Read more"

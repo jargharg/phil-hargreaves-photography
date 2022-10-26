@@ -4,24 +4,30 @@
       <img
         class="h-full w-full object-cover mx-auto"
         src="/placeholder-images/header-bg-1.jpg"
-        alt=""
+        alt="TEST"
       >
     </div>
 
     <section>
-      <TextMarquee>
-        Lorem ipsum dolor sit amet, consectetur adipiscing&nbsp;elit.
-      </TextMarquee>
-
       <TextBoxWithImage
-        :image="{ src: '/placeholder-images/phil-hargreaves.jpg', alt: 'Phil Hargreaves' }"
+        class="bg-brand-pink-dark"
+        :image="{
+          src: '/placeholder-images/phil-hargreaves.jpg',
+          alt: 'Phil Hargreaves',
+        }"
+        cta-text="About your photoshoot"
+        cta-link="/about"
       >
-        <p class="mb-8">
+        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </h2>
+
+        <p class="mb-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare
           sem ante. Fusce bibendum facilisis dolor, vulputate sollicitudin sem
           molestie semper. Proin vulputate urna non ex tempor accumsan a a enim.
         </p>
-        <p class="mb-8">
+        <p class="mb-4">
           Donec eu nibh odio. Duis sollicitudin, sem et ullamcorper bibendum, ex
           diam vulputate ligula, ac aliquet odio mi eget ligula.
         </p>
@@ -31,26 +37,18 @@
         </p>
       </TextBoxWithImage>
 
-      <QuoteBlock attribution="Kelly Wotsits">
-        "Vestibulum accumsan pretium sapien viverra tristique. Pellentesque
-        imperdiet convallis sapien tincidunt semper. Integer bibendum auctor
-        lectus, vitae laoreet eros feugiat sed. Integer ultrices orci id auctor
-        laoreet."
-      </QuoteBlock>
-
       <TestimonialsBlock />
 
-      <MakeABookingCallOut />
-
       <TextBoxWithImage
+        class="bg-brand-pink-dark"
         cta-text="Read more"
         cta-link="/about-your-photoshoot"
         :image="{ src: '/placeholder-images/studio.jpg', alt: 'The studio' }"
       >
-        <h2 class="font-serif-small font-bold text-3xl mb-6">
+        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
           About Your Photoshoot
         </h2>
-        <p class="mb-8">
+        <p class="mb-4">
           Morbi lectus mauris, interdum nec odio ut, congue imperdiet ligula.
           Mauris ut scelerisque nunc. Mauris aliquet fermentum diam. Integer in
           quam eu dui pharetra imperdiet.
@@ -62,22 +60,19 @@
         </p>
       </TextBoxWithImage>
 
-      <QuoteBlock attribution="Ricky Cheetos">
-        "Nunc vehicula erat ut tempor dictum. Proin laoreet egestas lorem in
-        condimentum. Nunc sodales velit id pulvinar facilisis. Vestibulum a
-        porttitor magna."
-      </QuoteBlock>
-
       <TextBoxWithImage
         cta-text="Explore"
         cta-link="/gallery"
-        :image="{ src: '/placeholder-images/gallery.jpg', alt: 'Gallery of images' }"
+        :image="{
+          src: '/placeholder-images/gallery.jpg',
+          alt: 'Gallery of images',
+        }"
         image-position="right"
       >
-        <h2 class="font-serif-small font-bold text-3xl mb-6">
+        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
           Gallery
         </h2>
-        <p class="mb-8">
+        <p class="mb-4">
           Donec metus mi, tristique a tincidunt eget, suscipit sit amet ipsum.
           Nullam eu malesuada lectus, ut aliquam nibh. Etiam eu euismod enim,
           quis consequat velit. In dictum eu tortor et semper.
@@ -89,13 +84,8 @@
         </p>
       </TextBoxWithImage>
 
-      <QuoteBlock attribution="Janine Porridge">
-        "Phasellus vel est ut magna bibendum interdum ut a dui. Orci varius
-        natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-        mus."
-      </QuoteBlock>
-
       <TextBoxWithImage
+        class="bg-brand-pink-dark"
         cta-text="Get in touch"
         cta-link="/contact"
         :image="{
@@ -103,10 +93,10 @@
           alt: 'A dog on a light blue background',
         }"
       >
-        <h2 class="font-serif-small font-bold text-3xl mb-6">
+        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
           Contact
         </h2>
-        <p class="mb-8">
+        <p class="mb-4">
           Morbi id posuere nulla, ut blandit lacus. Etiam et odio et libero
           porta pharetra. Duis convallis velit vitae tincidunt luctus. Cras
           vestibulum accumsan lectus vitae bibendum. Interdum et malesuada fames
@@ -123,9 +113,7 @@
 </template>
 
 <script>
-import TestimonialsBlock from '../components/TestimonialsBlock.vue'
 export default {
-  components: { TestimonialsBlock },
   setup () {
     const container = ref(null)
     return { container }

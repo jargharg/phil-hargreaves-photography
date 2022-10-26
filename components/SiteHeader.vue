@@ -18,6 +18,7 @@ export default {
     const logo = ref(null)
 
     onMounted(() => {
+      if (!process.client) { return }
       gsap
         .timeline()
         .set(logo.value.$el, { opacity: 1 })
@@ -45,26 +46,22 @@ export default {
           '-=0.6',
         )
 
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: document.body,
-            scrub: 0.1,
-            start: () => innerHeight / 4 + ' top',
-            end: () => innerHeight + ' top',
+      // gsap
+      //   .timeline({
+      //     scrollTrigger: {
+      //       trigger: document.body,
+      //       scrub: 0.1,
+      //       start: () => innerHeight / 4 + ' top',
+      //       end: () => innerHeight + ' top',
 
-          },
-        })
-        .from(logo.value.$el, {
-          scale: () => Math.min(2, (innerWidth / logo.value.$el.clientWidth) * 0.9),
-          x: () => innerWidth / 2 - logo.value.$el.clientWidth * 0.5,
-          yPercent: 60,
-          duration: 1,
-        })
-        .to(header.value, {
-          color: '#112233',
-          duration: 0.2,
-        }, '-=0.2')
+      //     },
+      //   })
+      //   .from(logo.value.$el, {
+      //     scale: () => Math.min(2, (innerWidth / logo.value.$el.clientWidth) * 0.9),
+      //     x: () => innerWidth / 2 - logo.value.$el.clientWidth * 0.5,
+      //     yPercent: 60,
+      //     duration: 1,
+      //   })
     })
 
     return { header, logo }
@@ -74,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  @apply p-4 text-center fixed w-full top-0 left-0 transition-opacity z-50 flex justify-between text-brand-secondary;
+  @apply p-4 text-center fixed w-full top-0 left-0 transition-opacity z-50 flex justify-between text-white mix-blend-difference;
 
   &__logo {
     @apply block w-full;

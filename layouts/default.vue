@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-brand-secondary text-brand-primary">
+  <div class="min-h-screen bg-brand-pink-light text-brand-primary">
     <SiteHeader />
 
-    <main class="pb-8">
+    <main>
       <slot />
     </main>
 

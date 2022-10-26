@@ -1,41 +1,38 @@
 <template>
-  <section ref="elSection" class="bg-white w-full mt-36 mb-16 md:my-36">
+  <section ref="elSection" class="h-screen w-full">
     <div
-      class="container relative flex gap-5 flex-col md:flex-row"
+      class="relative flex flex-col md:flex-row"
+      style="height: -webkit-fill-available;"
       :class="{ 'md:flex-row-reverse': imagePosition === 'right' }"
     >
-      <figure
-        ref="elImage"
-        class="w-2/3 md:w-full mx-auto -mt-24 md:-my-8 flex-1"
-      >
+      <!-- @TODO use nuxt-image, sized image -->
+      <figure ref="elImage" class="w-full h-full flex-1">
         <img v-bind="image" class="w-full h-full object-cover">
       </figure>
 
-      <div class="pt-4 pb-8 md:py-16 flex-1" :class="{ 'md:pb-8': hasCta }">
+      <div class="py-8 md:py-16 h-full flex-1 flex items-center">
         <div
-          class="flex flex-col h-full justify-center"
-          :class="{ 'justify-between': hasCta }"
+          ref="elText"
+          class="font-light lg:text-lg mx-auto max-w-2xl px-16"
         >
-          <div
-            ref="elText"
-            class="font-light lg:text-lg sm:px-[8.45%] xl:px-[16.9%]"
-          >
-            <slot />
-          </div>
+          <slot />
 
           <nuxt-link
             v-if="hasCta"
             ref="elCta"
             :to="ctaLink"
             class="
-              mt-6
-              md:mt-12 md:pr-6
-              self-end
-              font-normal
-              uppercase
-              tracking-widest
-              hover:underline
-            "
+              block
+                w-full
+                text-right
+                mt-8
+                md:mt-16
+                pr-6
+                font-normal
+                uppercase
+                tracking-widest
+                hover:underline
+              "
           >
             {{ ctaText }} &rarr;
           </nuxt-link>
@@ -46,8 +43,7 @@
 </template>
 
 <script>
-import gsap from 'gsap'
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed } from 'vue'
 
 export default {
   props: {
@@ -78,29 +74,6 @@ export default {
     const elSection = ref(null)
     const elText = ref(null)
     const hasCta = computed(() => props.ctaLink && props.ctaText)
-
-    let tl
-
-    onMounted(() => {
-      tl = gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: elSection.value,
-            scrub: 0.2,
-            start: 'top bottom',
-            end: 'bottom top',
-          },
-          defaults: { ease: 'linear' },
-        })
-        .from(elSection.value, { opacity: 0.8 })
-        .from(elImage.value, { y: 50 }, '<')
-        // .from(elText.value, { y: -50 }, '<')
-        .to(elImage.value, { y: -50 })
-    })
-
-    onUnmounted(() => {
-      tl?.kill()
-    })
 
     return { elCta, elImage, elSection, elText, hasCta }
   },

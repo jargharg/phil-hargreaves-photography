@@ -1,5 +1,13 @@
 module.exports = {
-  content: [],
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './slices/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './app/prismic/**/*.vue',
+    './plugins/**/*.{js,ts}',
+  ],
+  
   theme: {
     container: false,
 

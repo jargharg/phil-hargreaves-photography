@@ -1,1 +1,121 @@
-{}
+{
+  "menu": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            }
+          ],
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "love",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "footerPolicies": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "http://google.com"
+              }
+            }
+          ],
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "drove",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "socialLinks": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "platform",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "Instagram",
+              "type": "Select"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://prismic.io"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "contactAddress": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Mollit aliquip sit laboris quis eiusmod dolore enim pariatur reprehenderit ipsum."
+        }
+      }
+    ]
+  },
+  "contactLocation": {
+    "__TYPE__": "GeoPointContent",
+    "position": {
+      "lat": 48.8583736,
+      "lng": 2.2922926
+    }
+  },
+  "contactMapLink": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "http://google.com"
+    }
+  },
+  "contactEmailAddress": {
+    "__TYPE__": "FieldContent",
+    "value": "famous",
+    "type": "Text"
+  },
+  "contactNumber": {
+    "__TYPE__": "FieldContent",
+    "value": "generally",
+    "type": "Text"
+  }
+}

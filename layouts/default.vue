@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-brand-pink-light text-brand-primary">
+  <div class="min-h-screen bg-brand-cream text-brand-blue text-base-mobile md:text-base">
     <SiteHeader />
 
     <main>
@@ -7,7 +7,6 @@
     </main>
 
     <SiteFooter />
-    <GridOutline />
   </div>
 </template>
 

@@ -1,122 +1,101 @@
 <template>
-  <div ref="container">
-    <div class="h-screen w-full">
-      <img
-        class="h-full w-full object-cover mx-auto"
-        src="/placeholder-images/header-bg-1.jpg"
-        alt="TEST"
-      >
-    </div>
+  <article v-if="doc">
+    <section class="h-screen w-full">
+      <SizedImage
+        v-if="doc.heroImage?.url"
+        :src="doc.heroImage.url"
+        :alt="doc.heroImage.alt"
+        sizes="sm:100vw md:100vw lg:100vw xl:100vw 2xl:100vw"
+        :lazy="false"
+      />
+    </section>
+
+    <section
+      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 py-20"
+    >
+      <prismic-rich-text
+        :field="doc.heroTagline"
+        class="text-xl font-serif-small leading-tight"
+      />
+
+      <CtaButton :to="$prismic.asLink(doc.heroCtaLink)">
+        {{ doc.heroCtaLabel }}
+      </CtaButton>
+    </section>
+
+    <RoundedGrid
+      :images="[doc.introImage1, doc.introImage2, doc.introImage3]"
+      :text-blocks="doc.introTextBlocks"
+    />
+
+    <QuotesBlock :quotes="doc.quotes" />
 
     <section>
       <TextBoxWithImage
-        class="bg-brand-pink-dark"
-        :image="{
-          src: '/placeholder-images/phil-hargreaves.jpg',
-          alt: 'Phil Hargreaves',
-        }"
-        cta-text="About your photoshoot"
-        cta-link="/about"
+        class="bg-brand-cream"
+        :image="doc.aboutImage"
+        :cta-text="doc.aboutCtaLabel"
+        :cta-link="$prismic.asLink(doc.aboutCtaLink)"
       >
-        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        <h2
+          class="font-serif-small font-bold text-xl md:text-2xl leading-none mb-10 max-w-lg"
+        >
+          {{ doc.aboutHeading }}
         </h2>
 
-        <p class="mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare
-          sem ante. Fusce bibendum facilisis dolor, vulputate sollicitudin sem
-          molestie semper. Proin vulputate urna non ex tempor accumsan a a enim.
-        </p>
-        <p class="mb-4">
-          Donec eu nibh odio. Duis sollicitudin, sem et ullamcorper bibendum, ex
-          diam vulputate ligula, ac aliquet odio mi eget ligula.
-        </p>
-        <p>
-          Quisque in massa risus. Aliquam aliquet turpis eu hendrerit interdum.
-          Proin placerat justo dolor, et aliquam est varius vel.
-        </p>
-      </TextBoxWithImage>
-
-      <TestimonialsBlock />
-
-      <TextBoxWithImage
-        class="bg-brand-pink-dark"
-        cta-text="Read more"
-        cta-link="/about-your-photoshoot"
-        :image="{ src: '/placeholder-images/studio.jpg', alt: 'The studio' }"
-      >
-        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
-          About Your Photoshoot
-        </h2>
-        <p class="mb-4">
-          Morbi lectus mauris, interdum nec odio ut, congue imperdiet ligula.
-          Mauris ut scelerisque nunc. Mauris aliquet fermentum diam. Integer in
-          quam eu dui pharetra imperdiet.
-        </p>
-        <p>
-          Nulla ullamcorper molestie nisl, et mollis tortor congue id. Praesent
-          condimentum fermentum fermentum. Duis quis felis in enim cursus
-          imperdiet eget at nisi. Etiam sodales ultricies ultricies.
-        </p>
+        <prismic-rich-text :field="doc.aboutBody" />
       </TextBoxWithImage>
 
       <TextBoxWithImage
-        cta-text="Explore"
-        cta-link="/gallery"
-        :image="{
-          src: '/placeholder-images/gallery.jpg',
-          alt: 'Gallery of images',
-        }"
+        class="bg-brand-cream"
+        :image="doc.contactImage"
+        :cta-text="doc.contactCtaLabel"
+        :cta-link="$prismic.asLink(doc.contactCtaLink)"
         image-position="right"
       >
-        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
-          Gallery
+        <h2
+          class="font-serif-small font-bold text-xl md:text-2xl leading-none mb-10 max-w-lg"
+        >
+          {{ doc.contactHeading }}
         </h2>
-        <p class="mb-4">
-          Donec metus mi, tristique a tincidunt eget, suscipit sit amet ipsum.
-          Nullam eu malesuada lectus, ut aliquam nibh. Etiam eu euismod enim,
-          quis consequat velit. In dictum eu tortor et semper.
-        </p>
-        <p>
-          Maecenas vulputate facilisis mauris eu consequat. Morbi sit amet
-          accumsan sem. Proin ut eros mi. Aliquam eu cursus elit, et
-          pellentesque nibh. Duis quis venenatis libero.
-        </p>
-      </TextBoxWithImage>
 
-      <TextBoxWithImage
-        class="bg-brand-pink-dark"
-        cta-text="Get in touch"
-        cta-link="/contact"
-        :image="{
-          src: '/placeholder-images/contact.jpg',
-          alt: 'A dog on a light blue background',
-        }"
-      >
-        <h2 class="font-serif-small font-bold text-4xl lg:text-6xl mb-10 max-w-lg">
-          Contact
-        </h2>
-        <p class="mb-4">
-          Morbi id posuere nulla, ut blandit lacus. Etiam et odio et libero
-          porta pharetra. Duis convallis velit vitae tincidunt luctus. Cras
-          vestibulum accumsan lectus vitae bibendum. Interdum et malesuada fames
-          ac ante ipsum primis in faucibus.
-        </p>
-        <p>
-          Suspendisse maximus maximus fringilla. Praesent id mauris ac est
-          porttitor pellentesque. Donec sodales hendrerit nisl non vehicula.
-          Praesent quis leo lobortis, ornare diam vitae, pharetra dolor.
-        </p>
+        <prismic-rich-text :field="doc.contactBody" />
       </TextBoxWithImage>
     </section>
-  </div>
+  </article>
 </template>
 
 <script>
+import gsap from 'gsap'
+import addSeoToHead from '~/composables/addSeoToHead'
+import { useA11yStore } from '~/stores/a11y'
+import { useGlobalsStore } from '~/stores/globals'
+
 export default {
   setup () {
-    const container = ref(null)
-    return { container }
+    const { client } = usePrismic()
+
+    const elIntro = ref(null)
+
+    const globalsStore = useGlobalsStore()
+    const { ctaLink, ctaLabel } = toRefs(globalsStore)
+
+    const a11yStore = useA11yStore()
+    const reducedMotion = computed(() => a11yStore.reducedMotion)
+
+    const { data: doc } = useAsyncData('homepage', async () => {
+      const { data } = await client.getSingle('homepage')
+      return data
+    })
+
+    addSeoToHead(doc, true)
+
+    return {
+      ctaLabel,
+      ctaLink,
+      doc,
+      elIntro,
+    }
   },
 }
 </script>

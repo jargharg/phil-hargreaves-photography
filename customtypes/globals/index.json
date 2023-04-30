@@ -5,9 +5,9 @@
   "status": true,
   "json": {
     "Navigations": {
-      "primaryNav": {
+      "menu": {
         "config": {
-          "label": "Primary Nav",
+          "label": "Menu",
           "fields": {
             "link": {
               "config": {
@@ -88,43 +88,6 @@
       }
     },
     "Contact": {
-      "contactTitle": {
-        "type": "Text",
-        "config": {
-          "label": "Title",
-          "placeholder": ""
-        }
-      },
-      "contactIntro": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Intro",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
-        }
-      },
-      "contactCtaText": {
-        "type": "Text",
-        "config": {
-          "label": "CTA Text",
-          "placeholder": ""
-        }
-      },
-      "contactNumber": {
-        "type": "Text",
-        "config": {
-          "label": "Telephone Number",
-          "placeholder": ""
-        }
-      },
-      "contactEmailAddress": {
-        "type": "Text",
-        "config": {
-          "label": "Email Address",
-          "placeholder": ""
-        }
-      },
       "contactAddress": {
         "type": "StructuredText",
         "config": {
@@ -146,6 +109,20 @@
           "label": "Map Link",
           "placeholder": "",
           "select": null
+        }
+      },
+      "contactEmailAddress": {
+        "type": "Text",
+        "config": {
+          "label": "Email Address",
+          "placeholder": ""
+        }
+      },
+      "contactNumber": {
+        "type": "Text",
+        "config": {
+          "label": "Telephone Number",
+          "placeholder": ""
         }
       }
     }

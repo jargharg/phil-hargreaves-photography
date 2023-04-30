@@ -1,38 +1,28 @@
 <template>
   <section ref="elSection" class="h-screen w-full">
     <div
-      class="relative flex flex-col md:flex-row"
-      style="height: -webkit-fill-available;"
-      :class="{ 'md:flex-row-reverse': imagePosition === 'right' }"
+      class="relative flex flex-col lg:flex-row"
+      style="height: -webkit-fill-available"
+      :class="{ 'lg:flex-row-reverse': imagePosition === 'right' }"
     >
-      <!-- @TODO use nuxt-image, sized image -->
-      <figure ref="elImage" class="w-full h-full flex-1">
-        <img v-bind="image" class="w-full h-full object-cover">
-      </figure>
+      <SizedImage
+        v-if="image?.url"
+        :src="image.url"
+        :alt="image.alt"
+        :dimensions="image.dimensions"
+        class="flex-1"
+        sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
+      />
 
       <div class="py-8 md:py-16 h-full flex-1 flex items-center">
-        <div
-          ref="elText"
-          class="font-light lg:text-lg mx-auto max-w-2xl px-16"
-        >
+        <div ref="elText" class="font-light mx-auto max-w-2xl px-16">
           <slot />
 
           <nuxt-link
             v-if="hasCta"
             ref="elCta"
             :to="ctaLink"
-            class="
-              block
-                w-full
-                text-right
-                mt-8
-                md:mt-16
-                pr-6
-                font-normal
-                uppercase
-                tracking-widest
-                hover:underline
-              "
+            class="inline-block mt-8 md:mt-16 pr-6 font-normal uppercase tracking-widest hover:underline"
           >
             {{ ctaText }} &rarr;
           </nuxt-link>

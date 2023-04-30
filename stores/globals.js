@@ -5,7 +5,7 @@ export const useGlobalsStore = defineStore('globals', {
     return {
       contact: {},
       footerPolicies: [],
-      primaryNav: [],
+      menu: [],
       socialLinks: [],
     }
   },
@@ -15,18 +15,16 @@ export const useGlobalsStore = defineStore('globals', {
       const { data } = await $prismic.client.getSingle('globals')
 
       this.contact = {
-        title: data.contactTitle,
-        intro: data.contactIntro,
         ctaText: data.contactCtaText,
         number: data.contactNumber,
-        emailAddress: data.contactEmailAddress,
+        email: data.contactEmailAddress,
         address: data.contactAddress,
         location: data.contactLocation,
         mapLink: data.contactMapLink,
       }
 
       this.footerPolicies = data.footerPolicies
-      this.primaryNav = data.primaryNav
+      this.menu = data.menu
       this.socialLinks = data.socialLinks
 
       return this

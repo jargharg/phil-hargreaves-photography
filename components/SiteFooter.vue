@@ -3,36 +3,48 @@
     <div class="container footer__container">
       <div class="footer__logo">
         <NuxtLink to="/" aria-label="Go to homepage">
-          <LogoSmall ref="logo" class="h-14" />
+          <LogoSmall ref="logo" class="w-full" />
         </NuxtLink>
       </div>
 
       <div class="footer__contact">
-        <nuxt-link target="_blank" :href="$prismic.asLink(contact.mapLink)">
+        <nuxt-link
+          target="_blank"
+          :href="$prismic.asLink(contact.mapLink)"
+          class="hover:underline"
+        >
           <prismic-rich-text :field="contact.address" class="mb-4" />
         </nuxt-link>
 
-        <a
-          class="underline hover:no-underline"
-          :href="`tel:${contact.number}`"
-        >{{ contact.number }}</a>
-        <a
-          class="underline hover:no-underline"
-          :href="`mailto:${contact.email}`"
-        >{{ contact.email }}</a>
+        <a class="footer__contact__link" :href="`tel:${contact.number}`">{{
+          contact.number
+        }}</a>
+        <a class="footer__contact__link" :href="`mailto:${contact.email}`">{{
+          contact.email
+        }}</a>
       </div>
 
-      <div class="footer__menu">
-        menu
-      </div>
+      <ul class="footer__menu">
+        <li v-for="({ link, label }, index) in menu" :key="index">
+          <nuxt-link v-if="$prismic.asLink(link)" :to="$prismic.asLink(link)">
+            {{ label }}
+          </nuxt-link>
+        </li>
+      </ul>
 
-      <div class="footer__policies">
-        policies
-      </div>
+      <ul class="footer__policies">
+        <li v-for="({ link, label }, index) in footerPolicies" :key="index">
+          <nuxt-link v-if="$prismic.asLink(link)" :to="$prismic.asLink(link)">
+            {{ label }}
+          </nuxt-link>
+        </li>
+      </ul>
 
-      <div class="footer__social">
-        social
-      </div>
+      <SocialLinks
+        icon-color="brand-blue"
+        circle-color="brand-cream"
+        class="footer__social"
+      />
     </div>
   </footer>
 </template>
@@ -46,9 +58,10 @@ export default {
 
     const contact = toRef(globalsStore, 'contact')
     const footerPolicies = toRef(globalsStore, 'footerPolicies')
+    const menu = toRef(globalsStore, 'menu')
     const socialLinks = toRef(globalsStore, 'socialLinks')
 
-    return { contact, footerPolicies, socialLinks }
+    return { contact, footerPolicies, menu, socialLinks }
   },
 }
 </script>
@@ -58,18 +71,18 @@ export default {
   @apply w-full bg-brand-blue text-brand-cream text-sm py-10;
 
   &__container {
-    @apply grid gap-5;
+    @apply grid gap-10 lg:gap-5;
 
     grid-template:
       "logo"
-      "contact"
       "menu"
-      "policies"
-      "social";
+      "contact"
+      "social"
+      "policies";
 
     @screen lg {
       grid-template:
-        "logo contact menu"
+        "logo     contact menu"
         "policies contact social" /
         1fr 2fr 1fr;
     }
@@ -81,22 +94,34 @@ export default {
   }
 
   &__contact {
-    @apply text-sm-mobile text-center flex flex-col;
+    @apply text-sm-mobile text-center flex flex-col items-center justify-start;
     grid-area: contact;
+
+    &__link {
+      @apply underline hover:no-underline;
+    }
   }
 
   &__menu {
-    @apply text-center lg:text-right;
+    @apply flex flex-col items-center lg:items-end justify-end gap-2;
     grid-area: menu;
+
+    a {
+      @apply underline hover:no-underline;
+    }
   }
 
   &__policies {
     @apply text-sm-mobile flex flex-col items-center lg:items-start justify-end;
     grid-area: policies;
+
+    a {
+      @apply underline hover:no-underline;
+    }
   }
 
   &__social {
-    @apply flex flex-col items-center lg:items-end justify-end;
+    @apply justify-center lg:justify-end;
     grid-area: social;
   }
 }

@@ -1,0 +1,39 @@
+{
+  "id": "about",
+  "label": "About",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Core": {
+      "title": {
+        "type": "Text",
+        "config": { "label": "Title", "placeholder": "", "useAsTitle": true }
+      }
+    },
+    "Meta": {
+      "summary": {
+        "type": "Text",
+        "config": { "label": "Summary", "placeholder": "" }
+      },
+      "primaryImage": {
+        "type": "Image",
+        "config": {
+          "label": "Primary Image",
+          "constraint": { "width": 4000, "height": 3000 },
+          "thumbnails": [{ "name": "meta", "width": 1200, "height": 630 }]
+        }
+      }
+    },
+    "Body": {
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,heading2,strong,em,hyperlink,list-item,o-list-item"
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <template>
   <article v-if="doc" class="min-h-screen pt-20">
     <Heading level="1">
-      About
+      Contact
     </Heading>
   </article>
 </template>

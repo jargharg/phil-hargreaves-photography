@@ -10,8 +10,8 @@
             {
               "__TYPE__": "LinkContent",
               "value": {
-                "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
               }
             }
           ],
@@ -19,7 +19,7 @@
             "label",
             {
               "__TYPE__": "FieldContent",
-              "value": "love",
+              "value": "strike",
               "type": "Text"
             }
           ]
@@ -38,8 +38,8 @@
             {
               "__TYPE__": "LinkContent",
               "value": {
-                "__TYPE__": "ExternalLink",
-                "url": "http://google.com"
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
               }
             }
           ],
@@ -47,7 +47,7 @@
             "label",
             {
               "__TYPE__": "FieldContent",
-              "value": "drove",
+              "value": "struggle",
               "type": "Text"
             }
           ]
@@ -75,7 +75,7 @@
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://prismic.io"
+                "url": "http://twitter.com"
               }
             }
           ]
@@ -89,7 +89,7 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Mollit aliquip sit laboris quis eiusmod dolore enim pariatur reprehenderit ipsum."
+          "text": "Proident consectetur dolor exercitation aute aliqua minim culpa est pariatur. Eiusmod sint esse Lorem voluptate. Pariatur occaecat aliqua excepteur eu nostrud sit laboris laborum adipisicing eu incididunt."
         }
       }
     ]
@@ -110,12 +110,12 @@
   },
   "contactEmailAddress": {
     "__TYPE__": "FieldContent",
-    "value": "famous",
+    "value": "this",
     "type": "Text"
   },
   "contactNumber": {
     "__TYPE__": "FieldContent",
-    "value": "generally",
+    "value": "brought",
     "type": "Text"
   }
 }

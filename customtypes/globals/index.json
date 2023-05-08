@@ -14,7 +14,7 @@
                 "label": "Link",
                 "placeholder": "",
                 "allowTargetBlank": false,
-                "select": null
+                "select": "document"
               },
               "type": "Link"
             },
@@ -38,8 +38,10 @@
               "type": "Link",
               "config": {
                 "label": "Link",
-                "placeholder": "",
-                "select": null
+                "select": "document",
+                "customtypes": [
+                  "legal"
+                ]
               }
             },
             "label": {
@@ -67,8 +69,6 @@
                   "Instagram",
                   "Twitter",
                   "Facebook",
-                  "Soundcloud",
-                  "Youtube",
                   "Linkedin"
                 ],
                 "default_value": "Instagram"
@@ -79,7 +79,7 @@
               "config": {
                 "label": "Link",
                 "placeholder": "",
-                "select": null
+                "select": "web"
               }
             }
           }
@@ -108,7 +108,7 @@
         "config": {
           "label": "Map Link",
           "placeholder": "",
-          "select": null
+          "select": "web"
         }
       },
       "contactEmailAddress": {

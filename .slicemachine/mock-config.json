@@ -1,9 +1,17 @@
 {
   "_cts": {
-    "globals": {},
+    "globals": {
+      "footerPolicies": {}
+    },
     "homepage": {
       "introTextBlocks": {},
       "quotes": {}
-    }
+    },
+    "about": {},
+    "gallery": {},
+    "testimonials": {},
+    "legal": {},
+    "theStudio": {},
+    "contact": {}
   }
 }

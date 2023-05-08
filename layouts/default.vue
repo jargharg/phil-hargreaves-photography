@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-brand-cream text-brand-blue text-base-mobile md:text-base">
+  <div class="min-h-screen bg-brand-cream text-brand-blue text-base-mobile lg:text-base font-light">
     <SiteHeader />
 
     <main>

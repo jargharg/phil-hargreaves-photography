@@ -49,8 +49,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .cta-button {
-  @apply text-center leading-none uppercase text-sm-mobile md:text-sm tracking-[0.2em] z-10;
-  @apply flex items-center;
+  @apply flex text-center leading-none uppercase text-sm-mobile lg:text-sm tracking-[0.15em] lg:tracking-[0.2em] z-10;
   @apply transition-opacity;
 
   &:not(:disabled) {

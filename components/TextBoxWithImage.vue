@@ -1,20 +1,20 @@
 <template>
-  <section ref="elSection" class="h-screen w-full">
+  <section ref="elSection" class="tbwi">
     <div
-      class="relative flex flex-col lg:flex-row"
-      style="height: -webkit-fill-available"
-      :class="{ 'lg:flex-row-reverse': imagePosition === 'right' }"
+      class="tbwi__wrapper"
+      :class="{ 'tbwi__wrapper--flip': imagePosition === 'right' }"
     >
-      <SizedImage
-        v-if="image?.url"
-        :src="image.url"
-        :alt="image.alt"
-        :dimensions="image.dimensions"
-        class="flex-1"
-        sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
-      />
+      <div class="tbwi__image">
+        <SizedImage
+          v-if="image?.url"
+          :src="image.url"
+          :alt="image.alt"
+          class=""
+          sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
+        />
+      </div>
 
-      <div class="py-8 md:py-16 h-full flex-1 flex items-center">
+      <div class="py-8 md:py-16 h-full md:flex-1 flex items-center">
         <div ref="elText" class="font-light mx-auto max-w-2xl px-16">
           <slot />
 
@@ -69,3 +69,26 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.tbwi {
+  @apply lg:h-screen w-full;
+
+  &__wrapper {
+    @apply relative flex flex-col md:flex-row md:min-h-[50vh];
+
+    @screen lg {
+      height: -webkit-fill-available;
+    }
+
+    &--flip {
+      @apply md:flex-row-reverse;
+    }
+  }
+
+  &__image {
+    @apply md:flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto;
+
+  }
+}
+</style>

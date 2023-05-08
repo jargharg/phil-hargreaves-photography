@@ -11,11 +11,11 @@
     </section>
 
     <section
-      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 py-20"
+      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-20 px-5"
     >
       <prismic-rich-text
         :field="doc.heroTagline"
-        class="text-xl font-serif-small leading-tight"
+        class="text-2xl font-serif leading-none font-bold"
       />
 
       <CtaButton :to="$prismic.asLink(doc.heroCtaLink)">
@@ -23,10 +23,12 @@
       </CtaButton>
     </section>
 
-    <RoundedGrid
-      :images="[doc.introImage1, doc.introImage2, doc.introImage3]"
-      :text-blocks="doc.introTextBlocks"
-    />
+    <section class="container my-20">
+      <RoundedGrid
+        :images="[doc.introImage1, doc.introImage2, doc.introImage3]"
+        :text-blocks="doc.introTextBlocks"
+      />
+    </section>
 
     <QuotesBlock :quotes="doc.quotes" />
 
@@ -37,13 +39,13 @@
         :cta-text="doc.aboutCtaLabel"
         :cta-link="$prismic.asLink(doc.aboutCtaLink)"
       >
-        <h2
-          class="font-serif-small font-bold text-xl md:text-2xl leading-none mb-10 max-w-lg"
-        >
+        <Heading level="2">
           {{ doc.aboutHeading }}
-        </h2>
+        </Heading>
 
-        <prismic-rich-text :field="doc.aboutBody" />
+        <BodyText>
+          <prismic-rich-text :field="doc.aboutBody" />
+        </BodyText>
       </TextBoxWithImage>
 
       <TextBoxWithImage
@@ -53,13 +55,13 @@
         :cta-link="$prismic.asLink(doc.contactCtaLink)"
         image-position="right"
       >
-        <h2
-          class="font-serif-small font-bold text-xl md:text-2xl leading-none mb-10 max-w-lg"
-        >
+        <Heading level="2">
           {{ doc.contactHeading }}
-        </h2>
+        </Heading>
 
-        <prismic-rich-text :field="doc.contactBody" />
+        <BodyText>
+          <prismic-rich-text :field="doc.contactBody" />
+        </BodyText>
       </TextBoxWithImage>
     </section>
   </article>

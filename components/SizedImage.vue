@@ -69,8 +69,6 @@ export default {
     const image = ref(null)
 
     const onLoad = () => {
-      console.log('onLoad')
-
       gsap.to(image.value.$el, { opacity: 1, duration: 0.2 })
     }
 

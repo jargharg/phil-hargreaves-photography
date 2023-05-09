@@ -63,6 +63,10 @@
           <prismic-rich-text :field="doc.contactBody" />
         </BodyText>
       </TextBoxWithImage>
+
+      <QuotesBlock :quotes="doc.quotes" />
+
+      <SlideTicker />
     </section>
   </article>
 </template>

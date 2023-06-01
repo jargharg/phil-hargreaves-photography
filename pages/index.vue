@@ -1,14 +1,6 @@
 <template>
   <article v-if="doc">
-    <section class="h-screen w-full">
-      <SizedImage
-        v-if="doc.heroImage?.url"
-        :src="doc.heroImage.url"
-        :alt="doc.heroImage.alt"
-        sizes="sm:100vw md:100vw lg:100vw xl:100vw 2xl:100vw"
-        :lazy="false"
-      />
-    </section>
+    <ImageCarousel :images="doc.heroImages" />
 
     <section
       class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-20 px-5"

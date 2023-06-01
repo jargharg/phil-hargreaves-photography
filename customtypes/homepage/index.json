@@ -3,60 +3,29 @@
   "label": "Homepage",
   "repeatable": false,
   "status": true,
+  "format": "custom",
   "json": {
     "Core": {
       "title": {
         "type": "Text",
-        "config": {
-          "label": "Title",
-          "placeholder": ""
-        }
+        "config": { "label": "Title", "placeholder": "" }
       }
     },
     "Meta": {
       "summary": {
         "type": "Text",
-        "config": {
-          "label": "Summary",
-          "placeholder": ""
-        }
+        "config": { "label": "Summary", "placeholder": "" }
       },
       "primaryImage": {
         "type": "Image",
         "config": {
           "label": "Primary Image",
-          "constraint": {
-            "width": 4000,
-            "height": 3000
-          },
-          "thumbnails": [
-            {
-              "name": "meta",
-              "width": 1200,
-              "height": 630
-            }
-          ]
+          "constraint": { "width": 4000, "height": 3000 },
+          "thumbnails": [{ "name": "meta", "width": 1200, "height": 630 }]
         }
       }
     },
     "Hero": {
-      "heroImage": {
-        "type": "Image",
-        "config": {
-          "label": "Hero Image",
-          "constraint": {
-            "width": 4000,
-            "height": 3000
-          },
-          "thumbnails": [
-            {
-              "name": "portrait",
-              "width": 4000,
-              "height": 6000
-            }
-          ]
-        }
-      },
       "heroTagline": {
         "type": "StructuredText",
         "config": {
@@ -68,17 +37,28 @@
       },
       "heroCtaLabel": {
         "type": "Text",
-        "config": {
-          "label": "CTA Label",
-          "placeholder": ""
-        }
+        "config": { "label": "CTA Label", "placeholder": "" }
       },
       "heroCtaLink": {
         "type": "Link",
+        "config": { "label": "CTA Link", "placeholder": "", "select": null }
+      },
+      "heroImages": {
+        "type": "Group",
         "config": {
-          "label": "CTA Link",
-          "placeholder": "",
-          "select": null
+          "label": "Hero Images",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": { "width": 4000, "height": 3000 },
+                "thumbnails": [
+                  { "name": "portrait", "width": 4000, "height": 6000 }
+                ]
+              }
+            }
+          }
         }
       }
     },
@@ -99,10 +79,7 @@
             },
             "ctaLabel": {
               "type": "Text",
-              "config": {
-                "label": "CTA Label",
-                "placeholder": ""
-              }
+              "config": { "label": "CTA Label", "placeholder": "" }
             },
             "ctaLink": {
               "type": "Link",
@@ -119,10 +96,7 @@
         "type": "Image",
         "config": {
           "label": "Image 1",
-          "constraint": {
-            "width": 4000,
-            "height": 6000
-          },
+          "constraint": { "width": 4000, "height": 6000 },
           "thumbnails": []
         }
       },
@@ -130,10 +104,7 @@
         "type": "Image",
         "config": {
           "label": "Image 2",
-          "constraint": {
-            "width": 4000,
-            "height": 5000
-          },
+          "constraint": { "width": 4000, "height": 5000 },
           "thumbnails": []
         }
       },
@@ -141,10 +112,7 @@
         "type": "Image",
         "config": {
           "label": "Image 3",
-          "constraint": {
-            "width": 4000,
-            "height": 3000
-          },
+          "constraint": { "width": 4000, "height": 3000 },
           "thumbnails": []
         }
       }
@@ -166,10 +134,7 @@
             },
             "attribution": {
               "type": "Text",
-              "config": {
-                "label": "Attribution",
-                "placeholder": ""
-              }
+              "config": { "label": "Attribution", "placeholder": "" }
             }
           }
         }
@@ -180,25 +145,15 @@
         "type": "Image",
         "config": {
           "label": "Image",
-          "constraint": {
-            "width": 4000,
-            "height": 6000
-          },
+          "constraint": { "width": 4000, "height": 6000 },
           "thumbnails": [
-            {
-              "name": "Narrow Screen",
-              "width": 4000,
-              "height": 3000
-            }
+            { "name": "Narrow Screen", "width": 4000, "height": 3000 }
           ]
         }
       },
       "aboutHeading": {
         "type": "Text",
-        "config": {
-          "label": "Heading",
-          "placeholder": ""
-        }
+        "config": { "label": "Heading", "placeholder": "" }
       },
       "aboutBody": {
         "type": "StructuredText",
@@ -211,45 +166,27 @@
       },
       "aboutCtaLabel": {
         "type": "Text",
-        "config": {
-          "label": "CTA Label",
-          "placeholder": ""
-        }
+        "config": { "label": "CTA Label", "placeholder": "" }
       },
       "aboutCtaLink": {
         "type": "Link",
-        "config": {
-          "label": "CTA Link",
-          "placeholder": "",
-          "select": null
-        }
+        "config": { "label": "CTA Link", "placeholder": "", "select": null }
       }
     },
-
     "Contact": {
       "contactImage": {
         "type": "Image",
         "config": {
           "label": "Image",
-          "constraint": {
-            "width": 4000,
-            "height": 6000
-          },
+          "constraint": { "width": 4000, "height": 6000 },
           "thumbnails": [
-            {
-              "name": "Narrow Screen",
-              "width": 4000,
-              "height": 3000
-            }
+            { "name": "Narrow Screen", "width": 4000, "height": 3000 }
           ]
         }
       },
       "contactHeading": {
         "type": "Text",
-        "config": {
-          "label": "Heading",
-          "placeholder": ""
-        }
+        "config": { "label": "Heading", "placeholder": "" }
       },
       "contactBody": {
         "type": "StructuredText",
@@ -262,18 +199,11 @@
       },
       "contactCtaLabel": {
         "type": "Text",
-        "config": {
-          "label": "CTA Label",
-          "placeholder": ""
-        }
+        "config": { "label": "CTA Label", "placeholder": "" }
       },
       "contactCtaLink": {
         "type": "Link",
-        "config": {
-          "label": "CTA Link",
-          "placeholder": "",
-          "select": null
-        }
+        "config": { "label": "CTA Link", "placeholder": "", "select": null }
       }
     }
   }

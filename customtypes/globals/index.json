@@ -3,6 +3,7 @@
   "label": "Globals",
   "repeatable": false,
   "status": true,
+  "format": "custom",
   "json": {
     "Navigations": {
       "menu": {
@@ -19,10 +20,7 @@
               "type": "Link"
             },
             "label": {
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              },
+              "config": { "label": "Label", "placeholder": "" },
               "type": "Text"
             }
           }
@@ -39,17 +37,12 @@
               "config": {
                 "label": "Link",
                 "select": "document",
-                "customtypes": [
-                  "legal"
-                ]
+                "customtypes": ["legal"]
               }
             },
             "label": {
               "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              }
+              "config": { "label": "Label", "placeholder": "" }
             }
           }
         }
@@ -65,22 +58,13 @@
               "config": {
                 "label": "Platform",
                 "placeholder": "",
-                "options": [
-                  "Instagram",
-                  "Twitter",
-                  "Facebook",
-                  "Linkedin"
-                ],
+                "options": ["Instagram", "Twitter", "Facebook", "Linkedin"],
                 "default_value": "Instagram"
               }
             },
             "link": {
               "type": "Link",
-              "config": {
-                "label": "Link",
-                "placeholder": "",
-                "select": "web"
-              }
+              "config": { "label": "Link", "placeholder": "", "select": "web" }
             }
           }
         },
@@ -99,30 +83,36 @@
       },
       "contactLocation": {
         "type": "GeoPoint",
-        "config": {
-          "label": "Location"
-        }
+        "config": { "label": "Location" }
       },
       "contactMapLink": {
         "type": "Link",
-        "config": {
-          "label": "Map Link",
-          "placeholder": "",
-          "select": "web"
-        }
+        "config": { "label": "Map Link", "placeholder": "", "select": "web" }
       },
       "contactEmailAddress": {
         "type": "Text",
-        "config": {
-          "label": "Email Address",
-          "placeholder": ""
-        }
+        "config": { "label": "Email Address", "placeholder": "" }
       },
       "contactNumber": {
         "type": "Text",
+        "config": { "label": "Telephone Number", "placeholder": "" }
+      }
+    },
+    "Footer Slides": {
+      "slides": {
+        "type": "Group",
         "config": {
-          "label": "Telephone Number",
-          "placeholder": ""
+          "label": "Slides",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": { "width": 5000, "height": 4000 },
+                "thumbnails": []
+              }
+            }
+          }
         }
       }
     }

@@ -1,32 +1,70 @@
 <template>
-  <div class="flex flex-row gap-5 p-5 overflow-scroll h-[40vh]">
-    <!-- <SizedImage
-      v-for="(slide, index) in slides"
-      :key="index"
-      :src="slide.url"
-      :alt="slide.alt"
-      :dimensions="{ height: 1, width: 1 }"
-    /> -->
+  <div class="overflow-clip h-[40vh]" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+    <div ref="elContainer" class="flex flex-row gap-5 p-5 h-full">
+      <div ref="elPrimaryRow" class="flex flex-row gap-5 h-full">
+        <SizedImage
+          v-for="(slide, index) in slides"
+          :key="index"
+          :src="slide.url"
+          :alt="slide.alt"
+          :dimensions="slide.dimensions"
+          class="rounded-3xl"
+          sizes="sm:50vw md:50vw lg:50vw xl:50vw 2xl:50vw"
+        />
+      </div>
 
-    <div
-      v-for="(slide, index) in slides"
-      :key="index"
-      class="aspect-[5/4] relative"
-    >
-      <img :src="slide.url" :alt="slide.alt" class="object-cover absolute w-full h-full rounded-3xl ">
+      <div class="flex flex-row gap-5 h-full">
+        <SizedImage
+          v-for="(slide, index) in slides"
+          :key="index"
+          :src="slide.url"
+          :alt="slide.alt"
+          :dimensions="slide.dimensions"
+          class="rounded-3xl"
+          sizes="sm:50vw md:50vw lg:50vw xl:50vw 2xl:50vw"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import gsap from 'gsap'
+import { useGlobalsStore } from '~/stores/globals'
+
 export default {
   setup () {
-    const slides = [1, 2, 3, 4, 5, 6, 7].map(num => ({
-      url: `/placeholder-images/dog${num}.jpeg`,
-      alt: 'dog',
-    }))
+    const globalsStore = useGlobalsStore()
+    const slides = toRef(globalsStore, 'slides')
 
-    return { slides }
+    const elContainer = ref(null)
+    const elPrimaryRow = ref(null)
+
+    let animation
+
+    onMounted(() => {
+      animation = gsap
+        .timeline({ repeat: -1, defaults: { ease: 'none' } })
+        .fromTo(
+          elContainer.value,
+          { x: 0 },
+          { x: -elPrimaryRow.value.offsetWidth - 20, duration: 20 },
+        )
+    })
+
+    onUnmounted(() => {
+      animation?.kill()
+    })
+
+    const onMouseEnter = () => {
+      gsap.to(animation, { timeScale: 0, duration: 0.5 })
+    }
+
+    const onMouseLeave = () => {
+      gsap.to(animation, { timeScale: 1, duration: 0.5 })
+    }
+
+    return { slides, elContainer, elPrimaryRow, onMouseEnter, onMouseLeave }
   },
 }
 </script>

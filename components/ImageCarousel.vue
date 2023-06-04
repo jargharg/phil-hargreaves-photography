@@ -1,15 +1,15 @@
 <template>
-  <section class="h-screen w-full">
+  <section class="relative h-screen w-full overflow-hidden">
     <div
-      v-for="({ image }, index) in images"
+      v-for="({ image }, index) in [...images, images[0]]"
       :key="index"
       ref="elImages"
-      class="absolute inset-y-0 -inset-x-10"
+      class="absolute -inset-x-10 -inset-y-1 -translate-x-8"
     >
       <SizedImage
         :src="image.url"
         :alt="image.alt"
-        sizes="sm:110vw md:110vw lg:110vw xl:110vw 2xl:110vw"
+        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
         :lazy="index > 0"
       />
     </div>
@@ -30,12 +30,43 @@ export default {
     const elImages = ref([])
     let tl
 
-    onMounted(() => {
-      tl = gsap.timeline({ repeat: -1 })
+    onMounted(async () => {
+      const fade = 2.5
+      const slide = 8
+      const x = 32
+      const y = 4
 
-      elImages.value.forEach((el) => {
-        tl.from(el, { opacity: 0, duration: 3 }, '-=3')
-        tl.fromTo(el, { x: 40 }, { x: -40, duration: 10, ease: 'linear' }, '<')
+      tl = await gsap.fromTo(
+        elImages.value[elImages.value.length - 1],
+        { x: -x, y: -y },
+        { x: 0, y: 0, duration: slide / 2, ease: 'none' },
+      )
+
+      tl = gsap.timeline({ repeat: -1, defaults: { ease: 'none' } })
+
+      elImages.value.forEach((el, index) => {
+        const isFirstEl = index === 0
+        const isLastEl = index === elImages.value.length - 1
+
+        if (isFirstEl) {
+          tl.fromTo(el, { x: 0, y: 0 }, { x, y, duration: slide / 2 })
+        } else {
+          tl.fromTo(
+            el,
+            { opacity: 0 },
+            { opacity: 1, duration: fade },
+            `-=${fade}`,
+          )
+
+          if (isLastEl) {
+            tl.fromTo(el, { x: -x, y: -y }, { x: 0, y: 0, duration: slide / 2 }, '<').set(
+              el,
+              { opacity: 0 },
+            )
+          } else {
+            tl.fromTo(el, { x: -x, y: -y }, { x, y, duration: slide }, '<')
+          }
+        }
       })
     })
 

@@ -6,6 +6,7 @@ export const useGlobalsStore = defineStore('globals', {
       contact: {},
       footerPolicies: [],
       menu: [],
+      slides: [],
       socialLinks: [],
     }
   },
@@ -24,6 +25,9 @@ export const useGlobalsStore = defineStore('globals', {
       }
 
       this.footerPolicies = data.footerPolicies
+      this.slides = data.slides.map(({ image }) => image)
+      console.log(data.slides)
+
       this.menu = data.menu
       this.socialLinks = data.socialLinks
 

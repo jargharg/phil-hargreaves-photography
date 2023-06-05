@@ -9,13 +9,12 @@
           v-if="image?.url"
           :src="image.url"
           :alt="image.alt"
-          class=""
           sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
         />
       </div>
 
       <div class="py-8 md:py-16 h-full md:flex-1 flex items-center">
-        <div ref="elText" class="font-light mx-auto max-w-2xl px-16">
+        <div ref="elText" class="font-light mx-auto max-w-2xl px-8 md:px-16">
           <slot />
 
           <nuxt-link

@@ -2,6 +2,7 @@
   <ul class="rounded-grid">
     <li
       v-for="(image, index) in images"
+      ref="elImages"
       :key="index"
       :class="`rounded-grid__image rounded-grid__image--${index}`"
     >
@@ -9,7 +10,6 @@
         v-if="image?.url"
         :src="image.url"
         :alt="image.alt"
-
         class="rounded-3xl"
         sizes="sm:100vw md:50vw lg:50vw xl:50vw 2xl:40vw"
       />
@@ -17,6 +17,7 @@
 
     <li
       v-for="({ text, ctaLink, ctaLabel }, index) in textBlocks"
+      ref="elTexts"
       :key="index"
       :class="`rounded-grid__text rounded-grid__text--${index}`"
     >
@@ -24,7 +25,10 @@
         <prismic-rich-text :field="text" class="mb-4" />
       </BodyText>
 
-      <CtaButton :to="$prismic.asLink(ctaLink)" class="mx-auto mt-2 mb-4 md:m-0">
+      <CtaButton
+        :to="$prismic.asLink(ctaLink)"
+        class="mx-auto mt-2 mb-4 md:m-0"
+      >
         {{ ctaLabel }}
       </CtaButton>
     </li>
@@ -32,6 +36,7 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 export default {
   props: {
     images: {
@@ -45,7 +50,46 @@ export default {
   },
 
   setup () {
-    return {}
+    const elImages = ref([])
+    const elTexts = ref([])
+
+    let enterAnimations
+
+    onMounted(async () => {
+      const els = [...elImages.value, ...elTexts.value]
+      await nextTick()
+
+      gsap.set(els, { opacity: 0 })
+
+      enterAnimations = els.map((el) => {
+        const animation = gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: el,
+              start: '10px bottom',
+              end: 'bottom top',
+              toggleActions: 'play none play none',
+              once: true,
+            },
+            onComplete: () => {
+              animation.kill()
+            },
+          })
+          .to(el, {
+            opacity: 1,
+            ease: 'none',
+            duration: 0.5,
+          })
+
+        return animation
+      })
+    })
+
+    onUnmounted(() => {
+      enterAnimations?.forEach(tl => tl?.kill())
+    })
+
+    return { elImages, elTexts }
   },
 }
 </script>
@@ -89,13 +133,13 @@ export default {
 
   @screen xl {
     grid-template:
-      "img-0 img-0 img-0 .     .    " 30vh
-      "img-0 img-0 img-0 txt-0 txt-0" 30vh
-      "img-0 img-0 img-0 img-1 img-1" 30vh
+      "img-0 img-0 img-0 .     .    " 25vh
+      "img-0 img-0 img-0 txt-0 txt-0" 25vh
+      "img-0 img-0 img-0 img-1 img-1" 25vh
       "txt-1 txt-1 .     img-1 img-1" 10vh
-      "txt-1 txt-1 .     img-1 img-1" 30vh
-      "img-2 img-2 img-2 img-2 txt-2" 30vh
-      "img-2 img-2 img-2 img-2 txt-2" 30vh
+      "txt-1 txt-1 .     img-1 img-1" 25vh
+      "img-2 img-2 img-2 img-2 txt-2" 25vh
+      "img-2 img-2 img-2 img-2 txt-2" 25vh
       / 3fr 1fr 1fr 1fr 3fr;
   }
 

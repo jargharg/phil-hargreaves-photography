@@ -48,6 +48,7 @@
     "@studiotreble/sized-image": "^0.7.5",
     "@tailwindcss/typography": "^0.5.9",
     "gsap": "^3.11.5",
-    "pinia": "^2.1.3"
+    "pinia": "^2.1.3",
+    "vue3-carousel": "^0.3.1"
   }
 }

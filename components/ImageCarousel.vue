@@ -32,7 +32,7 @@ export default {
 
     onMounted(async () => {
       const fade = 2.5
-      const slide = 8
+      const slide = 10
       const x = 32
       const y = 4
 

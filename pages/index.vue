@@ -3,11 +3,11 @@
     <ImageCarousel :images="doc.heroImages" />
 
     <section
-      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-20 px-5"
+      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-10 md:my-20 px-5"
     >
       <prismic-rich-text
         :field="doc.heroTagline"
-        class="text-2xl font-serif leading-none font-bold"
+        class="text-xl lg:text-2xl font-serif leading-none font-bold"
       />
 
       <CtaButton :to="$prismic.asLink(doc.heroCtaLink)">
@@ -15,14 +15,14 @@
       </CtaButton>
     </section>
 
-    <section class="container my-20">
+    <section class="container my-10 md:my-20">
       <RoundedGrid
         :images="[doc.introImage1, doc.introImage2, doc.introImage3]"
         :text-blocks="doc.introTextBlocks"
       />
     </section>
 
-    <QuotesBlock :quotes="doc.quotes" />
+    <QuotesCarousel :quotes="doc.quotes" />
 
     <section>
       <TextBoxWithImage
@@ -56,7 +56,7 @@
         </BodyText>
       </TextBoxWithImage>
 
-      <QuotesBlock :quotes="doc.quotes" />
+      <QuotesCarousel :quotes="doc.quotes" />
 
       <SlideTicker />
     </section>
@@ -64,35 +64,20 @@
 </template>
 
 <script>
-import gsap from 'gsap'
-import addSeoToHead from '~/composables/addSeoToHead'
-import { useA11yStore } from '~/stores/a11y'
+import { getDocumentFromPrismic } from '~/composables/getDocumentFromPrismic'
 import { useGlobalsStore } from '~/stores/globals'
 
 export default {
-  setup () {
-    const { client } = usePrismic()
-
-    const elIntro = ref(null)
-
+  async setup () {
     const globalsStore = useGlobalsStore()
     const { ctaLink, ctaLabel } = toRefs(globalsStore)
 
-    const a11yStore = useA11yStore()
-    const reducedMotion = computed(() => a11yStore.reducedMotion)
-
-    const { data: doc } = useAsyncData('homepage', async () => {
-      const { data } = await client.getSingle('homepage')
-      return data
-    })
-
-    addSeoToHead(doc, true)
+    const doc = await getDocumentFromPrismic('homepage')
 
     return {
       ctaLabel,
       ctaLink,
       doc,
-      elIntro,
     }
   },
 }

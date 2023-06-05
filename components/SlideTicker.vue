@@ -48,7 +48,7 @@ export default {
         .fromTo(
           elContainer.value,
           { x: 0 },
-          { x: -elPrimaryRow.value.offsetWidth - 20, duration: 20 },
+          { x: -elPrimaryRow.value.offsetWidth - 20, duration: 60 },
         )
     })
 

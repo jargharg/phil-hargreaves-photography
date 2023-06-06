@@ -42,17 +42,24 @@ interface AboutDocumentData {
    */
   primaryImage: prismic.ImageField<"meta">;
   /**
-   * Body field in *About*
+   * Slice Zone field in *About*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: about.body
-   * - **Tab**: Body
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   * - **API ID Path**: about.slices2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
    *
    */
-  body: prismic.RichTextField;
+  slices2: prismic.SliceZone<AboutDocumentDataSlices2Slice>;
 }
+/**
+ * Slice for *About → Slice Zone*
+ *
+ */
+type AboutDocumentDataSlices2Slice =
+  | FullscreenTextWithImageBlockSlice
+  | QuotesBlockSlice;
 /**
  * About document from Prismic
  *
@@ -531,126 +538,16 @@ interface HomepageDocumentData {
    */
   introImage3: prismic.ImageField<never>;
   /**
-   * Quotes field in *Homepage*
+   * Slice Zone field in *Homepage*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.quotes[]
-   * - **Tab**: Quotes
-   * - **Documentation**: https://prismic.io/docs/core-concepts/group
+   * - **API ID Path**: homepage.slices7[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
    *
    */
-  quotes: prismic.GroupField<Simplify<HomepageDocumentDataQuotesItem>>;
-  /**
-   * Image field in *Homepage*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.aboutImage
-   * - **Tab**: About
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  aboutImage: prismic.ImageField<"Narrow Screen">;
-  /**
-   * Heading field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.aboutHeading
-   * - **Tab**: About
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  aboutHeading: prismic.KeyTextField;
-  /**
-   * Body field in *Homepage*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.aboutBody
-   * - **Tab**: About
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  aboutBody: prismic.RichTextField;
-  /**
-   * CTA Label field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.aboutCtaLabel
-   * - **Tab**: About
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  aboutCtaLabel: prismic.KeyTextField;
-  /**
-   * CTA Link field in *Homepage*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.aboutCtaLink
-   * - **Tab**: About
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  aboutCtaLink: prismic.LinkField;
-  /**
-   * Image field in *Homepage*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.contactImage
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  contactImage: prismic.ImageField<"Narrow Screen">;
-  /**
-   * Heading field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.contactHeading
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  contactHeading: prismic.KeyTextField;
-  /**
-   * Body field in *Homepage*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.contactBody
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  contactBody: prismic.RichTextField;
-  /**
-   * CTA Label field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.contactCtaLabel
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  contactCtaLabel: prismic.KeyTextField;
-  /**
-   * CTA Link field in *Homepage*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.contactCtaLink
-   * - **Tab**: Contact
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  contactCtaLink: prismic.LinkField;
+  slices7: prismic.SliceZone<HomepageDocumentDataSlices7Slice>;
 }
 /**
  * Item in Homepage → Hero Images
@@ -705,31 +602,12 @@ export interface HomepageDocumentDataIntroTextBlocksItem {
   ctaLink: prismic.LinkField;
 }
 /**
- * Item in Homepage → Quotes
+ * Slice for *Homepage → Slice Zone*
  *
  */
-export interface HomepageDocumentDataQuotesItem {
-  /**
-   * Quote field in *Homepage → Quotes*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.quotes[].quote
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  quote: prismic.RichTextField;
-  /**
-   * Attribution field in *Homepage → Quotes*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.quotes[].attribution
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  attribution: prismic.KeyTextField;
-}
+type HomepageDocumentDataSlices7Slice =
+  | QuotesBlockSlice
+  | FullscreenTextWithImageBlockSlice;
 /**
  * Homepage document from Prismic
  *
@@ -936,6 +814,161 @@ export type AllDocumentTypes =
   | LegalDocument
   | TestimonialsDocument
   | TheStudioDocument;
+/**
+ * Primary content in FullscreenTextWithImageBlock → Primary
+ *
+ */
+interface FullscreenTextWithImageBlockSliceDefaultPrimary {
+  /**
+   * Arrangement field in *FullscreenTextWithImageBlock → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: fullscreen_text_with_image_block.primary.isImageOnRight
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  isImageOnRight: prismic.BooleanField;
+  /**
+   * Heading field in *FullscreenTextWithImageBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fullscreen_text_with_image_block.primary.heading
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  heading: prismic.KeyTextField;
+  /**
+   * Body field in *FullscreenTextWithImageBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fullscreen_text_with_image_block.primary.body
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  body: prismic.RichTextField;
+  /**
+   * CTA Link field in *FullscreenTextWithImageBlock → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fullscreen_text_with_image_block.primary.ctaLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  ctaLink: prismic.LinkField;
+  /**
+   * CTA Label field in *FullscreenTextWithImageBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fullscreen_text_with_image_block.primary.ctaLabel
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  ctaLabel: prismic.KeyTextField;
+  /**
+   * Image field in *FullscreenTextWithImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fullscreen_text_with_image_block.primary.image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<"SmallScreen">;
+}
+/**
+ * Default variation for FullscreenTextWithImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FullscreenTextWithImageBlockSliceDefault =
+  prismic.SharedSliceVariation<
+    "default",
+    Simplify<FullscreenTextWithImageBlockSliceDefaultPrimary>,
+    never
+  >;
+/**
+ * Slice variation for *FullscreenTextWithImageBlock*
+ *
+ */
+type FullscreenTextWithImageBlockSliceVariation =
+  FullscreenTextWithImageBlockSliceDefault;
+/**
+ * FullscreenTextWithImageBlock Shared Slice
+ *
+ * - **API ID**: `fullscreen_text_with_image_block`
+ * - **Description**: `FullscreenTextWithImageBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FullscreenTextWithImageBlockSlice = prismic.SharedSlice<
+  "fullscreen_text_with_image_block",
+  FullscreenTextWithImageBlockSliceVariation
+>;
+/**
+ * Item in QuotesBlock → Items
+ *
+ */
+export interface QuotesBlockSliceDefaultItem {
+  /**
+   * Quote field in *QuotesBlock → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quotes_block.items[].quote
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  quote: prismic.RichTextField;
+  /**
+   * Attribution field in *QuotesBlock → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quotes_block.items[].attribution
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  attribution: prismic.KeyTextField;
+}
+/**
+ * Default variation for QuotesBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type QuotesBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<QuotesBlockSliceDefaultItem>
+>;
+/**
+ * Slice variation for *QuotesBlock*
+ *
+ */
+type QuotesBlockSliceVariation = QuotesBlockSliceDefault;
+/**
+ * QuotesBlock Shared Slice
+ *
+ * - **API ID**: `quotes_block`
+ * - **Description**: `QuotesBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type QuotesBlockSlice = prismic.SharedSlice<
+  "quotes_block",
+  QuotesBlockSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -946,6 +979,7 @@ declare module "@prismicio/client" {
   namespace Content {
     export type {
       AboutDocumentData,
+      AboutDocumentDataSlices2Slice,
       AboutDocument,
       ContactDocumentData,
       ContactDocument,
@@ -960,7 +994,7 @@ declare module "@prismicio/client" {
       HomepageDocumentData,
       HomepageDocumentDataHeroImagesItem,
       HomepageDocumentDataIntroTextBlocksItem,
-      HomepageDocumentDataQuotesItem,
+      HomepageDocumentDataSlices7Slice,
       HomepageDocument,
       LegalDocumentData,
       LegalDocument,
@@ -969,6 +1003,14 @@ declare module "@prismicio/client" {
       TheStudioDocumentData,
       TheStudioDocument,
       AllDocumentTypes,
+      FullscreenTextWithImageBlockSliceDefaultPrimary,
+      FullscreenTextWithImageBlockSliceDefault,
+      FullscreenTextWithImageBlockSliceVariation,
+      FullscreenTextWithImageBlockSlice,
+      QuotesBlockSliceDefaultItem,
+      QuotesBlockSliceDefault,
+      QuotesBlockSliceVariation,
+      QuotesBlockSlice,
     };
   }
 }

@@ -1,15 +1,16 @@
 <template>
-  <article v-if="doc" class="min-h-screen pt-20">
-    <Heading level="1">
-      About
-    </Heading>
+  <article>
+    <PHPSliceZone :slices="doc.slices2" />
   </article>
 </template>
 
 <script>
+import { getDocumentFromPrismic } from '~/composables/getDocumentFromPrismic'
+
 export default {
-  setup () {
-    const doc = true
+  async setup () {
+    const doc = await getDocumentFromPrismic('about')
+
     return { doc }
   },
 }

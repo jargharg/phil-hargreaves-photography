@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"quote",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "In sunt id eu anim consequat minim. Reprehenderit sunt ea consectetur consectetur fugiat occaecat cupidatat aute et. Aliqua ipsum occaecat aliquip elit consequat pariatur esse dolore mollit laboris aute enim cupidatat in."
+									}
+								}
+							]
+						}
+					],
+					[
+						"attribution",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "waste",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

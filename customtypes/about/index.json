@@ -25,14 +25,15 @@
         }
       }
     },
-    "Body": {
-      "body": {
-        "type": "StructuredText",
+    "Main": {
+      "slices2": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
-          "label": "Body",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,heading2,strong,em,hyperlink,list-item,o-list-item"
+          "choices": {
+            "fullscreen_text_with_image_block": { "type": "SharedSlice" },
+            "quotes_block": { "type": "SharedSlice" }
+          }
         }
       }
     }

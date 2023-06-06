@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-clip h-[40vh]" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+  <div class="overflow-clip h-[40vh] max-h-[300px]" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
     <div ref="elContainer" class="flex flex-row gap-5 p-5 h-full">
       <div ref="elPrimaryRow" class="flex flex-row gap-5 h-full">
         <SizedImage

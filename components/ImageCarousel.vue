@@ -8,12 +8,23 @@
       ref="elImages"
       class="absolute -inset-x-10 -inset-y-1 -translate-x-8"
     >
-      <SizedImage
-        :src="image.url"
-        :alt="image.alt"
-        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-        :lazy="index > 0"
-      />
+      <div class="h-full portrait:hidden landscape:block">
+        <SizedImage
+          :src="image.url"
+          :alt="image.alt"
+          sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+          :lazy="index > 0"
+        />
+      </div>
+
+      <div class="h-full landscape:hidden portrait:block">
+        <SizedImage
+          :src="image.portrait.url"
+          :alt="image.portrait.alt"
+          sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+          :lazy="index > 0"
+        />
+      </div>
     </div>
   </section>
 </template>

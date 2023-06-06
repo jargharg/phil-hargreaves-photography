@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+$max-w-container: 1500px;
+
 body {
   @apply bg-brand-blue;
 }
@@ -31,6 +33,22 @@ a {
 @layer utilities {
   .container {
     @apply mx-auto px-5 lg:px-10;
-    max-width: 1340px;
+    max-width: $max-w-container;
+  }
+
+  .pl-container {
+    @apply pl-2.5 lg:pl-6;
+  }
+
+  .pr-container {
+    @apply pr-2.5 lg:pr-6;
+  }
+
+  .px-container {
+    @apply px-2.5 lg:px-6;
+  }
+
+  .max-w-container {
+    max-width: $max-w-container;
   }
 }

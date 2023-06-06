@@ -1,5 +1,5 @@
 <template>
-  <article v-if="doc">
+  <article>
     <ImageCarousel :images="doc.heroImages" />
 
     <section
@@ -22,44 +22,11 @@
       />
     </section>
 
-    <QuotesCarousel :quotes="doc.quotes" />
-
     <section>
-      <TextBoxWithImage
-        class="bg-brand-cream"
-        :image="doc.aboutImage"
-        :cta-text="doc.aboutCtaLabel"
-        :cta-link="$prismic.asLink(doc.aboutCtaLink)"
-      >
-        <Heading level="2">
-          {{ doc.aboutHeading }}
-        </Heading>
-
-        <BodyText>
-          <prismic-rich-text :field="doc.aboutBody" />
-        </BodyText>
-      </TextBoxWithImage>
-
-      <TextBoxWithImage
-        class="bg-brand-cream"
-        :image="doc.contactImage"
-        :cta-text="doc.contactCtaLabel"
-        :cta-link="$prismic.asLink(doc.contactCtaLink)"
-        image-position="right"
-      >
-        <Heading level="2">
-          {{ doc.contactHeading }}
-        </Heading>
-
-        <BodyText>
-          <prismic-rich-text :field="doc.contactBody" />
-        </BodyText>
-      </TextBoxWithImage>
-
-      <QuotesCarousel :quotes="doc.quotes" />
-
-      <SlideTicker />
+      <PHPSliceZone :slices="doc.slices7" />
     </section>
+
+    <SlideTicker />
   </article>
 </template>
 

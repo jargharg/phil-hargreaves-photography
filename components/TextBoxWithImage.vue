@@ -1,16 +1,26 @@
 <template>
-  <section ref="elSection" class="tbwi">
+  <section ref="elSection" class="tbwi max-w-container mx-auto">
     <div
       class="tbwi__wrapper"
       :class="{ 'tbwi__wrapper--flip': imagePosition === 'right' }"
     >
       <div class="tbwi__image">
-        <SizedImage
-          v-if="image?.url"
-          :src="image.url"
-          :alt="image.alt"
-          sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
-        />
+        <div class="hidden md:block h-full">
+          <SizedImage
+            v-if="image?.url"
+            :src="image.url"
+            :alt="image.alt"
+            sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
+          />
+        </div>
+
+        <div v-if="image?.SmallScreen?.url" class="md:hidden h-full">
+          <SizedImage
+            :src="image.SmallScreen.url"
+            :alt="image.SmallScreen.alt"
+            sizes="sm:100vw md:100vw lg:50vw xl:50vw 2xl:50vw"
+          />
+        </div>
       </div>
 
       <div class="py-8 md:py-16 h-full md:flex-1 flex items-center">
@@ -58,6 +68,8 @@ export default {
   },
 
   setup (props) {
+    console.log(props.image)
+
     const elCta = ref(null)
     const elImage = ref(null)
     const elSection = ref(null)
@@ -86,8 +98,7 @@ export default {
   }
 
   &__image {
-    @apply md:flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto;
-
+    @apply md:flex-1 aspect-square sm:aspect-[4/3] md:aspect-auto overflow-hidden;
   }
 }
 </style>

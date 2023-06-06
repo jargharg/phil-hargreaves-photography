@@ -1,19 +1,23 @@
 <template>
-  <section class="relative h-screen w-full overflow-hidden">
-    <LogoLarge class="absolute top-2 md:top-4 right-4 md:right-6 w-[95%] max-w-2xl z-50 text-brand-cream mix-blend-difference" />
+  <section class="h-screen flex flex-col items-center px-5 p-5">
+    <div class="pb-5 text-center">
+      <LogoLarge class="h-24 max-w-2xl z-50 text-brand-blue" />
+    </div>
 
-    <div
-      v-for="({ image }, index) in [...images, images[0]]"
-      :key="index"
-      ref="elImages"
-      class="absolute -inset-x-10 -inset-y-1 -translate-x-8"
-    >
-      <SizedImage
-        :src="image.url"
-        :alt="image.alt"
-        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-        :lazy="index > 0"
-      />
+    <div class="flex-1 relative w-full overflow-hidden">
+      <div
+        v-for="({ image }, index) in [...images, images[0]]"
+        :key="index"
+        ref="elImages"
+        class="absolute -inset-x-10 -inset-y-1 -translate-x-8"
+      >
+        <SizedImage
+          :src="image.url"
+          :alt="image.alt"
+          sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+          :lazy="index > 0"
+        />
+      </div>
     </div>
   </section>
 </template>

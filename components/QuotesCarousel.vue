@@ -1,5 +1,5 @@
 <template>
-  <div class="quotes-carousel">
+  <div ref="elCarousel" class="quotes-carousel">
     <client-only>
       <Carousel v-bind="settings">
         <Slide
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import gsap from 'gsap'
 import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import { useA11yStore } from '~/stores/a11y'
@@ -52,6 +53,8 @@ export default {
   setup () {
     const a11yStore = useA11yStore()
 
+    const elCarousel = ref(null)
+
     const settings = computed(() => ({
       autoplay: 7000,
       mouseDrag: false,
@@ -61,7 +64,28 @@ export default {
       wrapAround: true,
     }))
 
-    return { settings }
+    onMounted(() => {
+      const animation = gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: elCarousel.value,
+            start: '10px bottom',
+            end: 'bottom top',
+            toggleActions: 'play none play none',
+            once: true,
+          },
+          onComplete: () => {
+            animation.kill()
+          },
+        })
+        .from(elCarousel.value, {
+          opacity: 0,
+          ease: 'none',
+          duration: 0.5,
+        })
+    })
+
+    return { elCarousel, settings }
   },
 }
 </script>

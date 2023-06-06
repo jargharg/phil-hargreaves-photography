@@ -1,5 +1,5 @@
 <template>
-  <header ref="header" class="header">
+  <header ref="header" class="header opacity-0">
     <NuxtLink to="/" class="header__logo__wrapper" aria-label="Go to homepage">
       <LogoLarge ref="logo" class="header__logo" />
     </NuxtLink>

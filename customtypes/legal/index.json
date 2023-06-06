@@ -3,6 +3,7 @@
   "label": "Legal",
   "repeatable": true,
   "status": true,
+  "format": "page",
   "json": {
     "Core": {
       "title": {

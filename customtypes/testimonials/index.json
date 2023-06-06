@@ -3,6 +3,7 @@
   "label": "Testimonials",
   "repeatable": false,
   "status": true,
+  "format": "page",
   "json": {
     "Core": {
       "title": {

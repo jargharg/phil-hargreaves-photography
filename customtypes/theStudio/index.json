@@ -3,6 +3,7 @@
   "label": "The Studio",
   "repeatable": false,
   "status": true,
+  "format": "page",
   "json": {
     "Core": {
       "title": {

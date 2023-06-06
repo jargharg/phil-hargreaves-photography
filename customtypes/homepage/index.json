@@ -3,7 +3,7 @@
   "label": "Homepage",
   "repeatable": false,
   "status": true,
-  "format": "custom",
+  "format": "page",
   "json": {
     "Core": {
       "title": {

@@ -18,6 +18,15 @@ body {
   font-kerning: normal;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+#prismic-toolbar-v2 {
+  @apply hidden;
+}
 
 @layer utilities {
   .container {

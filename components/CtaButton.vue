@@ -7,7 +7,17 @@
     v-bind="boundAttrs"
     @click="$emit('click')"
   >
-    <slot /> <span>&nbsp;&rarr;</span>
+    <slot />
+    <svg
+      class="cta-button__arrow"
+      viewBox="0 0 11 6"
+      stroke="currentColor"
+      stroke-width="0.5"
+      fill="currentColor"
+    >
+      <path class="cta-button__arrow__line" d="M0,3H5" />
+      <path class="cta-button__arrow__end" d="M5,2L6,3L5,4Z" />
+    </svg>
   </component>
 </template>
 
@@ -59,18 +69,38 @@ export default {
 </script>
 <style lang="scss" scoped>
 .cta-button {
-  @apply flex text-center leading-none uppercase text-sm-mobile lg:text-sm tracking-[0.15em] lg:tracking-[0.2em] z-10;
-  @apply transition-opacity;
+  $root: &;
+  @apply flex items-center z-10;
+  @apply text-center leading-none uppercase text-sm-mobile lg:text-sm tracking-[0.15em] lg:tracking-[0.2em];
 
   &:not(:disabled) {
     @apply cursor-pointer;
 
-    &:hover {
-      @apply opacity-75;
+    &:hover,
+    &:focus,
+    &:focus-within {
+      #{$root}__arrow {
+        &__line {
+          @apply scale-x-[1.8];
+        }
+
+        &__end {
+          @apply translate-x-1;
+        }
+      }
     }
   }
+
   &--border {
     @apply border border-brand-blue px-12 py-4 rounded-full;
+  }
+
+  &__arrow {
+    @apply ml-1 h-4;
+
+    &__end, &__line {
+      @apply transition-transform;
+    }
   }
 }
 </style>

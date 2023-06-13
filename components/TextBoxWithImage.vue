@@ -27,14 +27,14 @@
         <div ref="elText" class="font-light mx-auto max-w-2xl px-8 md:px-16">
           <slot />
 
-          <nuxt-link
+          <CtaButton
             v-if="hasCta"
             ref="elCta"
             :to="ctaLink"
-            class="inline-block mt-8 md:mt-16 pr-6 font-normal uppercase tracking-widest hover:underline"
+            class="mt-8 md:mt-16"
           >
-            {{ ctaText }} &rarr;
-          </nuxt-link>
+            {{ ctaText }}
+          </CtaButton>
         </div>
       </div>
     </div>

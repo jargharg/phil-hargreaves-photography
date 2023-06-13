@@ -62,6 +62,15 @@
             }
           }
         }
+      },
+      "heroTextColor": {
+        "type": "Select",
+        "config": {
+          "label": "Text Colour",
+          "placeholder": "",
+          "options": ["Light", "Dark"],
+          "default_value": "Light"
+        }
       }
     },
     "Intro": {

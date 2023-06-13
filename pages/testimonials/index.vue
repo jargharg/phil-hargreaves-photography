@@ -1,15 +1,20 @@
 <template>
-  <article v-if="doc" class="min-h-screen pt-20">
-    <Heading level="1">
-      Testimonials
-    </Heading>
+  <article>
+    <HeroSection :title="doc.title" :tagline="hero.tagline">
+      <FullscreenImage :image="doc.heroImage" />
+    </HeroSection>
+
+    <PhpSliceZone :slices="doc.slices2" class="pt-16" />
   </article>
 </template>
 
 <script>
+import { getDocumentFromPrismic } from '~/composables/getDocumentFromPrismic'
+
 export default {
-  setup () {
-    const doc = true
+  async setup () {
+    const doc = await getDocumentFromPrismic('testimonials')
+
     return { doc }
   },
 }

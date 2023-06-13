@@ -1,0 +1,32 @@
+{
+  "id": "testimonial_block",
+  "type": "SharedSlice",
+  "name": "TestimonialBlock",
+  "description": "TestimonialBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "testimonial": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Testimonial",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "attribution": {
+          "type": "Text",
+          "config": { "label": "Attribution", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

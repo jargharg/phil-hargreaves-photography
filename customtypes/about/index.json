@@ -65,7 +65,8 @@
           "choices": {
             "quotes_block": { "type": "SharedSlice" },
             "text_block": { "type": "SharedSlice" },
-            "wide_image_block": { "type": "SharedSlice" }
+            "wide_image_block": { "type": "SharedSlice" },
+            "emphasis_block": { "type": "SharedSlice" }
           }
         }
       }

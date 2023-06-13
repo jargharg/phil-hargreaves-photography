@@ -25,14 +25,48 @@
         }
       }
     },
-    "Body": {
-      "body": {
+    "Hero": {
+      "heroImage": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": { "width": 4000, "height": 2850 },
+          "thumbnails": [
+            { "name": "wide", "width": 4000, "height": 2000 },
+            { "name": "square", "width": 4000, "height": 4000 },
+            { "name": "portrait", "width": 4000, "height": 6000 }
+          ]
+        }
+      },
+      "heroTagline": {
         "type": "StructuredText",
         "config": {
-          "label": "Body",
+          "label": "Tagline",
           "placeholder": "",
           "allowTargetBlank": true,
-          "multi": "paragraph,heading2,strong,em,hyperlink,list-item,o-list-item"
+          "multi": "paragraph"
+        }
+      },
+      "heroTextColor": {
+        "type": "Select",
+        "config": {
+          "label": "Text Colour",
+          "placeholder": "",
+          "options": ["Light", "Dark"],
+          "default_value": "Light"
+        }
+      }
+    },
+    "Main": {
+      "slices2": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "text_block": { "type": "SharedSlice" },
+            "image_carousel_block": { "type": "SharedSlice" },
+            "emphasis_block": { "type": "SharedSlice" }
+          }
         }
       }
     }

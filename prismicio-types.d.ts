@@ -93,7 +93,8 @@ interface AboutDocumentData {
 type AboutDocumentDataSlices2Slice =
   | QuotesBlockSlice
   | TextBlockSlice
-  | WideImageBlockSlice;
+  | WideImageBlockSlice
+  | EmphasisBlockSlice;
 /**
  * About document from Prismic
  *
@@ -203,17 +204,59 @@ interface GalleryDocumentData {
    */
   primaryImage: prismic.ImageField<"meta">;
   /**
-   * Body field in *Gallery*
+   * Image field in *Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
+  /**
+   * Tagline field in *Gallery*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.body
-   * - **Tab**: Body
+   * - **API ID Path**: gallery.heroTagline
+   * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  body: prismic.RichTextField;
+  heroTagline: prismic.RichTextField;
+  /**
+   * Text Colour field in *Gallery*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: gallery.heroTextColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
+   * Slice Zone field in *Gallery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.slices2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices2: prismic.SliceZone<GalleryDocumentDataSlices2Slice>;
 }
+/**
+ * Slice for *Gallery → Slice Zone*
+ *
+ */
+type GalleryDocumentDataSlices2Slice =
+  | TextBlockSlice
+  | ImageCarouselBlockSlice
+  | EmphasisBlockSlice;
 /**
  * Gallery document from Prismic
  *
@@ -751,17 +794,60 @@ interface TestimonialsDocumentData {
    */
   primaryImage: prismic.ImageField<"meta">;
   /**
-   * Body field in *Testimonials*
+   * Image field in *Testimonials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
+  /**
+   * Tagline field in *Testimonials*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.body
-   * - **Tab**: Body
+   * - **API ID Path**: testimonials.heroTagline
+   * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  body: prismic.RichTextField;
+  heroTagline: prismic.RichTextField;
+  /**
+   * Text Colour field in *Testimonials*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: testimonials.heroTextColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
+   * Slice Zone field in *Testimonials*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.slices2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices2: prismic.SliceZone<TestimonialsDocumentDataSlices2Slice>;
 }
+/**
+ * Slice for *Testimonials → Slice Zone*
+ *
+ */
+type TestimonialsDocumentDataSlices2Slice =
+  | TestimonialBlockSlice
+  | WideImageBlockSlice
+  | EmphasisBlockSlice
+  | TextBlockSlice;
 /**
  * Testimonials document from Prismic
  *
@@ -813,17 +899,60 @@ interface TheStudioDocumentData {
    */
   primaryImage: prismic.ImageField<"meta">;
   /**
-   * Body field in *The Studio*
+   * Image field in *The Studio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theStudio.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
+  /**
+   * Tagline field in *The Studio*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.body
-   * - **Tab**: Body
+   * - **API ID Path**: theStudio.heroTagline
+   * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  body: prismic.RichTextField;
+  heroTagline: prismic.RichTextField;
+  /**
+   * Text Colour field in *The Studio*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: theStudio.heroTextColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
+   * Slice Zone field in *The Studio*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: theStudio.slices2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices2: prismic.SliceZone<TheStudioDocumentDataSlices2Slice>;
 }
+/**
+ * Slice for *The Studio → Slice Zone*
+ *
+ */
+type TheStudioDocumentDataSlices2Slice =
+  | QuotesBlockSlice
+  | TextBlockSlice
+  | WideImageBlockSlice
+  | EmphasisBlockSlice;
 /**
  * The Studio document from Prismic
  *
@@ -1014,6 +1143,62 @@ export type FullscreenTextWithImageBlockSlice = prismic.SharedSlice<
   FullscreenTextWithImageBlockSliceVariation
 >;
 /**
+ * Item in ImageCarouselBlock → Items
+ *
+ */
+export interface ImageCarouselBlockSliceDefaultItem {
+  /**
+   * Image field in *ImageCarouselBlock → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_carousel_block.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<never>;
+  /**
+   * Caption (optional) field in *ImageCarouselBlock → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_carousel_block.items[].caption
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  caption: prismic.KeyTextField;
+}
+/**
+ * Default variation for ImageCarouselBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ImageCarouselBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ImageCarouselBlockSliceDefaultItem>
+>;
+/**
+ * Slice variation for *ImageCarouselBlock*
+ *
+ */
+type ImageCarouselBlockSliceVariation = ImageCarouselBlockSliceDefault;
+/**
+ * ImageCarouselBlock Shared Slice
+ *
+ * - **API ID**: `image_carousel_block`
+ * - **Description**: `ImageCarouselBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ImageCarouselBlockSlice = prismic.SharedSlice<
+  "image_carousel_block",
+  ImageCarouselBlockSliceVariation
+>;
+/**
  * Item in QuotesBlock → Items
  *
  */
@@ -1068,6 +1253,62 @@ type QuotesBlockSliceVariation = QuotesBlockSliceDefault;
 export type QuotesBlockSlice = prismic.SharedSlice<
   "quotes_block",
   QuotesBlockSliceVariation
+>;
+/**
+ * Primary content in TestimonialBlock → Primary
+ *
+ */
+interface TestimonialBlockSliceDefaultPrimary {
+  /**
+   * Testimonial field in *TestimonialBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_block.primary.testimonial
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  testimonial: prismic.RichTextField;
+  /**
+   * Attribution field in *TestimonialBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonial_block.primary.attribution
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  attribution: prismic.KeyTextField;
+}
+/**
+ * Default variation for TestimonialBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TestimonialBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TestimonialBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *TestimonialBlock*
+ *
+ */
+type TestimonialBlockSliceVariation = TestimonialBlockSliceDefault;
+/**
+ * TestimonialBlock Shared Slice
+ *
+ * - **API ID**: `testimonial_block`
+ * - **Description**: `TestimonialBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TestimonialBlockSlice = prismic.SharedSlice<
+  "testimonial_block",
+  TestimonialBlockSliceVariation
 >;
 /**
  * Primary content in TextBlock → Primary
@@ -1257,6 +1498,7 @@ declare module "@prismicio/client" {
       ContactDocumentData,
       ContactDocument,
       GalleryDocumentData,
+      GalleryDocumentDataSlices2Slice,
       GalleryDocument,
       GlobalsDocumentData,
       GlobalsDocumentDataMenuItem,
@@ -1272,8 +1514,10 @@ declare module "@prismicio/client" {
       LegalDocumentData,
       LegalDocument,
       TestimonialsDocumentData,
+      TestimonialsDocumentDataSlices2Slice,
       TestimonialsDocument,
       TheStudioDocumentData,
+      TheStudioDocumentDataSlices2Slice,
       TheStudioDocument,
       AllDocumentTypes,
       EmphasisBlockSliceDefaultPrimary,
@@ -1284,10 +1528,18 @@ declare module "@prismicio/client" {
       FullscreenTextWithImageBlockSliceDefault,
       FullscreenTextWithImageBlockSliceVariation,
       FullscreenTextWithImageBlockSlice,
+      ImageCarouselBlockSliceDefaultItem,
+      ImageCarouselBlockSliceDefault,
+      ImageCarouselBlockSliceVariation,
+      ImageCarouselBlockSlice,
       QuotesBlockSliceDefaultItem,
       QuotesBlockSliceDefault,
       QuotesBlockSliceVariation,
       QuotesBlockSlice,
+      TestimonialBlockSliceDefaultPrimary,
+      TestimonialBlockSliceDefault,
+      TestimonialBlockSliceVariation,
+      TestimonialBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceDefault,
       TextBlockSliceTextBlockWithCtaPrimary,

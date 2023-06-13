@@ -1,0 +1,27 @@
+{
+  "id": "image_carousel_block",
+  "type": "SharedSlice",
+  "name": "ImageCarouselBlock",
+  "description": "ImageCarouselBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        },
+        "caption": {
+          "type": "Text",
+          "config": { "label": "Caption (optional)", "placeholder": "" }
+        }
+      }
+    }
+  ]
+}

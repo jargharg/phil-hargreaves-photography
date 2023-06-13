@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"testimonial": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Amet quis nulla in pariatur qui commodo exercitation."
+						}
+					}
+				]
+			},
+			"attribution": {
+				"__TYPE__": "FieldContent",
+				"value": "wait",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

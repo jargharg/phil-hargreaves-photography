@@ -1,15 +1,20 @@
 <template>
-  <article v-if="doc" class="min-h-screen pt-20">
-    <Heading level="1">
-      Legal
-    </Heading>
+  <article>
+    <HeroSection :title="doc.title" :tagline="hero.tagline">
+      <FullscreenImage :image="doc.heroImage" />
+    </HeroSection>
+
+    <prismic-rich-text :field="doc.body" />
   </article>
 </template>
 
 <script>
+import { getDocumentFromPrismic } from '~/composables/getDocumentFromPrismic'
+
 export default {
-  setup () {
-    const doc = true
+  async setup () {
+    const doc = await getDocumentFromPrismic('legal', { repeatable: true })
+
     return { doc }
   },
 }

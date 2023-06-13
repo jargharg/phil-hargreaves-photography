@@ -2,9 +2,9 @@
   <footer class="footer">
     <div class="container footer__container">
       <div class="footer__logo">
-        <NuxtLink to="/" aria-label="Go to homepage">
+        <PhpNuxtLink to="/" aria-label="Go to homepage">
           <LogoSmall ref="logo" class="w-full" />
-        </NuxtLink>
+        </PhpNuxtLink>
       </div>
 
       <div class="footer__contact">

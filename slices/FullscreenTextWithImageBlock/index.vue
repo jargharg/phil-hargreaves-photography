@@ -6,7 +6,7 @@
     :cta-link="$prismic.asLink(slice.primary.ctaLink)"
     :image-position="slice.primary.isImageOnRight ? 'right' : 'left'"
   >
-    <Heading level="2">
+    <Heading level="2" class="text-2xl mb-8">
       {{ slice.primary.heading }}
     </Heading>
 

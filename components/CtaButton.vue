@@ -5,7 +5,6 @@
     class="cta-button"
     :class="classModifiers"
     v-bind="boundAttrs"
-    target="_blank"
     @click="$emit('click')"
   >
     <slot /> <span>&nbsp;&rarr;</span>
@@ -15,14 +14,17 @@
 <script>
 export default {
   name: 'CtaButton',
+
   props: {
     border: { type: Boolean, default: false },
   },
+
   emits: ['click'],
+
   setup (props, { attrs }) {
     const componentType = computed(() => {
       if (attrs.to) {
-        return resolveComponent('NuxtLink')
+        return resolveComponent('PhpNuxtLink')
       }
       if (attrs.href) {
         return 'a'
@@ -32,10 +34,17 @@ export default {
       }
       return 'button'
     })
+
     const boundAttrs = computed(() => {
       const boundAttrs = { ...(attrs ?? {}) }
+
+      if (attrs.href) {
+        boundAttrs.target = '_blank'
+      }
+
       return boundAttrs
     })
+
     const classModifiers = computed(() => {
       return [
         {
@@ -43,6 +52,7 @@ export default {
         },
       ]
     })
+
     return { boundAttrs, componentType, classModifiers }
   },
 }

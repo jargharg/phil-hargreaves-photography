@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import smConfig from './sm.json'
+import smConfig from './slicemachine.config.json'
 
 const EXCLUDED_SITEMAP_ROUTES = ['/preview/', '/404/', '/slice-simulator/']
 

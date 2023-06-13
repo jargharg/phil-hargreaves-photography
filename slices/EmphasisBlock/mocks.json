@@ -1,0 +1,32 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore ad id laborum Lorem ipsum reprehenderit quis. Incididunt mollit et consectetur anim quis duis. Labore commodo incididunt proident et velit duis enim duis eu cillum nisi est dolor."
+						}
+					}
+				]
+			},
+			"ctaLink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			},
+			"ctaLabel": {
+				"__TYPE__": "FieldContent",
+				"value": "warm",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

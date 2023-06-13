@@ -33,6 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 .heading {
-  @apply font-serif font-bold text-xl lg:text-2xl leading-none mb-10 max-w-lg;
+  @apply font-serif font-bold leading-none;
 }
 </style>

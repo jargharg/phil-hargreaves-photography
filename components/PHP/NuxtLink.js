@@ -1,4 +1,4 @@
 export default defineNuxtLink({
-  componentName: 'StNuxtLink',
+  componentName: 'PhpNuxtLink',
   trailingSlash: 'append',
 })

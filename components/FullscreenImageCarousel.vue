@@ -1,30 +1,16 @@
 <template>
-  <section class="relative h-screen w-full overflow-hidden">
-    <LogoLarge class="absolute top-2 md:top-4 right-4 md:right-6 w-[95%] max-w-2xl z-50 text-brand-cream" />
+  <section class="fs-carousel">
+    <LogoLarge
+      class="absolute top-2 md:top-4 right-4 md:right-6 w-[95%] max-w-2xl z-50 text-brand-cream"
+    />
 
     <div
       v-for="({ image }, index) in [...images, images[0]]"
       :key="index"
       ref="elImages"
-      class="absolute -inset-x-10 -inset-y-1 -translate-x-8"
+      class="fs-carousel__slide"
     >
-      <div class="h-full portrait:hidden landscape:block">
-        <SizedImage
-          :src="image.url"
-          :alt="image.alt"
-          sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-          :lazy="index > 0"
-        />
-      </div>
-
-      <div class="h-full landscape:hidden portrait:block">
-        <SizedImage
-          :src="image.portrait.url"
-          :alt="image.portrait.alt"
-          sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-          :lazy="index > 0"
-        />
-      </div>
+      <FullscreenImage :image="image" :lazy="index > 0" />
     </div>
   </section>
 </template>
@@ -72,10 +58,12 @@ export default {
           )
 
           if (isLastEl) {
-            tl.fromTo(el, { x: -x, y: -y }, { x: 0, y: 0, duration: slide / 2 }, '<').set(
+            tl.fromTo(
               el,
-              { opacity: 0 },
-            )
+              { x: -x, y: -y },
+              { x: 0, y: 0, duration: slide / 2 },
+              '<',
+            ).set(el, { opacity: 0 })
           } else {
             tl.fromTo(el, { x: -x, y: -y }, { x, y, duration: slide }, '<')
           }
@@ -91,3 +79,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.fs-carousel {
+  @apply relative h-screen w-full overflow-hidden;
+
+  &__slide {
+    @apply absolute -inset-x-10 -inset-y-1 -translate-x-8;
+  }
+}
+</style>

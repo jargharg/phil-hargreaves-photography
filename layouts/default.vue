@@ -3,7 +3,7 @@
     <SiteHeader />
 
     <main>
-      <slot />
+      <NuxtPage :transition="defaultTransition" />
     </main>
 
     <SiteFooter />
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import defaultTransition from '~/composables/defaultTransition'
 import { useA11yStore } from '~/stores/a11y'
 
 export default {
@@ -36,7 +37,7 @@ export default {
       htmlAttrs: { lang: 'en' },
     }))
 
-    return { isCookieButtonHidden, reducedMotion }
+    return { defaultTransition, isCookieButtonHidden, reducedMotion }
   },
 }
 </script>

@@ -37,6 +37,9 @@
 
 <script>
 import gsap from 'gsap'
+import { DURATION_IN_MS } from '~/composables/defaultTransition'
+import sleep from '~/helpers/sleep'
+
 export default {
   props: {
     images: {
@@ -56,9 +59,10 @@ export default {
     let enterAnimations
 
     onMounted(async () => {
-      const els = [...elImages.value, ...elTexts.value]
       await nextTick()
+      await sleep(DURATION_IN_MS)
 
+      const els = [...elImages.value, ...elTexts.value]
       gsap.set(els, { opacity: 0 })
 
       enterAnimations = els.map((el) => {
@@ -96,7 +100,7 @@ export default {
 
 <style lang="scss" scoped>
 .rounded-grid {
-  @apply grid gap-8 py-8 w-full;
+  @apply grid gap-8 py-8 w-full max-w-6xl mx-auto;
 
   grid-template:
     "img-0" 50vh
@@ -121,25 +125,25 @@ export default {
 
   @screen lg {
     grid-template:
-      "img-0 img-0 .     .    " 25vh
-      "img-0 img-0 txt-0 txt-0" 25vh
-      "img-0 img-0 img-1 img-1" 25vh
+      "img-0 img-0 .     .    " min(25vh, 20vw)
+      "img-0 img-0 txt-0 txt-0" min(25vh, 20vw)
+      "img-0 img-0 img-1 img-1" min(25vh, 20vw)
       "txt-1 txt-1 img-1 img-1" 10vh
-      "txt-1 txt-1 img-1 img-1" 25vh
-      "img-2 img-2 img-2 txt-2" 25vh
-      "img-2 img-2 img-2 txt-2" 25vh
+      "txt-1 txt-1 img-1 img-1" min(25vh, 20vw)
+      "img-2 img-2 img-2 txt-2" min(25vh, 20vw)
+      "img-2 img-2 img-2 txt-2" min(25vh, 20vw)
       / 2fr 1fr 1fr 2fr;
   }
 
   @screen xl {
     grid-template:
-      "img-0 img-0 img-0 .     .    " 25vh
-      "img-0 img-0 img-0 txt-0 txt-0" 25vh
-      "img-0 img-0 img-0 img-1 img-1" 25vh
+      "img-0 img-0 img-0 .     .    " min(28vh, 25vw)
+      "img-0 img-0 img-0 txt-0 txt-0" min(28vh, 25vw)
+      "img-0 img-0 img-0 img-1 img-1" min(28vh, 25vw)
       "txt-1 txt-1 .     img-1 img-1" 10vh
-      "txt-1 txt-1 .     img-1 img-1" 25vh
-      "img-2 img-2 img-2 img-2 txt-2" 25vh
-      "img-2 img-2 img-2 img-2 txt-2" 25vh
+      "txt-1 txt-1 .     img-1 img-1" min(28vh, 25vw)
+      "img-2 img-2 img-2 img-2 txt-2" min(28vh, 25vw)
+      "img-2 img-2 img-2 img-2 txt-2" min(28vh, 25vw)
       / 3fr 1fr 1fr 1fr 3fr;
   }
 

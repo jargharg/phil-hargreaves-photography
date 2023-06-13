@@ -1,0 +1,65 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "pull",
+				"type": "Text"
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Officia ipsum qui occaecat tempor occaecat incididunt mollit aute. Deserunt sint irure in esse aliquip anim consequat ipsum."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "textBlockWithCta",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "real",
+				"type": "Text"
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Quis esse tempor id esse culpa deserunt mollit ut commodo."
+						}
+					}
+				]
+			},
+			"ctaLink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"ctaLabel": {
+				"__TYPE__": "FieldContent",
+				"value": "able",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

@@ -1,0 +1,33 @@
+{
+  "id": "wide_image_block",
+  "type": "SharedSlice",
+  "name": "WideImageBlock",
+  "description": "WideImageBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": { "width": 4000, "height": 1500 },
+            "thumbnails": [
+              { "name": "SmallScreen", "width": 4000, "height": 2500 }
+            ]
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": { "label": "Caption", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

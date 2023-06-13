@@ -4,8 +4,15 @@ import { defineAsyncComponent } from "vue";
 import { defineSliceZoneComponents } from "@prismicio/vue";
 
 export const components = defineSliceZoneComponents({
+  emphasis_block: defineAsyncComponent(
+    () => import("./EmphasisBlock/index.vue")
+  ),
   fullscreen_text_with_image_block: defineAsyncComponent(
     () => import("./FullscreenTextWithImageBlock/index.vue")
   ),
   quotes_block: defineAsyncComponent(() => import("./QuotesBlock/index.vue")),
+  text_block: defineAsyncComponent(() => import("./TextBlock/index.vue")),
+  wide_image_block: defineAsyncComponent(
+    () => import("./WideImageBlock/index.vue")
+  ),
 });

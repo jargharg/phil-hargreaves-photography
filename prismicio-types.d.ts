@@ -42,6 +42,40 @@ interface AboutDocumentData {
    */
   primaryImage: prismic.ImageField<"meta">;
   /**
+   * Image field in *About*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
+  /**
+   * Tagline field in *About*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.heroTagline
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  heroTagline: prismic.RichTextField;
+  /**
+   * Text Colour field in *About*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: about.textColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  textColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
    * Slice Zone field in *About*
    *
    * - **Field Type**: Slice Zone
@@ -58,8 +92,9 @@ interface AboutDocumentData {
  *
  */
 type AboutDocumentDataSlices2Slice =
-  | FullscreenTextWithImageBlockSlice
-  | QuotesBlockSlice;
+  | QuotesBlockSlice
+  | TextBlockSlice
+  | WideImageBlockSlice;
 /**
  * About document from Prismic
  *
@@ -563,7 +598,7 @@ export interface HomepageDocumentDataHeroImagesItem {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  image: prismic.ImageField<"portrait">;
+  image: prismic.ImageField<"wide" | "square" | "portrait">;
 }
 /**
  * Item in Homepage → Text Blocks
@@ -815,6 +850,72 @@ export type AllDocumentTypes =
   | TestimonialsDocument
   | TheStudioDocument;
 /**
+ * Primary content in EmphasisBlock → Primary
+ *
+ */
+interface EmphasisBlockSliceDefaultPrimary {
+  /**
+   * Body field in *EmphasisBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emphasis_block.primary.body
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  body: prismic.RichTextField;
+  /**
+   * CTA Link field in *EmphasisBlock → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emphasis_block.primary.ctaLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  ctaLink: prismic.LinkField;
+  /**
+   * CTA Label field in *EmphasisBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: emphasis_block.primary.ctaLabel
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  ctaLabel: prismic.KeyTextField;
+}
+/**
+ * Default variation for EmphasisBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type EmphasisBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EmphasisBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *EmphasisBlock*
+ *
+ */
+type EmphasisBlockSliceVariation = EmphasisBlockSliceDefault;
+/**
+ * EmphasisBlock Shared Slice
+ *
+ * - **API ID**: `emphasis_block`
+ * - **Description**: `EmphasisBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type EmphasisBlockSlice = prismic.SharedSlice<
+  "emphasis_block",
+  EmphasisBlockSliceVariation
+>;
+/**
  * Primary content in FullscreenTextWithImageBlock → Primary
  *
  */
@@ -969,6 +1070,179 @@ export type QuotesBlockSlice = prismic.SharedSlice<
   "quotes_block",
   QuotesBlockSliceVariation
 >;
+/**
+ * Primary content in TextBlock → Primary
+ *
+ */
+interface TextBlockSliceDefaultPrimary {
+  /**
+   * Heading field in *TextBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.primary.heading
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  heading: prismic.KeyTextField;
+  /**
+   * Body field in *TextBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.primary.body
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  body: prismic.RichTextField;
+}
+/**
+ * Default variation for TextBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Primary content in TextBlock → Primary
+ *
+ */
+interface TextBlockSliceTextBlockWithCtaPrimary {
+  /**
+   * Heading field in *TextBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.primary.heading
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  heading: prismic.KeyTextField;
+  /**
+   * Body field in *TextBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.primary.body
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  body: prismic.RichTextField;
+  /**
+   * CTA Link field in *TextBlock → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.primary.ctaLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  ctaLink: prismic.LinkField;
+  /**
+   * CTA Label field in *TextBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.primary.ctaLabel
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  ctaLabel: prismic.KeyTextField;
+}
+/**
+ * Text Block with CTA variation for TextBlock Slice
+ *
+ * - **API ID**: `textBlockWithCta`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextBlockSliceTextBlockWithCta = prismic.SharedSliceVariation<
+  "textBlockWithCta",
+  Simplify<TextBlockSliceTextBlockWithCtaPrimary>,
+  never
+>;
+/**
+ * Slice variation for *TextBlock*
+ *
+ */
+type TextBlockSliceVariation =
+  | TextBlockSliceDefault
+  | TextBlockSliceTextBlockWithCta;
+/**
+ * TextBlock Shared Slice
+ *
+ * - **API ID**: `text_block`
+ * - **Description**: `TextBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextBlockSlice = prismic.SharedSlice<
+  "text_block",
+  TextBlockSliceVariation
+>;
+/**
+ * Primary content in WideImageBlock → Primary
+ *
+ */
+interface WideImageBlockSliceDefaultPrimary {
+  /**
+   * Image field in *WideImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wide_image_block.primary.image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<"SmallScreen">;
+  /**
+   * Caption field in *WideImageBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wide_image_block.primary.caption
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  caption: prismic.KeyTextField;
+}
+/**
+ * Default variation for WideImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type WideImageBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WideImageBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *WideImageBlock*
+ *
+ */
+type WideImageBlockSliceVariation = WideImageBlockSliceDefault;
+/**
+ * WideImageBlock Shared Slice
+ *
+ * - **API ID**: `wide_image_block`
+ * - **Description**: `WideImageBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type WideImageBlockSlice = prismic.SharedSlice<
+  "wide_image_block",
+  WideImageBlockSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1003,6 +1277,10 @@ declare module "@prismicio/client" {
       TheStudioDocumentData,
       TheStudioDocument,
       AllDocumentTypes,
+      EmphasisBlockSliceDefaultPrimary,
+      EmphasisBlockSliceDefault,
+      EmphasisBlockSliceVariation,
+      EmphasisBlockSlice,
       FullscreenTextWithImageBlockSliceDefaultPrimary,
       FullscreenTextWithImageBlockSliceDefault,
       FullscreenTextWithImageBlockSliceVariation,
@@ -1011,6 +1289,16 @@ declare module "@prismicio/client" {
       QuotesBlockSliceDefault,
       QuotesBlockSliceVariation,
       QuotesBlockSlice,
+      TextBlockSliceDefaultPrimary,
+      TextBlockSliceDefault,
+      TextBlockSliceTextBlockWithCtaPrimary,
+      TextBlockSliceTextBlockWithCta,
+      TextBlockSliceVariation,
+      TextBlockSlice,
+      WideImageBlockSliceDefaultPrimary,
+      WideImageBlockSliceDefault,
+      WideImageBlockSliceVariation,
+      WideImageBlockSlice,
     };
   }
 }

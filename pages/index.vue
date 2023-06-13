@@ -1,6 +1,6 @@
 <template>
   <article>
-    <ImageCarousel :images="doc.heroImages" />
+    <FullscreenImageCarousel :images="doc.heroImages" />
 
     <section
       class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-10 md:my-20 px-5"
@@ -23,7 +23,7 @@
     </section>
 
     <section>
-      <PHPSliceZone :slices="doc.slices7" />
+      <PhpSliceZone :slices="doc.slices7" />
     </section>
 
     <SlideTicker />

@@ -1038,17 +1038,17 @@
   resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.2.tgz#5749f04df13bda4c863338d8dabaf370f45ef7c7"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/image-edge@^1.0.0-28094923.e859bba":
-  version "1.0.0-rc.1-28110023.6b8ab9c"
-  resolved "https://registry.yarnpkg.com/@nuxt/image-edge/-/image-edge-1.0.0-rc.1-28110023.6b8ab9c.tgz#6bc2641ee7c8a7d7b3d20b5393cb18f526b46462"
-  integrity sha512-12a5x9pUGzmLx1vvuEXHgBjz2tMDiRd5yjRYlj/RgT4AuYo1/GB/wdFSaTcjDIgaiLW8F1VbXXQUHBg/exYbNw==
+"@nuxt/image@rc":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-1.0.0-rc.1.tgz#d565d2f517a3ee6f7d3360f7e25589d382cf0b97"
+  integrity sha512-gCYglIwEuYOdIbcH21RbMfqgQ2jqyd9SJH+GmyvH9M/vBsL7eZ4XEatfZRWa2q1A4DcIMs09/LbQiR3HHy2wZw==
   dependencies:
     "@nuxt/kit" "^3.5.3"
     consola "^3.1.0"
     defu "^6.1.2"
     h3 "^1.6.6"
     image-meta "^0.1.1"
-    node-fetch-native "^1.2.0"
+    node-fetch-native "^1.1.1"
     ohash "^1.1.2"
     pathe "^1.1.1"
     std-env "^3.3.3"
@@ -1191,7 +1191,7 @@
     pathe "^1.1.0"
     vite-plugin-eslint "^1.8.1"
 
-"@nuxtjs/prismic@^3.0.0-rc.7":
+"@nuxtjs/prismic@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/prismic/-/prismic-3.0.0.tgz#fbb9ca2eb9785dbcd3d777da0c9235270f1754a6"
   integrity sha512-oMehbJ7YdBSwqj2ZXFDsQJ13ov6L7amvGU1XMAMreuYDNKcH8i6I/YRwml3c1NavstPUsnAQ3ieHY+7etUpXog==
@@ -2495,14 +2495,14 @@
   dependencies:
     escape-string-regexp "^5.0.0"
 
-"@slicemachine/adapter-nuxt@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@slicemachine/adapter-nuxt/-/adapter-nuxt-0.2.1.tgz#5099ec979fe65fea9f7cf701b1432e50414a6549"
-  integrity sha512-6TM+O13IId4l8eUoqL15tGwHr1+Wg6pAz3BSsQRpcOhIc+3WMBzOZRyWWRwgIIycYTNgzdzxevGqb9SfzNDHxQ==
+"@slicemachine/adapter-nuxt@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@slicemachine/adapter-nuxt/-/adapter-nuxt-0.3.0.tgz#03e3eb79c0f38af4dd2e6db28d1bcd31f9aaae51"
+  integrity sha512-Jh+i2d0Pvfz8sHKjxDoVbPRJ8NykANzGjHCi9fXmB0nnCsVtK0voTzfNFmEVD3uqCEVk7v8yaH/bsHez9wzpOQ==
   dependencies:
     "@prismicio/slice-simulator-core" "^0.2.7"
     "@prismicio/types-internal" "2.0.0-beta.1"
-    "@slicemachine/plugin-kit" "0.3.1"
+    "@slicemachine/plugin-kit" "0.4.0"
     common-tags "^1.8.2"
     fs-extra "^11.1.0"
     magicast "^0.2.1"
@@ -2545,19 +2545,6 @@
     semver "^7.3.8"
     unified "^10.1.2"
 
-"@slicemachine/plugin-kit@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@slicemachine/plugin-kit/-/plugin-kit-0.3.1.tgz#bc0532e5c0609a04983fcff528187590ef9cd643"
-  integrity sha512-XG5zfvEu6SVKSL5f9itNTxjUnYR9rOJ9YT3lNngmjs4ldq4qkdgJqPTrOg3nEfsLXPXkFFCVKCGDbS6zfKDwkg==
-  dependencies:
-    "@prismicio/types-internal" "2.0.0-beta.1"
-    common-tags "^1.8.2"
-    defu "^6.1.2"
-    fp-ts "^2.13.1"
-    io-ts "^2.2.20"
-    io-ts-reporters "^2.0.1"
-    prettier "^2.8.4"
-
 "@slicemachine/plugin-kit@0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@slicemachine/plugin-kit/-/plugin-kit-0.4.0.tgz#a3f0c2b5be393c226b5d2850b06bde8c963edf24"
@@ -2571,10 +2558,10 @@
     io-ts-reporters "^2.0.1"
     prettier "^2.8.4"
 
-"@studiotreble/sized-image@^0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@studiotreble/sized-image/-/sized-image-0.7.5.tgz#dd41b73bb3c2a068659be48824eea628adde2132"
-  integrity sha512-lP/a3Jyet/CcxDB+2fjmLV/ghEYfkpwvU8Ar3IGhA9zuCLU+cpfc6WCb4xfXCjphUzgifmP7343nsrfZK0epig==
+"@studiotreble/sized-image@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@studiotreble/sized-image/-/sized-image-0.8.0.tgz#3ea43ec73b5701230021f4e59abab1bae9489683"
+  integrity sha512-khmAre84ChHpP8ACQ8aSnMKbRRjjbtiP8Rf9pB5cZqMSnSOzvGDVEJA7F1rnbzkO2pXleu7MM8Ajgen8Z819tA==
 
 "@swc/helpers@^0.4.14":
   version "0.4.14"

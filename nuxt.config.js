@@ -155,7 +155,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/prismic',
-    '@nuxt/image-edge',
+    '@nuxt/image',
     '@nuxtjs/robots',
     ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
     ['@pinia/nuxt', { disableVuex: true }],

@@ -1,5 +1,9 @@
 <template>
-  <div class="overflow-clip h-[40vh] max-h-[300px]" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+  <div
+    class="overflow-clip h-[40vh] max-h-[300px]"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
     <div ref="elContainer" class="flex flex-row gap-5 p-5 h-full">
       <div ref="elPrimaryRow" class="flex flex-row gap-5 h-full">
         <SizedImage
@@ -30,7 +34,9 @@
 
 <script>
 import gsap from 'gsap'
+import sleep from '~/helpers/sleep'
 import { useGlobalsStore } from '~/stores/globals'
+import { DURATION_IN_MS } from '~/composables/defaultTransition'
 
 export default {
   setup () {
@@ -42,7 +48,10 @@ export default {
 
     let animation
 
-    onMounted(() => {
+    onMounted(async () => {
+      await nextTick()
+      await sleep(DURATION_IN_MS)
+
       animation = gsap
         .timeline({ repeat: -1, defaults: { ease: 'none' } })
         .fromTo(

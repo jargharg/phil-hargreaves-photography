@@ -1,14 +1,11 @@
 <template>
   <transition @enter="onEnter" @leave="onLeave">
-    <div
-      v-show="isOpen"
-      class="fixed top-0 inset-y-0 right-0 w-full md:w-1/2 bg-brand-blue text-brand-cream z-10 p-5 h-full flex flex-col items-center justify-between"
-    >
+    <div v-show="isOpen" class="header-menu">
       <NuxtLink ref="elLogo" to="/" aria-label="Go to homepage">
-        <LogoLarge class="h-16" />
+        <LogoSmall class="h-10" />
       </NuxtLink>
 
-      <ul class="flex flex-col justify-center items-center text-lg">
+      <ul class="header-menu__nav-items">
         <li
           v-for="({ link, label }, index) in menu"
           :key="index"
@@ -17,7 +14,7 @@
           <nuxt-link
             v-if="$prismic.asLink(link)"
             :to="$prismic.asLink(link)"
-            class="block py-4 hover:underline"
+            class="header-menu__nav-item"
           >
             {{ label }}
           </nuxt-link>
@@ -26,9 +23,8 @@
 
       <SocialLinks
         ref="elSocialLinks"
-        icon-color="brand-blue"
-        circle-color="brand-cream"
-        class="footer__social"
+        icon-color="brand-cream"
+        circle-color="brand-blue"
       />
     </div>
   </transition>
@@ -70,7 +66,7 @@ export default {
         .set('body', { overflow: 'hidden' })
         .fromTo(el, { xPercent: 100 }, { xPercent: 0 })
         .fromTo(
-          'main',
+          'main, footer',
           { opacity: 1, xPercent: 0 },
           { opacity: 0.5, xPercent: -25 },
           '<',
@@ -93,7 +89,7 @@ export default {
         })
         .fromTo(el, { xPercent: 0 }, { xPercent: 100 })
         .fromTo(
-          'main',
+          'main, footer',
           { opacity: 0.5, xPercent: -25 },
           { opacity: 1, xPercent: 0 },
           '<',
@@ -114,3 +110,19 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.header-menu {
+  @apply fixed top-0 inset-y-0 right-0 w-full md:w-1/2 bg-brand-blue text-brand-cream z-10 py-8 px-5 h-full flex flex-col items-center justify-between;
+
+  &__nav-items {
+    @apply flex flex-col justify-center items-center text-lg;
+  }
+
+  &__nav-item {
+    @apply block py-4 underline hover:no-underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+}
+</style>

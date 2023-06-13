@@ -1,5 +1,9 @@
 <template>
-  <div ref="elCarousel" class="quotes-carousel" :class="{'flex justify-center': quotes.length < 2}">
+  <div
+    ref="elCarousel"
+    class="quotes-carousel"
+    :class="{ 'flex justify-center': quotes.length < 2 }"
+  >
     <client-only>
       <Carousel v-if="quotes.length > 1" v-bind="settings">
         <Slide
@@ -109,11 +113,11 @@ export default {
   }
 
   &__quote {
-    @apply text-lg lg:text-xl font-serif-small italic leading-[1.2] lg:max-w-4xl;
+    @apply text-lg lg:text-xl font-serif-small italic leading-[1.2] md:leading-[1.1] lg:max-w-4xl;
   }
 
   &__attribution {
-    @apply text-xs sm:text-sm md:text-base mt-2.5 uppercase tracking-widest lg:max-w-4xl;
+    @apply text-xs sm:text-sm md:text-base mt-2 md:mt-3 uppercase tracking-widest lg:max-w-4xl;
   }
 
   :deep {

@@ -4,7 +4,7 @@
       ref="elLogo"
       to="/"
       aria-label="Go to homepage"
-      class="absolute top-2 md:top-4 left-4 md:left-6 pr-20 w-full max-w-lg z-50"
+      class="absolute top-3 md:top-4 left-4 md:left-6 pr-20 w-full max-w-md z-50"
     >
       <LogoLarge class="w-full text-brand-cream" />
     </NuxtLink>

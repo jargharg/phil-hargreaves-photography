@@ -47,7 +47,7 @@
           "multi": "paragraph"
         }
       },
-      "textColor": {
+      "heroTextColor": {
         "type": "Select",
         "config": {
           "label": "Text Colour",

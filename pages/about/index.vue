@@ -6,7 +6,7 @@
       <div
         class="absolute container bottom-10 lg:bottom-20 left-1/2 -translate-x-1/2"
         :class="
-          doc.textColor === 'Dark' ? 'text-brand-blue' : 'text-brand-cream'
+          doc.heroTextColor === 'Dark' ? 'text-brand-blue' : 'text-brand-cream'
         "
       >
         <div class="max-w-lg">

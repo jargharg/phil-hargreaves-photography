@@ -25,7 +25,6 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-
 #prismic-toolbar-v2 {
   @apply hidden;
 }
@@ -51,4 +50,14 @@ a {
   .max-w-container {
     max-width: $max-w-container;
   }
+}
+
+html.cream-mode,
+html.cream-mode body {
+  --hero-text-color: theme("colors.brand-cream");
+}
+
+html.blue-mode,
+html.blue-mode body {
+  --hero-text-color: theme("colors.brand-blue");
 }

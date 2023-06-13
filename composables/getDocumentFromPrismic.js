@@ -14,6 +14,8 @@ export async function getDocumentFromPrismic (
   const { client } = usePrismic()
   const { uid } = route.params
 
+  const colorMode = useColorMode()
+
   const fetchId = repeatable ? `${type}-${uid}` : type
   const options = graphQuery ? { graphQuery } : {}
 
@@ -27,6 +29,9 @@ export async function getDocumentFromPrismic (
     }
 
     let { data } = response
+
+    colorMode.value = data.heroTextColor === 'Dark' ? 'blue' : 'cream'
+
     const { id, first_publication_date: publishedDate } = response
 
     if (dataMapFunction) {

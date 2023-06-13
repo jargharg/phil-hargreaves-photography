@@ -1,9 +1,10 @@
 <template>
   <button
-    class="h-12 md:h-14 p-3.5 md:p-4 rounded-full"
+    class="menu-button"
     :class="{
-      'text-brand-cream': isOpen || !isFloating,
-      'bg-brand-cream text-brand-blue shadow-lg': !isOpen && isFloating,
+      'menu-button--open': isOpen,
+      'menu-button--top': !isOpen && !isFloating,
+      'menu-button--floating': !isOpen && isFloating,
     }"
   >
     <svg
@@ -66,3 +67,21 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.menu-button {
+  @apply h-12 md:h-14 p-3.5 md:p-4 rounded-full;
+
+  &--top {
+    color: var(--hero-text-color);
+  }
+
+  &--open {
+    @apply text-brand-cream;
+  }
+
+  &--floating {
+    @apply bg-brand-cream text-brand-blue shadow-lg;
+  }
+}
+</style>

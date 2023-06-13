@@ -24,5 +24,6 @@ module.exports = {
   },
   globals: {
     ...require('./.eslintGlobals.js'),
+    useColorMode: true,
   },
 }

@@ -157,6 +157,7 @@ export default defineNuxtConfig({
     '@nuxtjs/prismic',
     '@nuxt/image',
     '@nuxtjs/robots',
+    '@nuxtjs/color-mode',
     ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
     ['@pinia/nuxt', { disableVuex: true }],
     '@dargmuesli/nuxt-cookie-control',
@@ -233,6 +234,11 @@ export default defineNuxtConfig({
     filter: ({ routes }) => {
       return routes.filter(({ url }) => !EXCLUDED_SITEMAP_ROUTES.find(excludedRoute => url.includes(excludedRoute)))
     },
+  },
+
+  colorMode: {
+    preference: 'cream',
+    fallback: 'cream',
   },
 
   cookieControl: {

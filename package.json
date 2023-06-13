@@ -44,6 +44,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxt/image": "rc",
+    "@nuxtjs/color-mode": "^3.2.0",
     "@pinia/nuxt": "^0.4.11",
     "@studiotreble/sized-image": "^0.8.0",
     "@tailwindcss/typography": "^0.5.9",

@@ -134,8 +134,8 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "quotes_block": { "type": "SharedSlice" },
-            "fullscreen_text_with_image_block": { "type": "SharedSlice" }
+            "fullscreen_text_with_image_block": { "type": "SharedSlice" },
+            "quotes_block": { "type": "SharedSlice" }
           }
         }
       }

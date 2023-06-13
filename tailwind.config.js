@@ -17,6 +17,7 @@ module.exports = {
       sm: '1rem', // 16px
       'base-mobile': '1rem', // 16px
       base: '1.25rem', // 20px
+      md: '1.5rem', // 24px
       lg: '1.75rem', // 28px
       xl: '2.5rem', // 40px
       '2xl': '3.75rem', // 60px
@@ -39,6 +40,7 @@ module.exports = {
         'brand-cream': '#fdfbf9',
         'brand-grey': '#D4D5DB',
         'brand-blue': '#112233',
+        'brand-coral': '#FF825A',
       },
     },
   },

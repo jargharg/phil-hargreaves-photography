@@ -1,8 +1,10 @@
 <template>
-  <section class="hero-section">
+  <section ref="elSection" class="hero-section">
     <slot />
 
-    <div v-if="title || $prismic.asText(tagline)" class="hero-section__details">
+    <div class="hero-section__overlay" />
+
+    <div v-if="title || $prismic.asText(tagline)" class="hero-section__details container">
       <div class="max-w-lg">
         <Heading v-if="title" class="mb-2 text-2xl xl:text-3xl">
           {{ title }}
@@ -20,6 +22,12 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+import sleep from '~/helpers/sleep'
+
+import { DURATION_IN_MS } from '~/composables/defaultTransition'
+import { useA11yStore } from '~/stores/a11y'
+
 export default {
   props: {
     title: {
@@ -32,6 +40,57 @@ export default {
       default: null,
     },
   },
+
+  setup () {
+    const a11yStore = useA11yStore()
+
+    const elSection = ref(null)
+    const elSlot = ref(null)
+
+    let bgAnimation = null
+
+    onMounted(async () => {
+      await sleep(DURATION_IN_MS)
+      await nextTick()
+
+      bgAnimation = gsap
+        .timeline({
+          scrollTrigger: {
+            scrub: true,
+            start: 'top top',
+            end: () => `${window.innerHeight} top`,
+            invalidateOnRefresh: true,
+          },
+        })
+        .to(elSection.value.children[0], {
+          yPercent: 50,
+          ease: 'none',
+        })
+
+      if (a11yStore.reducedMotion) {
+        bgAnimation.scrollTrigger.disable()
+      }
+    })
+
+    watch(
+      () => a11yStore.reducedMotion,
+      (isReducedMotion) => {
+        if (isReducedMotion) {
+          bgAnimation.scrollTrigger.disable()
+          bgAnimation.progress(0)
+        } else {
+          bgAnimation.scrollTrigger.enable()
+        }
+      },
+    )
+
+    onUnmounted(async () => {
+      await sleep(DURATION_IN_MS)
+      bgAnimation?.scrollTrigger?.kill()
+    })
+
+    return { elSection, elSlot }
+  },
 }
 </script>
 
@@ -39,8 +98,13 @@ export default {
 .hero-section {
   @apply relative h-screen w-full overflow-hidden;
 
+  &__overlay {
+    @apply absolute inset-0 pointer-events-none select-none opacity-50;
+    background: linear-gradient(to top, var(--hero-overlay-color), transparent 50%);
+  }
+
   &__details {
-    @apply absolute container bottom-10 lg:bottom-20 left-1/2 -translate-x-1/2;
+    @apply absolute bottom-10 lg:bottom-20 left-1/2 -translate-x-1/2;
     color: var(--hero-text-color);
   }
 }

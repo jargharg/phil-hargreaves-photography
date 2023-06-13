@@ -1,24 +1,24 @@
 <template>
-  <section
-    :data-slice-type="slice.slice_type"
-    :data-slice-variation="slice.variation"
-  >
-    Placeholder component for emphasis_block (variation: {{ slice.variation }})
-    Slices
-  </section>
+  <ArticleSection :with-margin="false" :with-container="false">
+    <EmphasisBlock
+      :body="slice.primary.body"
+      :cta-link="slice.primary.ctaLink"
+      :cta-label="slice.primary.ctaLabel"
+    />
+  </ArticleSection>
 </template>
 
 <script setup lang="ts">
-import { Content } from "@prismicio/client";
+import { Content } from '@prismicio/client'
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
 defineProps(
-  getSliceComponentProps<Content.EmphasisBlockSlice>([
-    "slice",
-    "index",
-    "slices",
-    "context",
-  ])
-);
+  getSliceComponentProps < Content.EmphasisBlockSlice > ([
+    'slice',
+    'index',
+    'slices',
+    'context',
+  ]),
+)
 </script>

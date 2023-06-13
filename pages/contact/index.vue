@@ -1,12 +1,10 @@
 <template>
   <article>
-    <HeroSection :title="doc.title" :tagline="hero.tagline">
+    <HeroSection :title="doc.title" :tagline="doc.heroTagline">
       <FullscreenImage :image="doc.heroImage" />
     </HeroSection>
 
-    <div class="pt-12">
-      contact etc
-    </div>
+    <PhpSliceZone :slices="doc.slices2" class="pt-16" />
   </article>
 </template>
 

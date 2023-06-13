@@ -15,6 +15,7 @@
             v-if="$prismic.asLink(link)"
             :to="$prismic.asLink(link)"
             class="header-menu__nav-item"
+            @click="isOpen = false"
           >
             {{ label }}
           </nuxt-link>
@@ -33,21 +34,18 @@
 <script>
 import gsap from 'gsap'
 import { useGlobalsStore } from '~/stores/globals'
+import { useHeaderStore } from '~/stores/header'
 
 export default {
-  props: {
-    isOpen: {
-      type: Boolean,
-      default: false,
-    },
-  },
-
   setup () {
     const globalsStore = useGlobalsStore()
 
     const contact = toRef(globalsStore, 'contact')
     const menu = toRef(globalsStore, 'menu')
     const socialLinks = toRef(globalsStore, 'socialLinks')
+
+    const headerStore = useHeaderStore()
+    const isOpen = toRef(headerStore, 'isMenuOpen')
 
     const elMenuItems = ref([])
     const elLogo = ref(null)
@@ -102,6 +100,7 @@ export default {
       elLogo,
       elMenuItems,
       elSocialLinks,
+      isOpen,
       menu,
       onEnter,
       onLeave,

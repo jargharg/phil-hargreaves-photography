@@ -1,38 +1,40 @@
 <template>
-  <div class="fs-image fs-image--wide">
-    <SizedImage
-      :src="image.wide.url"
-      :alt="image.wide.alt"
-      sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-      :lazy="lazy"
-    />
-  </div>
+  <div class="h-full w-full relative">
+    <div class="fs-image fs-image--wide">
+      <SizedImage
+        :src="image.wide.url"
+        :alt="image.wide.alt"
+        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        :lazy="lazy"
+      />
+    </div>
 
-  <div class="fs-image fs-image--default">
-    <SizedImage
-      :src="image.url"
-      :alt="image.alt"
-      sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-      :lazy="lazy"
-    />
-  </div>
+    <div class="fs-image fs-image--default">
+      <SizedImage
+        :src="image.url"
+        :alt="image.alt"
+        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        :lazy="lazy"
+      />
+    </div>
 
-  <div class="fs-image fs-image--square">
-    <SizedImage
-      :src="image.square.url"
-      :alt="image.square.alt"
-      sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-      :lazy="lazy"
-    />
-  </div>
+    <div class="fs-image fs-image--square">
+      <SizedImage
+        :src="image.square.url"
+        :alt="image.square.alt"
+        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        :lazy="lazy"
+      />
+    </div>
 
-  <div class="fs-image fs-image--portrait">
-    <SizedImage
-      :src="image.portrait.url"
-      :alt="image.portrait.alt"
-      sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
-      :lazy="lazy"
-    />
+    <div class="fs-image fs-image--portrait">
+      <SizedImage
+        :src="image.portrait.url"
+        :alt="image.portrait.alt"
+        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        :lazy="lazy"
+      />
+    </div>
   </div>
 </template>
 
@@ -49,12 +51,12 @@ export default {
       default: true,
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .fs-image {
-  @apply h-full w-full hidden;
+  @apply absolute inset-0 hidden;
   $image: &;
 
   @media (min-aspect-ratio: 9/5) {

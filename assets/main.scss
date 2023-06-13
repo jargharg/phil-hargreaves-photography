@@ -36,15 +36,15 @@ a {
   }
 
   .pl-container {
-    @apply pl-2.5 lg:pl-6;
+    @apply pl-2.5 lg:pl-10;
   }
 
   .pr-container {
-    @apply pr-2.5 lg:pr-6;
+    @apply pr-2.5 lg:pr-10;
   }
 
   .px-container {
-    @apply px-2.5 lg:px-6;
+    @apply px-2.5 lg:px-10;
   }
 
   .max-w-container {
@@ -55,9 +55,11 @@ a {
 html.cream-mode,
 html.cream-mode body {
   --hero-text-color: theme("colors.brand-cream");
+  --hero-overlay-color: #333;
 }
 
 html.blue-mode,
 html.blue-mode body {
   --hero-text-color: theme("colors.brand-blue");
+  --hero-overlay-color: theme("colors.brand-cream");
 }

@@ -10,12 +10,7 @@
           v-for="({ quote, attribution }, index) in quotes"
           :key="`slide-${index}`"
         >
-          <blockquote class="quotes-carousel__slide">
-            <prismic-rich-text :field="quote" class="quotes-carousel__quote" />
-            <div class="quotes-carousel__attribution">
-              — {{ attribution }}
-            </div>
-          </blockquote>
+          <QuoteBlock v-bind="{ quote, attribution }" />
         </Slide>
 
         <template #addons>
@@ -23,26 +18,17 @@
         </template>
       </Carousel>
 
-      <blockquote v-else class="quotes-carousel__slide">
-        <prismic-rich-text
-          :field="quotes[0].quote"
-          class="quotes-carousel__quote"
-        />
-        <div class="quotes-carousel__attribution">
-          — {{ quotes[0].attribution }}
-        </div>
-      </blockquote>
+      <QuoteBlock
+        v-else
+        :quote="quotes[0].quote"
+        :testimonial="quotes[0].testimonial"
+      />
 
       <template #placeholder>
-        <blockquote class="quotes-carousel__slide">
-          <prismic-rich-text
-            :field="quotes[0].quote"
-            class="quotes-carousel__quote"
-          />
-          <div class="quotes-carousel__attribution">
-            — {{ quotes[0].attribution }}
-          </div>
-        </blockquote>
+        <QuoteBlock
+          :quote="quotes[0].quote"
+          :testimonial="quotes[0].testimonial"
+        />
       </template>
     </client-only>
   </div>
@@ -107,18 +93,6 @@ export default {
 <style lang="scss" scoped>
 .quotes-carousel {
   @apply w-full bg-brand-grey text-brand-blue py-10 xl:py-20;
-
-  &__slide {
-    @apply px-8 lg:px-20 xl:px-0 h-full flex flex-col justify-center;
-  }
-
-  &__quote {
-    @apply text-lg lg:text-xl font-serif-small italic leading-[1.2] md:leading-[1.1] lg:max-w-4xl;
-  }
-
-  &__attribution {
-    @apply text-xs sm:text-sm md:text-base mt-2 md:mt-3 uppercase tracking-widest lg:max-w-4xl;
-  }
 
   :deep {
     .carousel {

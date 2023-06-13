@@ -18,7 +18,7 @@
       />
     </div>
 
-    <SiteHeaderMenu :is-open="isMenuOpen" class="pointer-events-auto" />
+    <SiteHeaderMenu class="pointer-events-auto" />
   </header>
 </template>
 

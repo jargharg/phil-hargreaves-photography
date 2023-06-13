@@ -7,8 +7,8 @@
     <TextBlockWithCta
       :heading="slice.primary.heading"
       :body="slice.primary.body"
-      :cta-text="slice.primary.ctaLabel"
-      :cta-link="$prismic.asLink(slice.primary.ctaLink)"
+      :cta-label="slice.primary.ctaLabel"
+      :cta-link="slice.primary.ctaLink"
     />
   </TextBoxWithImage>
 </template>

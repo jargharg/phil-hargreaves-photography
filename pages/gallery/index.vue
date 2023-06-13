@@ -1,6 +1,6 @@
 <template>
   <article>
-    <HeroSection :title="doc.title" :tagline="hero.tagline">
+    <HeroSection :title="doc.title" :tagline="doc.heroTagline">
       <FullscreenImage :image="doc.heroImage" />
     </HeroSection>
 

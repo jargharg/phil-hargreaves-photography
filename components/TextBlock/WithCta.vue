@@ -2,7 +2,11 @@
   <div class="flex flex-col items-stretch sm:items-start gap-7 pb-2">
     <TextBlockDefault v-bind="{ heading, body }" />
 
-    <CtaButton :to="$prismic.asLink(ctaLink)" inverted>
+    <CtaButton
+      v-if="$prismic.asLink(ctaLink)"
+      :to="$prismic.asLink(ctaLink)"
+      inverted
+    >
       {{ ctaLabel }}
     </CtaButton>
   </div>

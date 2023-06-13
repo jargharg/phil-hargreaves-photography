@@ -24,15 +24,15 @@
       </div>
 
       <div class="py-8 md:py-16 h-full md:flex-1 flex items-center">
-        <slot />
+        <div class="px-8 md:px-16">
+          <slot />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { computed } from 'vue'
-
 export default {
   props: {
     image: {

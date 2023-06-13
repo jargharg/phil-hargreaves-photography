@@ -1,17 +1,18 @@
 <template>
   <div>
-    <header ref="elHeader" class="header">
-      <PhpNuxtLink
-        to="/"
-        class="header__logo__wrapper"
-        aria-label="Go to homepage"
-      >
-        <LogoLarge ref="elLogo" class="header__logo" />
-      </PhpNuxtLink>
+    <NuxtLink
+      to="/"
+      aria-label="Go to homepage"
+      class="absolute top-2 md:top-4 left-4 md:left-6 pr-20 w-full max-w-lg z-50"
+    >
+      <LogoLarge class="w-full text-brand-cream" />
+    </NuxtLink>
 
+    <header class="header">
       <MenuButton
         class="header__menu"
-        :class="{ 'header__menu--open': isMenuOpen }"
+        :class="isMenuOpen ? 'shadow-sm' : 'shadow-lg'"
+        :is-open="isMenuOpen"
         @click="isMenuOpen = !isMenuOpen"
       />
     </header>
@@ -23,15 +24,12 @@
 <script>
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { DURATION_IN_MS } from '~/composables/defaultTransition'
-import sleep from '~/helpers/sleep'
 import { useHeaderStore } from '~/stores/header'
 import { useA11yStore } from '~/stores/a11y'
 
 export default {
   setup () {
-    const elHeader = ref(null)
-    const elLogo = ref(null)
+    const elLogoSmall = ref(null)
 
     const a11yStore = useA11yStore()
 
@@ -43,51 +41,51 @@ export default {
 
     let animationToggle
 
-    onMounted(() => {
-      animationToggle = gsap.from(elHeader.value, {
-        paused: true,
-        duration: 0.6,
-        yPercent: -100,
-        opacity: 0.7,
-        ease: 'power3.inOut',
-      })
+    // onMounted(() => {
+    //   animationToggle = gsap.from(elLogoSmall.value.$el, {
+    //     paused: true,
+    //     duration: 0.6,
+    //     yPercent: -100,
+    //     opacity: 0.7,
+    //     ease: 'power3.inOut',
+    //   })
 
-      ScrollTrigger.create({
-        start: () => `${window.innerHeight}px top`,
-        end: 999999,
-        onUpdate ({ direction, getVelocity }) {
-          const velocity = getVelocity()
+    //   ScrollTrigger.create({
+    //     start: () => `${window.innerHeight}px top`,
+    //     end: 999999,
+    //     onUpdate ({ direction, getVelocity }) {
+    //       const velocity = getVelocity()
 
-          if (headerStore.isMenuOpen || velocity > 3000) {
-            return
-          }
+    //       if (headerStore.isMenuOpen || velocity > 3000) {
+    //         return
+    //       }
 
-          if (velocity > -300 && velocity < 300) {
-            return
-          }
+    //       if (velocity > -300 && velocity < 300) {
+    //         return
+    //       }
 
-          if (headerStore.isMenuOpen || direction === 1) {
-            if (a11yStore.reducedMotion) {
-              animationToggle.progress(0)
-            } else {
-              animationToggle.reverse()
-            }
-          } else if (!a11yStore.reducedMotion) {
-            animationToggle.play()
-          }
-        },
+    //       if (headerStore.isMenuOpen || direction === 1) {
+    //         if (a11yStore.reducedMotion) {
+    //           animationToggle.progress(0)
+    //         } else {
+    //           animationToggle.reverse()
+    //         }
+    //       } else if (!a11yStore.reducedMotion) {
+    //         animationToggle.play()
+    //       }
+    //     },
 
-        onToggle ({ isActive }) {
-          if (!isActive) {
-            animationToggle.reverse()
-          }
-        },
-      })
-    })
+    //     onToggle ({ isActive }) {
+    //       if (!isActive) {
+    //         animationToggle.reverse()
+    //       }
+    //     },
+    //   })
+    // })
 
-    onUnmounted(() => {
-      animationToggle?.kill()
-    })
+    // onUnmounted(() => {
+    //   animationToggle?.kill()
+    // })
 
     watch(
       () => route.path,
@@ -99,26 +97,26 @@ export default {
     watch(isVisible, () => {
       if (isVisible.value) {
         gsap
-          .to(elHeader.value, {
+          .to(elLogoSmall.value.$el, {
             duration: 0.5,
             opacity: 1,
             yPercent: 0,
             ease: 'power3.out',
           })
-          .set(elHeader.value, { clearProps: true })
+          .set(elLogoSmall.value.$el, { clearProps: true })
       } else {
         gsap
-          .to(elHeader.value, {
+          .to(elLogoSmall.value.$el, {
             duration: 0.5,
             opacity: 0,
             yPercent: -100,
             ease: 'power3.in',
           })
-          .set(elHeader.value, { clearProps: true })
+          .set(elLogoSmall.value.$el, { clearProps: true })
       }
     })
 
-    return { elHeader, isMenuOpen, elLogo }
+    return { elLogoSmall, isMenuOpen }
   },
 }
 </script>
@@ -126,8 +124,8 @@ export default {
 <style lang="scss" scoped>
 .header {
   @apply fixed inset-x-0 top-0 z-50;
-  @apply flex justify-end items-center text-center px-6 py-4;
-  @apply text-brand-blue bg-brand-cream shadow-sm;
+  @apply flex justify-end items-center text-center px-4 md:px-6 pt-4;
+  @apply text-brand-blue;
   @apply pointer-events-none;
 
   // --brand-cream-hsl: 20, 53%, 97%;
@@ -152,20 +150,16 @@ export default {
   // );
 
   &__logo {
-    @apply block w-full h-[80%] pointer-events-auto;
+    @apply block h-12 pointer-events-auto;
 
     &__wrapper {
-      @apply max-w-xs h-full w-full absolute left-1/2 -translate-x-1/2 hover:opacity-80 focus:opacity-80;
-      @apply flex items-center justify-center;
+      @apply h-full w-full absolute left-0 hover:opacity-80 focus:opacity-80;
+      @apply flex items-center justify-center bg-brand-cream;
     }
   }
 
   &__menu {
     @apply z-50 transition-colors duration-300 pointer-events-auto;
-
-    &--open {
-      // @apply text-brand-cream;
-    }
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <transition @enter="onEnter" @leave="onLeave">
     <div
       v-show="isOpen"
-      class="fixed top-0 inset-y-0 right-0 w-1/2 bg-brand-cream text-brand-blue z-10"
+      class="fixed top-0 inset-y-0 right-0 w-full md:w-1/2 bg-brand-cream text-brand-blue z-10"
     >
       <ul
         class="h-full flex flex-col justify-center items-center text-xl gap-8"

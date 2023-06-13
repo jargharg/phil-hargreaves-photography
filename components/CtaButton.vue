@@ -34,7 +34,7 @@ export default {
   setup (props, { attrs }) {
     const componentType = computed(() => {
       if (attrs.to) {
-        return resolveComponent('PhpNuxtLink')
+        return resolveComponent('NuxtLink')
       }
       if (attrs.href) {
         return 'a'

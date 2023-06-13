@@ -1,7 +1,7 @@
 <template>
-  <div ref="elCarousel" class="quotes-carousel">
+  <div ref="elCarousel" class="quotes-carousel" :class="{'flex justify-center': quotes.length < 2}">
     <client-only>
-      <Carousel v-bind="settings">
+      <Carousel v-if="quotes.length > 1" v-bind="settings">
         <Slide
           v-for="({ quote, attribution }, index) in quotes"
           :key="`slide-${index}`"
@@ -18,6 +18,16 @@
           <Pagination />
         </template>
       </Carousel>
+
+      <blockquote v-else class="quotes-carousel__slide">
+        <prismic-rich-text
+          :field="quotes[0].quote"
+          class="quotes-carousel__quote"
+        />
+        <div class="quotes-carousel__attribution">
+          — {{ quotes[0].attribution }}
+        </div>
+      </blockquote>
 
       <template #placeholder>
         <blockquote class="quotes-carousel__slide">

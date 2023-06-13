@@ -87,7 +87,7 @@ export default {
     @apply w-full transition-colors duration-300;
 
     &__wrapper {
-      @apply absolute top-3 md:top-4 left-4 md:left-6 pr-20 w-full max-w-md z-30;
+      @apply absolute top-4 left-0 pl-4 md:pl-6 pr-20 w-full max-w-md z-30;
     }
   }
 

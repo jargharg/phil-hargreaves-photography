@@ -5,16 +5,6 @@
 <script>
 export default {
   props: {
-    heading: {
-      type: String,
-      default: null,
-    },
-
-    body: {
-      type: Array,
-      required: true,
-    },
-
     variation: {
       type: String,
       default: 'default',

@@ -24,18 +24,7 @@
       </div>
 
       <div class="py-8 md:py-16 h-full md:flex-1 flex items-center">
-        <div ref="elText" class="font-light mx-auto max-w-2xl px-8 md:px-16">
-          <slot />
-
-          <CtaButton
-            v-if="hasCta"
-            ref="elCta"
-            :to="ctaLink"
-            class="mt-8 md:mt-16"
-          >
-            {{ ctaText }}
-          </CtaButton>
-        </div>
+        <slot />
       </div>
     </div>
   </section>
@@ -51,16 +40,6 @@ export default {
       required: true,
     },
 
-    ctaText: {
-      type: String,
-      default: 'Read more',
-    },
-
-    ctaLink: {
-      type: String,
-      default: '',
-    },
-
     imagePosition: {
       type: String,
       default: 'left',
@@ -68,15 +47,11 @@ export default {
   },
 
   setup (props) {
-    console.log(props.image)
-
-    const elCta = ref(null)
     const elImage = ref(null)
     const elSection = ref(null)
     const elText = ref(null)
-    const hasCta = computed(() => props.ctaLink && props.ctaText)
 
-    return { elCta, elImage, elSection, elText, hasCta }
+    return { elImage, elSection, elText }
   },
 }
 </script>

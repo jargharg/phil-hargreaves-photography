@@ -4,7 +4,7 @@
       ref="elLogo"
       to="/"
       aria-label="Go to homepage"
-      class="absolute top-3 md:top-4 left-4 md:left-6 pr-20 w-full max-w-md z-50"
+      class="absolute top-3 md:top-4 left-4 md:left-6 pr-20 w-full max-w-md z-30"
     >
       <LogoLarge class="w-full text-brand-cream" />
     </NuxtLink>
@@ -97,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   @apply fixed inset-x-0 top-0 z-50;
-  @apply flex justify-end items-center text-center px-4 md:px-6 pt-4 md:pt-6;
+  @apply flex justify-end items-center text-center px-4 md:px-6 pt-6;
   @apply text-brand-blue;
   @apply pointer-events-none;
 

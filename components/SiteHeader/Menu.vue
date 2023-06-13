@@ -113,7 +113,10 @@ export default {
 
 <style lang="scss" scoped>
 .header-menu {
-  @apply fixed top-0 inset-y-0 right-0 w-full md:w-1/2 bg-brand-blue text-brand-cream z-10 py-8 px-5 h-full flex flex-col items-center justify-between;
+  @apply fixed top-0 inset-y-0 right-0 z-40;
+  @apply w-full max-w-xl;
+  @apply h-full flex flex-col items-center justify-between;
+  @apply bg-brand-blue text-brand-cream py-8 px-5;
 
   &__nav-items {
     @apply flex flex-col justify-center items-center text-lg;

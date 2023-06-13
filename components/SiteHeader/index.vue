@@ -87,7 +87,7 @@ export default {
     @apply w-full transition-colors duration-300;
 
     &__wrapper {
-      @apply absolute top-4 left-0 pl-4 md:pl-6 pr-20 w-full max-w-md z-30;
+      @apply absolute top-4 left-0 pl-4 md:pl-6 pr-20 w-full max-w-md lg:max-w-lg z-30;
     }
   }
 
@@ -96,7 +96,7 @@ export default {
 
     &__wrapper {
       @apply fixed inset-x-0 top-0 z-50;
-      @apply flex justify-end items-center text-center px-4 md:px-6 pt-6;
+      @apply flex justify-end items-center text-center pl-4 pr-2 sm:px-4 md:px-6 pt-6;
       @apply text-brand-blue;
       @apply pointer-events-none;
     }

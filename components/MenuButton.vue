@@ -1,8 +1,10 @@
 <template>
   <button
     class="h-12 md:h-14 p-3.5 md:p-4 rounded-full"
-    :class="{ 'text-brand-cream': isOpen,
-              'bg-brand-cream text-brand-blue': !isOpen }"
+    :class="{
+      'text-brand-cream': isOpen || !isFloating,
+      'bg-brand-cream text-brand-blue shadow-lg': !isOpen && isFloating,
+    }"
   >
     <svg
       ref="elIcon"
@@ -25,6 +27,11 @@ import gsap from 'gsap'
 export default {
   props: {
     isOpen: {
+      type: Boolean,
+      default: false,
+    },
+
+    isFloating: {
       type: Boolean,
       default: false,
     },

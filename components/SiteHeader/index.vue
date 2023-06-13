@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <header>
     <NuxtLink
+      ref="elLogo"
       to="/"
       aria-label="Go to homepage"
       class="absolute top-2 md:top-4 left-4 md:left-6 pr-20 w-full max-w-lg z-50"
@@ -8,34 +9,59 @@
       <LogoLarge class="w-full text-brand-cream" />
     </NuxtLink>
 
-    <header class="header">
+    <div class="header">
       <MenuButton
         class="header__menu"
         :is-open="isMenuOpen"
+        :is-floating="isFloating"
         @click="isMenuOpen = !isMenuOpen"
       />
-    </header>
+    </div>
 
     <SiteHeaderMenu :is-open="isMenuOpen" class="pointer-events-auto" />
-  </div>
+  </header>
 </template>
 
 <script>
-import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
 import { useHeaderStore } from '~/stores/header'
-import { useA11yStore } from '~/stores/a11y'
 
 export default {
   setup () {
-    const elLogoSmall = ref(null)
-
-    const a11yStore = useA11yStore()
+    const elLogo = ref(null)
 
     const headerStore = useHeaderStore()
     const isMenuOpen = toRef(headerStore, 'isMenuOpen')
 
     const route = useRoute()
+
+    const isFloating = ref(false)
+
+    onMounted(() => {
+      ScrollTrigger.create({
+        start: () => `${window.innerHeight}px top`,
+        end: 999999,
+
+        onToggle ({ isActive }) {
+          isFloating.value = isActive
+        },
+      })
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            scrub: true,
+            start: 'top top',
+            end: () => `${window.innerHeight} top`,
+            invalidateOnRefresh: true,
+          },
+        })
+        .to(elLogo.value.$el, {
+          y: window.innerHeight * 0.8,
+          ease: 'none',
+        })
+    })
 
     const closeOnEscapePress = ({ key }) => {
       if (key === 'Escape') {
@@ -54,6 +80,7 @@ export default {
     watch(
       () => route.path,
       () => {
+        isFloating.value = false
         isMenuOpen.value = false
       },
     )
@@ -62,7 +89,7 @@ export default {
       document.removeEventListener('keydown', closeOnEscapePress)
     })
 
-    return { elLogoSmall, isMenuOpen }
+    return { elLogo, isFloating, isMenuOpen }
   },
 }
 </script>

@@ -15,25 +15,25 @@ export const defaultTransition = disablePageTransitions
 
       onEnter (el, onComplete) {
         const a11yStore = useA11yStore()
+        const tl = gsap.timeline({ onComplete, defaults: { ease: 'none', duration } })
 
         if (a11yStore.reducedMotion) {
-          return gsap.from(el, { opacity: 0, ease: 'none', duration, onComplete })
+          return tl.from(el, { opacity: 0, ease: 'none' })
         }
 
-        return gsap.timeline({ onComplete, defaults: { ease: 'none', duration } })
-          .from(el, { opacity: 0 }, '<')
+        return tl.from(el, { opacity: 0 }, '<')
           .set(el, { clearProps: true })
       },
 
       onLeave (el, onComplete) {
         const a11yStore = useA11yStore()
+        const tl = gsap.timeline({ onComplete, defaults: { ease: 'none', duration } })
 
         if (a11yStore.reducedMotion) {
-          return gsap.to(el, { opacity: 0, ease: 'none', duration, onComplete })
+          return tl.to(el, { opacity: 0, ease: 'none' })
         }
 
-        gsap.timeline({ onComplete, defaults: { ease: 'none', duration } })
-          .to(el, { opacity: 0 }, '<')
+        tl.to(el, { opacity: 0 }, '<')
       },
     }
 

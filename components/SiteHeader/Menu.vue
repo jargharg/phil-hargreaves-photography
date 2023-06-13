@@ -76,7 +76,7 @@ export default {
           '<',
         )
         .fromTo(
-          [ elLogo.value.$el, elMenuItems.value, elSocialLinks.value.$el],
+          [elLogo.value.$el, elMenuItems.value, elSocialLinks.value.$el],
           { opacity: 0 },
           { opacity: 1, stagger: 0.1 },
           '-=0.5',

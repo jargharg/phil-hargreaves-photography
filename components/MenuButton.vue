@@ -1,6 +1,8 @@
 <template>
   <button
-    class="h-12 md:h-14 p-3.5 md:p-4 rounded-full bg-brand-cream bg-opacity-95"
+    class="h-12 md:h-14 p-3.5 md:p-4 rounded-full"
+    :class="{ 'text-brand-cream': isOpen,
+              'bg-brand-cream text-brand-blue': !isOpen }"
   >
     <svg
       ref="elIcon"
@@ -18,7 +20,8 @@
 </template>
 
 <script>
-import gsap from "gsap";
+import gsap from 'gsap'
+
 export default {
   props: {
     isOpen: {
@@ -27,32 +30,32 @@ export default {
     },
   },
 
-  setup(props) {
-    const elIcon = ref(null);
+  setup (props) {
+    const elIcon = ref(null)
 
-    let tl;
+    let tl
 
     watch(
       () => props.isOpen,
       (isOpen) => {
-        const targets = elIcon.value.children;
+        const targets = elIcon.value.children
 
-        tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.7 } });
+        tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.7 } })
         if (isOpen) {
           tl.to(elIcon.value, { rotate: -180 })
-            .to(targets[1], { opacity: 0, duration: 0.5 }, "<")
-            .to(targets[0], { rotate: 45, x: 1, scaleX: 1.12 }, "<")
-            .to(targets[2], { rotate: -45, x: 1, scaleX: 1.12 }, "<");
+            .to(targets[1], { opacity: 0, duration: 0.5 }, '<')
+            .to(targets[0], { rotate: 45, x: 1, scaleX: 1.12 }, '<')
+            .to(targets[2], { rotate: -45, x: 1, scaleX: 1.12 }, '<')
         } else {
           tl.to(elIcon.value, { rotate: 0 })
-            .to(targets[1], { opacity: 1, duration: 0.5 }, "<")
-            .to(targets[0], { rotate: 0, x: 0, scaleX: 1 }, "<")
-            .to(targets[2], { rotate: 0, x: 0, scaleX: 1 }, "<");
+            .to(targets[1], { opacity: 1, duration: 0.5 }, '<')
+            .to(targets[0], { rotate: 0, x: 0, scaleX: 1 }, '<')
+            .to(targets[2], { rotate: 0, x: 0, scaleX: 1 }, '<')
         }
-      }
-    );
+      },
+    )
 
-    return { elIcon };
+    return { elIcon }
   },
-};
+}
 </script>

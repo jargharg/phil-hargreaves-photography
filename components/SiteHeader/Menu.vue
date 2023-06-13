@@ -2,11 +2,13 @@
   <transition @enter="onEnter" @leave="onLeave">
     <div
       v-show="isOpen"
-      class="fixed top-0 inset-y-0 right-0 w-full md:w-1/2 bg-brand-cream text-brand-blue z-10"
+      class="fixed top-0 inset-y-0 right-0 w-full md:w-1/2 bg-brand-blue text-brand-cream z-10 p-5 h-full flex flex-col items-center justify-between"
     >
-      <ul
-        class="h-full flex flex-col justify-center items-center text-xl gap-8"
-      >
+      <NuxtLink ref="elLogo" to="/" aria-label="Go to homepage">
+        <LogoLarge class="h-16" />
+      </NuxtLink>
+
+      <ul class="flex flex-col justify-center items-center text-lg">
         <li
           v-for="({ link, label }, index) in menu"
           :key="index"
@@ -15,12 +17,19 @@
           <nuxt-link
             v-if="$prismic.asLink(link)"
             :to="$prismic.asLink(link)"
-            class="hover:underline"
+            class="block py-4 hover:underline"
           >
             {{ label }}
           </nuxt-link>
         </li>
       </ul>
+
+      <SocialLinks
+        ref="elSocialLinks"
+        icon-color="brand-blue"
+        circle-color="brand-cream"
+        class="footer__social"
+      />
     </div>
   </transition>
 </template>
@@ -45,6 +54,8 @@ export default {
     const socialLinks = toRef(globalsStore, 'socialLinks')
 
     const elMenuItems = ref([])
+    const elLogo = ref(null)
+    const elSocialLinks = ref(null)
 
     let tl
 
@@ -65,7 +76,7 @@ export default {
           '<',
         )
         .fromTo(
-          elMenuItems.value,
+          [ elLogo.value.$el, elMenuItems.value, elSocialLinks.value.$el],
           { opacity: 0 },
           { opacity: 1, stagger: 0.1 },
           '-=0.5',
@@ -90,7 +101,16 @@ export default {
         .set('body', { overflow: 'auto' })
     }
 
-    return { contact, elMenuItems, menu, socialLinks, onEnter, onLeave }
+    return {
+      contact,
+      elLogo,
+      elMenuItems,
+      elSocialLinks,
+      menu,
+      onEnter,
+      onLeave,
+      socialLinks,
+    }
   },
 }
 </script>

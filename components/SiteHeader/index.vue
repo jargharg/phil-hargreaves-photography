@@ -11,7 +11,6 @@
     <header class="header">
       <MenuButton
         class="header__menu"
-        :class="isMenuOpen ? 'shadow-sm' : 'shadow-lg'"
         :is-open="isMenuOpen"
         @click="isMenuOpen = !isMenuOpen"
       />
@@ -35,57 +34,22 @@ export default {
 
     const headerStore = useHeaderStore()
     const isMenuOpen = toRef(headerStore, 'isMenuOpen')
-    const isVisible = toRef(headerStore, 'isVisible')
 
     const route = useRoute()
 
-    let animationToggle
+    const closeOnEscapePress = ({ key }) => {
+      if (key === 'Escape') {
+        isMenuOpen.value = false
+      }
+    }
 
-    // onMounted(() => {
-    //   animationToggle = gsap.from(elLogoSmall.value.$el, {
-    //     paused: true,
-    //     duration: 0.6,
-    //     yPercent: -100,
-    //     opacity: 0.7,
-    //     ease: 'power3.inOut',
-    //   })
-
-    //   ScrollTrigger.create({
-    //     start: () => `${window.innerHeight}px top`,
-    //     end: 999999,
-    //     onUpdate ({ direction, getVelocity }) {
-    //       const velocity = getVelocity()
-
-    //       if (headerStore.isMenuOpen || velocity > 3000) {
-    //         return
-    //       }
-
-    //       if (velocity > -300 && velocity < 300) {
-    //         return
-    //       }
-
-    //       if (headerStore.isMenuOpen || direction === 1) {
-    //         if (a11yStore.reducedMotion) {
-    //           animationToggle.progress(0)
-    //         } else {
-    //           animationToggle.reverse()
-    //         }
-    //       } else if (!a11yStore.reducedMotion) {
-    //         animationToggle.play()
-    //       }
-    //     },
-
-    //     onToggle ({ isActive }) {
-    //       if (!isActive) {
-    //         animationToggle.reverse()
-    //       }
-    //     },
-    //   })
-    // })
-
-    // onUnmounted(() => {
-    //   animationToggle?.kill()
-    // })
+    watch(isMenuOpen, () => {
+      if (isMenuOpen) {
+        document.addEventListener('keydown', closeOnEscapePress)
+      } else {
+        document.removeEventListener('keydown', closeOnEscapePress)
+      }
+    })
 
     watch(
       () => route.path,
@@ -94,26 +58,8 @@ export default {
       },
     )
 
-    watch(isVisible, () => {
-      if (isVisible.value) {
-        gsap
-          .to(elLogoSmall.value.$el, {
-            duration: 0.5,
-            opacity: 1,
-            yPercent: 0,
-            ease: 'power3.out',
-          })
-          .set(elLogoSmall.value.$el, { clearProps: true })
-      } else {
-        gsap
-          .to(elLogoSmall.value.$el, {
-            duration: 0.5,
-            opacity: 0,
-            yPercent: -100,
-            ease: 'power3.in',
-          })
-          .set(elLogoSmall.value.$el, { clearProps: true })
-      }
+    onUnmounted(() => {
+      document.removeEventListener('keydown', closeOnEscapePress)
     })
 
     return { elLogoSmall, isMenuOpen }
@@ -124,7 +70,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   @apply fixed inset-x-0 top-0 z-50;
-  @apply flex justify-end items-center text-center px-4 md:px-6 pt-4;
+  @apply flex justify-end items-center text-center px-4 md:px-6 pt-4 md:pt-6;
   @apply text-brand-blue;
   @apply pointer-events-none;
 

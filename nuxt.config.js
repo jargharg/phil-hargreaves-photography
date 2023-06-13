@@ -195,7 +195,7 @@ export default defineNuxtConfig({
   },
 
   prismic: {
-    endpoint: smConfig.apiEndpoint || '',
+    endpoint: smConfig.repositoryName || '',
     modern: true,
   },
 

@@ -21,13 +21,13 @@
       <QuoteBlock
         v-else
         :quote="quotes[0].quote"
-        :testimonial="quotes[0].testimonial"
+        :attribution="quotes[0].attribution"
       />
 
       <template #placeholder>
         <QuoteBlock
           :quote="quotes[0].quote"
-          :testimonial="quotes[0].testimonial"
+          :attribution="quotes[0].attribution"
         />
       </template>
     </client-only>

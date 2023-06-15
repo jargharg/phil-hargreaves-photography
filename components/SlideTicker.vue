@@ -12,7 +12,7 @@
           :src="slide.url"
           :alt="slide.alt"
           :dimensions="slide.dimensions"
-          class="rounded-3xl"
+          class="rounded-3xl h-full"
           sizes="sm:50vw md:50vw lg:50vw xl:50vw 2xl:50vw"
         />
       </div>

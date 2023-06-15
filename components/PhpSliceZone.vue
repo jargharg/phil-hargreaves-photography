@@ -27,6 +27,8 @@ export default {
 
 <style lang="scss" scoped>
 .slice-zone {
+  @apply bg-brand-cream;
+
   :deep section:first-of-type {
     margin-top: 0 !important;
   }

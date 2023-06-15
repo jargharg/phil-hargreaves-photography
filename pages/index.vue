@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="bg-brand-cream">
     <FullscreenImageCarousel :images="doc.heroImages" />
 
     <section
@@ -15,7 +15,7 @@
       </CtaButton>
     </section>
 
-    <section class="container my-10 md:my-20">
+    <section class="container my-10 md:my-20 bg-brand-cream">
       <RoundedGrid
         :images="[doc.introImage1, doc.introImage2, doc.introImage3]"
         :text-blocks="doc.introTextBlocks"

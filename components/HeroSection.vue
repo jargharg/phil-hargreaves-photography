@@ -96,7 +96,7 @@ export default {
 
 <style lang="scss" scoped>
 .hero-section {
-  @apply relative h-screen w-full overflow-hidden;
+  @apply relative h-screen w-full overflow-hidden bg-brand-blue;
 
   &__overlay {
     @apply absolute inset-0 pointer-events-none select-none opacity-50;

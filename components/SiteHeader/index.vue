@@ -84,7 +84,7 @@ export default {
   color: var(--hero-text-color);
 
   &__logo {
-    @apply w-full transition-colors duration-300;
+    @apply w-full transition-colors duration-[0.6];
 
     &__wrapper {
       @apply absolute top-4 left-0 pl-4 md:pl-6 pr-20 w-full max-w-md lg:max-w-lg z-30;

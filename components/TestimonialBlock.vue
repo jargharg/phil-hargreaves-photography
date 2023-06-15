@@ -2,7 +2,7 @@
   <blockquote class="max-w-4xl flex flex-col">
     <prismic-rich-text
       v-if="$prismic.asText(testimonial)"
-      class="text-[24px] leading-[1.3]"
+      class="text-sm md:text-base lg:text-[24px] leading-[1.3]"
       :field="testimonial"
     />
 

@@ -1,14 +1,14 @@
 <template>
-  <section class="fs-carousel">
-    <div
+  <ul class="fs-carousel">
+    <li
       v-for="({ image }, index) in [...images, images[0]]"
       :key="index"
       ref="elImages"
       class="fs-carousel__slide"
     >
       <FullscreenImage :image="image" :lazy="index > 0" />
-    </div>
-  </section>
+    </li>
+  </ul>
 </template>
 
 <script>

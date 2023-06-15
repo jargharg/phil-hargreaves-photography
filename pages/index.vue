@@ -1,6 +1,17 @@
 <template>
   <article class="bg-brand-cream">
-    <FullscreenImageCarousel :images="doc.heroImages" />
+    <HeroSection :with-overlay="false">
+      <FullscreenImageCarousel :images="doc.heroImages" />
+
+      <CtaButton
+        :with-arrow="false"
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 !text-xs"
+        @click="onClickDown"
+      >
+        <ScrollDownArrow />
+        Scroll
+      </CtaButton>
+    </HeroSection>
 
     <section
       class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-10 md:my-20 px-5"
@@ -41,11 +52,14 @@ export default {
 
     const doc = await getDocumentFromPrismic('homepage')
 
-    return {
-      ctaLabel,
-      ctaLink,
-      doc,
+    const onClickDown = () => {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth',
+      })
     }
+
+    return { ctaLabel, ctaLink, doc, onClickDown }
   },
 }
 </script>

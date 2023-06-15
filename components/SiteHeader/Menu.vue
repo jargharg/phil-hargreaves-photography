@@ -122,7 +122,7 @@ export default {
   }
 
   &__nav-item {
-    @apply block py-4 underline hover:no-underline;
+    @apply block py-4 hover:underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }

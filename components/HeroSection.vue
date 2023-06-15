@@ -2,9 +2,12 @@
   <section ref="elSection" class="hero-section">
     <slot />
 
-    <div class="hero-section__overlay" />
+    <div v-if="withOverlay" class="hero-section__overlay" />
 
-    <div v-if="title || $prismic.asText(tagline)" class="hero-section__details container">
+    <div
+      v-if="title || $prismic.asText(tagline)"
+      class="hero-section__details container"
+    >
       <div class="max-w-lg">
         <Heading v-if="title" class="mb-2 text-2xl xl:text-3xl">
           {{ title }}
@@ -12,7 +15,7 @@
 
         <div
           v-if="$prismic.asText(tagline)"
-          class="prose text-base lg:text-[24px] leading-[1.2]"
+          class="max-w-sm md:max-w-none prose text-sm md:text-base xl:text-[24px] leading-[1.2]"
         >
           <prismic-rich-text :field="tagline" />
         </div>
@@ -38,6 +41,11 @@ export default {
     tagline: {
       type: Array,
       default: null,
+    },
+
+    withOverlay: {
+      type: Boolean,
+      default: true,
     },
   },
 
@@ -97,15 +105,19 @@ export default {
 <style lang="scss" scoped>
 .hero-section {
   @apply relative h-screen w-full overflow-hidden bg-brand-blue;
+  color: var(--hero-text-color);
 
   &__overlay {
     @apply absolute inset-0 pointer-events-none select-none opacity-50;
-    background: linear-gradient(to top, var(--hero-overlay-color), transparent 50%);
+    background: linear-gradient(
+      to top,
+      var(--hero-overlay-color),
+      transparent 50%
+    );
   }
 
   &__details {
     @apply absolute bottom-10 lg:bottom-20 left-1/2 -translate-x-1/2;
-    color: var(--hero-text-color);
   }
 }
 </style>

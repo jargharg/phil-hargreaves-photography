@@ -9,6 +9,7 @@
   >
     <slot />
     <svg
+      v-if="withArrow"
       class="cta-button__arrow"
       viewBox="0 0 11 6"
       stroke="currentColor"
@@ -27,6 +28,7 @@ export default {
 
   props: {
     border: { type: Boolean, default: false },
+    withArrow: { type: Boolean, default: true },
   },
 
   emits: ['click'],

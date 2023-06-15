@@ -21,7 +21,7 @@
         class="text-xl lg:text-2xl font-serif leading-none font-bold"
       />
 
-      <CtaButton :to="$prismic.asLink(doc.heroCtaLink)">
+      <CtaButton :to="$prismic.asLink(doc.heroCtaLink)" class="-mr-4">
         {{ doc.heroCtaLabel }}
       </CtaButton>
     </section>

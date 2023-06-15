@@ -81,13 +81,13 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  color: var(--hero-text-color);
+  color: var(--hero-text-color) !important;
 
   &__logo {
     @apply w-full transition-colors duration-[0.6];
 
     &__wrapper {
-      @apply absolute top-4 left-0 pl-4 md:pl-6 pr-20 w-full max-w-md lg:max-w-lg z-30;
+      @apply absolute top-4 left-0 pl-4 md:pl-5 lg:pl-9 pr-20 w-full max-w-md lg:max-w-lg z-30;
     }
   }
 

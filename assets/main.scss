@@ -63,3 +63,21 @@ html.blue-mode body {
   --hero-text-color: theme("colors.brand-blue");
   --hero-overlay-color: theme("colors.brand-cream");
 }
+
+.prose {
+  color: currentColor !important;
+
+  p {
+    @apply first-of-type:mt-0 last-of-type:mb-0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-normal uppercase mb-8;
+  }
+
+  a {
+    @apply hover:no-underline;
+  }
+}

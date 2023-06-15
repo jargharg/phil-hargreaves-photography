@@ -4,7 +4,7 @@
       <FullscreenImage :image="doc.heroImage" />
     </HeroSection>
 
-    <PhpSliceZone :slices="doc.slices2" class="pt-16" />
+    <PhpSliceZone :slices="doc.slices2" class="py-16" />
   </article>
 </template>
 

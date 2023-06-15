@@ -1,5 +1,7 @@
 <template>
-  <QuotesCarousel :quotes="slice.items" />
+  <ArticleSection :with-margin="false" :with-container="false">
+    <QuotesCarousel :quotes="slice.items" />
+  </ArticleSection>
 </template>
 
 <script setup lang="ts">

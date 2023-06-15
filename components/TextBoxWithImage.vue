@@ -1,5 +1,5 @@
 <template>
-  <section ref="elSection" class="tbwi max-w-container mx-auto">
+  <div class="tbwi max-w-container mx-auto">
     <div
       class="tbwi__wrapper"
       :class="{ 'tbwi__wrapper--flip': imagePosition === 'right' }"
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -44,14 +44,6 @@ export default {
       type: String,
       default: 'left',
     },
-  },
-
-  setup (props) {
-    const elImage = ref(null)
-    const elSection = ref(null)
-    const elText = ref(null)
-
-    return { elImage, elSection, elText }
   },
 }
 </script>

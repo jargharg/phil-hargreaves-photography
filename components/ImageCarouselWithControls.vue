@@ -6,7 +6,7 @@
           v-for="({ image, caption }, index) in items"
           :key="`slide-${index}`"
         >
-          <Slide v-if="image?.url" class="">
+          <Slide v-if="image?.url">
             <div class="flex flex-col w-full pr-2 !h-[70vh] overflow-hidden">
               <StSizedImage
                 :src="image.url"

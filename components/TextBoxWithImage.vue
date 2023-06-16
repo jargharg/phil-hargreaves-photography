@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .tbwi {
-  @apply lg:h-screen w-full;
+  @apply lg:h-screen max-h-[900px] w-full;
 
   &__wrapper {
     @apply relative flex flex-col md:flex-row md:min-h-[50vh];

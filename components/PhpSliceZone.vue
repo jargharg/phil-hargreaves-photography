@@ -32,5 +32,9 @@ export default {
   :deep section:first-of-type {
     margin-top: 0 !important;
   }
+
+  :deep section:last-of-type {
+    margin-bottom: 0 !important;
+  }
 }
 </style>

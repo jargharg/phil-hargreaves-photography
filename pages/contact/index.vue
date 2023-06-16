@@ -4,7 +4,7 @@
       <FullscreenImage :image="doc.heroImage" />
     </HeroSection>
 
-    <PhpSliceZone :slices="doc.slices2" class="pt-16" />
+    <PhpSliceZone :slices="doc.slices2" class="pt-16 pb-16 bg-brand-cream" />
   </article>
 </template>
 

@@ -72,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 .cta-button {
   $root: &;
-  @apply flex items-center z-10;
+  @apply flex items-center z-10 whitespace-nowrap;
   @apply text-center leading-none uppercase text-sm-mobile lg:text-sm tracking-[0.15em] lg:tracking-[0.2em];
 
   &:not(:disabled) {

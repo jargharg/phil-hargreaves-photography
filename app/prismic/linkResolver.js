@@ -4,6 +4,7 @@ export const DOCUMENT_TYPES = {
   gallery: 'gallery',
   globals: 'globals',
   homepage: 'homepage',
+  landingPage: 'landingPage',
   legal: 'legal',
   testimonials: 'testimonials',
   theStudio: 'theStudio',
@@ -41,6 +42,10 @@ export default function (doc) {
 
   if (doc.type === DOCUMENT_TYPES.theStudio) {
     return '/the-studio/'
+  }
+
+  if (doc.type === DOCUMENT_TYPES.landingPage) {
+    return `/landing-page/${doc.uid}/`
   }
 
   if (doc.type === DOCUMENT_TYPES.legal) {

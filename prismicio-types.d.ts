@@ -91,9 +91,9 @@ interface AboutDocumentData {
  *
  */
 type AboutDocumentDataSlices2Slice =
-  | QuotesBlockSlice
   | TextBlockSlice
   | WideImageBlockSlice
+  | QuotesBlockSlice
   | EmphasisBlockSlice;
 /**
  * About document from Prismic
@@ -142,17 +142,59 @@ interface ContactDocumentData {
    */
   primaryImage: prismic.ImageField<"meta">;
   /**
-   * Body field in *Contact*
+   * Image field in *Contact*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
+  /**
+   * Tagline field in *Contact*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact.body
-   * - **Tab**: Body
+   * - **API ID Path**: contact.heroTagline
+   * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  body: prismic.RichTextField;
+  heroTagline: prismic.RichTextField;
+  /**
+   * Text Colour field in *Contact*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: contact.heroTextColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
+   * Slice Zone field in *Contact*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.slices2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices2: prismic.SliceZone<ContactDocumentDataSlices2Slice>;
 }
+/**
+ * Slice for *Contact → Slice Zone*
+ *
+ */
+type ContactDocumentDataSlices2Slice =
+  | TextBlockSlice
+  | WideImageBlockSlice
+  | EmphasisBlockSlice;
 /**
  * Contact document from Prismic
  *
@@ -254,8 +296,8 @@ interface GalleryDocumentData {
  *
  */
 type GalleryDocumentDataSlices2Slice =
-  | TextBlockSlice
   | ImageCarouselBlockSlice
+  | TextBlockSlice
   | EmphasisBlockSlice;
 /**
  * Gallery document from Prismic
@@ -569,6 +611,18 @@ interface HomepageDocumentData {
    */
   heroImages: prismic.GroupField<Simplify<HomepageDocumentDataHeroImagesItem>>;
   /**
+   * Text Colour field in *Homepage*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: homepage.heroTextColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
    * Text Blocks field in *Homepage*
    *
    * - **Field Type**: Group
@@ -683,8 +737,8 @@ export interface HomepageDocumentDataIntroTextBlocksItem {
  *
  */
 type HomepageDocumentDataSlices7Slice =
-  | QuotesBlockSlice
-  | FullscreenTextWithImageBlockSlice;
+  | FullscreenTextWithImageBlockSlice
+  | QuotesBlockSlice;
 /**
  * Homepage document from Prismic
  *
@@ -698,6 +752,112 @@ export type HomepageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<HomepageDocumentData>,
     "homepage",
+    Lang
+  >;
+/** Content for Landing Page documents */
+interface LandingPageDocumentData {
+  /**
+   * Title field in *Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landingPage.title
+   * - **Tab**: Core
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * Summary field in *Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landingPage.summary
+   * - **Tab**: Meta
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  summary: prismic.KeyTextField;
+  /**
+   * Primary Image field in *Landing Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landingPage.primaryImage
+   * - **Tab**: Meta
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  primaryImage: prismic.ImageField<"meta">;
+  /**
+   * Image field in *Landing Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landingPage.heroImage
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
+  /**
+   * Tagline field in *Landing Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landingPage.heroTagline
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  heroTagline: prismic.RichTextField;
+  /**
+   * Text Colour field in *Landing Page*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Light
+   * - **API ID Path**: landingPage.heroTextColor
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
+  /**
+   * Slice Zone field in *Landing Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landingPage.slices2[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices2: prismic.SliceZone<LandingPageDocumentDataSlices2Slice>;
+}
+/**
+ * Slice for *Landing Page → Slice Zone*
+ *
+ */
+type LandingPageDocumentDataSlices2Slice =
+  | TextBlockSlice
+  | WideImageBlockSlice
+  | QuotesBlockSlice
+  | EmphasisBlockSlice
+  | ImageCarouselBlockSlice;
+/**
+ * Landing Page document from Prismic
+ *
+ * - **API ID**: `landingPage`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LandingPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LandingPageDocumentData>,
+    "landingPage",
     Lang
   >;
 /** Content for Legal documents */
@@ -949,9 +1109,9 @@ interface TheStudioDocumentData {
  *
  */
 type TheStudioDocumentDataSlices2Slice =
-  | QuotesBlockSlice
   | TextBlockSlice
   | WideImageBlockSlice
+  | QuotesBlockSlice
   | EmphasisBlockSlice;
 /**
  * The Studio document from Prismic
@@ -974,9 +1134,66 @@ export type AllDocumentTypes =
   | GalleryDocument
   | GlobalsDocument
   | HomepageDocument
+  | LandingPageDocument
   | LegalDocument
   | TestimonialsDocument
   | TheStudioDocument;
+/**
+ * Primary content in ContactBlock → Primary
+ *
+ */
+interface ContactBlockSliceDefaultPrimary {
+  /**
+   * Title field in *ContactBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_block.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * Intro field in *ContactBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_block.primary.intro
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  intro: prismic.RichTextField;
+}
+/**
+ * Default variation for ContactBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *ContactBlock*
+ *
+ */
+type ContactBlockSliceVariation = ContactBlockSliceDefault;
+/**
+ * ContactBlock Shared Slice
+ *
+ * - **API ID**: `contact_block`
+ * - **Description**: `ContactBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactBlockSlice = prismic.SharedSlice<
+  "contact_block",
+  ContactBlockSliceVariation
+>;
 /**
  * Primary content in EmphasisBlock → Primary
  *
@@ -1496,6 +1713,7 @@ declare module "@prismicio/client" {
       AboutDocumentDataSlices2Slice,
       AboutDocument,
       ContactDocumentData,
+      ContactDocumentDataSlices2Slice,
       ContactDocument,
       GalleryDocumentData,
       GalleryDocumentDataSlices2Slice,
@@ -1511,6 +1729,9 @@ declare module "@prismicio/client" {
       HomepageDocumentDataIntroTextBlocksItem,
       HomepageDocumentDataSlices7Slice,
       HomepageDocument,
+      LandingPageDocumentData,
+      LandingPageDocumentDataSlices2Slice,
+      LandingPageDocument,
       LegalDocumentData,
       LegalDocument,
       TestimonialsDocumentData,
@@ -1520,6 +1741,10 @@ declare module "@prismicio/client" {
       TheStudioDocumentDataSlices2Slice,
       TheStudioDocument,
       AllDocumentTypes,
+      ContactBlockSliceDefaultPrimary,
+      ContactBlockSliceDefault,
+      ContactBlockSliceVariation,
+      ContactBlockSlice,
       EmphasisBlockSliceDefaultPrimary,
       EmphasisBlockSliceDefault,
       EmphasisBlockSliceVariation,

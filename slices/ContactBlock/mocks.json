@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "pen",
+				"type": "Text"
+			},
+			"intro": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolore nulla tempor fugiat labore mollit anim id. Dolore dolore laboris in consectetur enim elit id anim eiusmod minim aliquip adipisicing qui sint nisi."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

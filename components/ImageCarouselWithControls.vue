@@ -1,6 +1,26 @@
 <template>
   <div class="image-carousel">
     <client-only>
+      <VueFlicking :options="{ circular: true }">
+        <div
+          v-for="({ image, caption }, index) in items"
+          :key="index"
+          class="flex flex-col pr-2 !h-[70vh]"
+          :style="{aspectRatio: image.dimensions.width + '/' + image.dimensions.height }"
+        >
+          <StSizedImage
+            :src="image.url"
+            :alt="image.alt"
+            :dimensions="image.dimensions"
+            sizes="sm:95vw md:95vw lg:65vw xl:65vw 2xl:65vw"
+          />
+
+          <p v-if="caption" class="image-carousel__caption container">
+            {{ caption }}
+          </p>
+        </div>
+      </VueFlicking>
+
       <Carousel ref="elCarousel" v-bind="settings">
         <template
           v-for="({ image, caption }, index) in items"

@@ -177,7 +177,7 @@ export default defineNuxtConfig({
   ],
 
   build: {
-    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@studiotreble'],
+    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@studiotreble', '@egjs/vue3-flicking'],
   },
 
   postcss: {

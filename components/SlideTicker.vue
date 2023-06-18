@@ -1,6 +1,6 @@
 <template>
   <div
-    class="overflow-clip h-[40vh] max-h-[300px]"
+    class="overflow-clip h-[40vh] max-h-[300px] bg-brand-cream"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >

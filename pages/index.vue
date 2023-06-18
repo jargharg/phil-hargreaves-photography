@@ -36,8 +36,6 @@
     <section>
       <PhpSliceZone :slices="doc.slices7" />
     </section>
-
-    <SlideTicker />
   </article>
 </template>
 

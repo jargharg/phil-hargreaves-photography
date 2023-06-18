@@ -6,6 +6,8 @@
       <NuxtPage :transition="defaultTransition" />
     </main>
 
+    <SlideTicker />
+
     <SiteFooter />
   </div>
 </template>

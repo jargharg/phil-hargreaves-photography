@@ -1,5 +1,5 @@
 <template>
-  <ArticleSection :with-margin="false" :with-container="false">
+  <ArticleSection :with-margin="false" :with-container="false" class="emphasis-slice">
     <EmphasisBlock
       :body="slice.primary.body"
       :cta-link="slice.primary.ctaLink"

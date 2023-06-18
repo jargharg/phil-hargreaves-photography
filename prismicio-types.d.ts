@@ -5,107 +5,6 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 };
-/** Content for About documents */
-interface AboutDocumentData {
-  /**
-   * Title field in *About*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  title: prismic.KeyTextField;
-  /**
-   * Summary field in *About*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.summary
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  summary: prismic.KeyTextField;
-  /**
-   * Primary Image field in *About*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.primaryImage
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  primaryImage: prismic.ImageField<"meta">;
-  /**
-   * Image field in *About*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.heroImage
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
-  /**
-   * Tagline field in *About*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.heroTagline
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  heroTagline: prismic.RichTextField;
-  /**
-   * Text Colour field in *About*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Light
-   * - **API ID Path**: about.heroTextColor
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
-   */
-  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
-  /**
-   * Slice Zone field in *About*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.slices2[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
-   */
-  slices2: prismic.SliceZone<AboutDocumentDataSlices2Slice>;
-}
-/**
- * Slice for *About → Slice Zone*
- *
- */
-type AboutDocumentDataSlices2Slice =
-  | TextBlockSlice
-  | WideImageBlockSlice
-  | QuotesBlockSlice
-  | EmphasisBlockSlice;
-/**
- * About document from Prismic
- *
- * - **API ID**: `about`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type AboutDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 /** Content for Contact documents */
 interface ContactDocumentData {
   /**
@@ -140,7 +39,7 @@ interface ContactDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  primaryImage: prismic.ImageField<"meta">;
+  primaryImage: prismic.ImageField<never>;
   /**
    * Image field in *Contact*
    *
@@ -210,108 +109,111 @@ export type ContactDocument<Lang extends string = string> =
     "contact",
     Lang
   >;
-/** Content for Gallery documents */
-interface GalleryDocumentData {
+/** Content for Content Page documents */
+interface ContentPageDocumentData {
   /**
-   * Title field in *Gallery*
+   * Title field in *Content Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.title
+   * - **API ID Path**: contentPage.title
    * - **Tab**: Core
    * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
   title: prismic.KeyTextField;
   /**
-   * Summary field in *Gallery*
+   * Summary field in *Content Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.summary
+   * - **API ID Path**: contentPage.summary
    * - **Tab**: Meta
    * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
   summary: prismic.KeyTextField;
   /**
-   * Primary Image field in *Gallery*
+   * Primary Image field in *Content Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.primaryImage
+   * - **API ID Path**: contentPage.primaryImage
    * - **Tab**: Meta
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  primaryImage: prismic.ImageField<"meta">;
+  primaryImage: prismic.ImageField<never>;
   /**
-   * Image field in *Gallery*
+   * Image field in *Content Page*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.heroImage
+   * - **API ID Path**: contentPage.heroImage
    * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
   heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
   /**
-   * Tagline field in *Gallery*
+   * Tagline field in *Content Page*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.heroTagline
+   * - **API ID Path**: contentPage.heroTagline
    * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
   heroTagline: prismic.RichTextField;
   /**
-   * Text Colour field in *Gallery*
+   * Text Colour field in *Content Page*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **Default Value**: Light
-   * - **API ID Path**: gallery.heroTextColor
+   * - **API ID Path**: contentPage.heroTextColor
    * - **Tab**: Hero
    * - **Documentation**: https://prismic.io/docs/core-concepts/select
    *
    */
   heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
   /**
-   * Slice Zone field in *Gallery*
+   * Slice Zone field in *Content Page*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.slices2[]
+   * - **API ID Path**: contentPage.slices2[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/core-concepts/slices
    *
    */
-  slices2: prismic.SliceZone<GalleryDocumentDataSlices2Slice>;
+  slices2: prismic.SliceZone<ContentPageDocumentDataSlices2Slice>;
 }
 /**
- * Slice for *Gallery → Slice Zone*
+ * Slice for *Content Page → Slice Zone*
  *
  */
-type GalleryDocumentDataSlices2Slice =
-  | ImageCarouselBlockSlice
+type ContentPageDocumentDataSlices2Slice =
   | TextBlockSlice
-  | EmphasisBlockSlice;
+  | WideImageBlockSlice
+  | QuotesBlockSlice
+  | EmphasisBlockSlice
+  | TestimonialBlockSlice
+  | ImageCarouselBlockSlice;
 /**
- * Gallery document from Prismic
+ * Content Page document from Prismic
  *
- * - **API ID**: `gallery`
- * - **Repeatable**: `false`
+ * - **API ID**: `contentPage`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type GalleryDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<GalleryDocumentData>,
-    "gallery",
+export type ContentPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContentPageDocumentData>,
+    "contentPage",
     Lang
   >;
 /** Content for Globals documents */
@@ -565,7 +467,7 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  primaryImage: prismic.ImageField<"meta">;
+  primaryImage: prismic.ImageField<never>;
   /**
    * Tagline field in *Homepage*
    *
@@ -788,7 +690,7 @@ interface LandingPageDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  primaryImage: prismic.ImageField<"meta">;
+  primaryImage: prismic.ImageField<never>;
   /**
    * Image field in *Landing Page*
    *
@@ -918,226 +820,13 @@ interface LegalDocumentData {
  */
 export type LegalDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<LegalDocumentData>, "legal", Lang>;
-/** Content for Testimonials documents */
-interface TestimonialsDocumentData {
-  /**
-   * Title field in *Testimonials*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  title: prismic.KeyTextField;
-  /**
-   * Summary field in *Testimonials*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.summary
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  summary: prismic.KeyTextField;
-  /**
-   * Primary Image field in *Testimonials*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.primaryImage
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  primaryImage: prismic.ImageField<"meta">;
-  /**
-   * Image field in *Testimonials*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.heroImage
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
-  /**
-   * Tagline field in *Testimonials*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.heroTagline
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  heroTagline: prismic.RichTextField;
-  /**
-   * Text Colour field in *Testimonials*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Light
-   * - **API ID Path**: testimonials.heroTextColor
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
-   */
-  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
-  /**
-   * Slice Zone field in *Testimonials*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonials.slices2[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
-   */
-  slices2: prismic.SliceZone<TestimonialsDocumentDataSlices2Slice>;
-}
-/**
- * Slice for *Testimonials → Slice Zone*
- *
- */
-type TestimonialsDocumentDataSlices2Slice =
-  | TestimonialBlockSlice
-  | WideImageBlockSlice
-  | EmphasisBlockSlice
-  | TextBlockSlice;
-/**
- * Testimonials document from Prismic
- *
- * - **API ID**: `testimonials`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type TestimonialsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<TestimonialsDocumentData>,
-    "testimonials",
-    Lang
-  >;
-/** Content for The Studio documents */
-interface TheStudioDocumentData {
-  /**
-   * Title field in *The Studio*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.title
-   * - **Tab**: Core
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  title: prismic.KeyTextField;
-  /**
-   * Summary field in *The Studio*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.summary
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  summary: prismic.KeyTextField;
-  /**
-   * Primary Image field in *The Studio*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.primaryImage
-   * - **Tab**: Meta
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  primaryImage: prismic.ImageField<"meta">;
-  /**
-   * Image field in *The Studio*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.heroImage
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  heroImage: prismic.ImageField<"wide" | "square" | "portrait">;
-  /**
-   * Tagline field in *The Studio*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.heroTagline
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  heroTagline: prismic.RichTextField;
-  /**
-   * Text Colour field in *The Studio*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Light
-   * - **API ID Path**: theStudio.heroTextColor
-   * - **Tab**: Hero
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
-   */
-  heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
-  /**
-   * Slice Zone field in *The Studio*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: theStudio.slices2[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
-   */
-  slices2: prismic.SliceZone<TheStudioDocumentDataSlices2Slice>;
-}
-/**
- * Slice for *The Studio → Slice Zone*
- *
- */
-type TheStudioDocumentDataSlices2Slice =
-  | TextBlockSlice
-  | WideImageBlockSlice
-  | QuotesBlockSlice
-  | EmphasisBlockSlice;
-/**
- * The Studio document from Prismic
- *
- * - **API ID**: `theStudio`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type TheStudioDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<TheStudioDocumentData>,
-    "theStudio",
-    Lang
-  >;
 export type AllDocumentTypes =
-  | AboutDocument
   | ContactDocument
-  | GalleryDocument
+  | ContentPageDocument
   | GlobalsDocument
   | HomepageDocument
   | LandingPageDocument
-  | LegalDocument
-  | TestimonialsDocument
-  | TheStudioDocument;
+  | LegalDocument;
 /**
  * Primary content in ContactBlock → Primary
  *
@@ -1709,15 +1398,12 @@ declare module "@prismicio/client" {
   }
   namespace Content {
     export type {
-      AboutDocumentData,
-      AboutDocumentDataSlices2Slice,
-      AboutDocument,
       ContactDocumentData,
       ContactDocumentDataSlices2Slice,
       ContactDocument,
-      GalleryDocumentData,
-      GalleryDocumentDataSlices2Slice,
-      GalleryDocument,
+      ContentPageDocumentData,
+      ContentPageDocumentDataSlices2Slice,
+      ContentPageDocument,
       GlobalsDocumentData,
       GlobalsDocumentDataMenuItem,
       GlobalsDocumentDataFooterPoliciesItem,
@@ -1734,12 +1420,6 @@ declare module "@prismicio/client" {
       LandingPageDocument,
       LegalDocumentData,
       LegalDocument,
-      TestimonialsDocumentData,
-      TestimonialsDocumentDataSlices2Slice,
-      TestimonialsDocument,
-      TheStudioDocumentData,
-      TheStudioDocumentDataSlices2Slice,
-      TheStudioDocument,
       AllDocumentTypes,
       ContactBlockSliceDefaultPrimary,
       ContactBlockSliceDefault,

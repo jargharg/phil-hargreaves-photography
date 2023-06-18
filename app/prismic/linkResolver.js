@@ -1,13 +1,10 @@
 export const DOCUMENT_TYPES = {
-  about: 'about',
   contact: 'contact',
-  gallery: 'gallery',
+  contentPage: 'contentPage',
   globals: 'globals',
   homepage: 'homepage',
   landingPage: 'landingPage',
   legal: 'legal',
-  testimonials: 'testimonials',
-  theStudio: 'theStudio',
 }
 
 const HOMEPAGE_DOC_TYPES = [
@@ -24,24 +21,12 @@ export default function (doc) {
     return '/'
   }
 
-  if (doc.type === DOCUMENT_TYPES.about) {
-    return '/about/'
-  }
-
   if (doc.type === DOCUMENT_TYPES.contact) {
     return '/contact/'
   }
 
-  if (doc.type === DOCUMENT_TYPES.gallery) {
-    return '/gallery/'
-  }
-
-  if (doc.type === DOCUMENT_TYPES.testimonials) {
-    return '/testimonials/'
-  }
-
-  if (doc.type === DOCUMENT_TYPES.theStudio) {
-    return '/the-studio/'
+  if (doc.type === DOCUMENT_TYPES.contentPage) {
+    return `/${doc.uid}/`
   }
 
   if (doc.type === DOCUMENT_TYPES.landingPage) {

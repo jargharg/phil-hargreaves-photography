@@ -3,7 +3,7 @@
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
   >
-    Placeholder component for contact_block (variation: {{ slice.variation }})
+    Placeholder component for embed_block (variation: {{ slice.variation }})
     Slices
   </section>
 </template>
@@ -14,7 +14,7 @@ import { Content } from "@prismicio/client";
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
 defineProps(
-  getSliceComponentProps<Content.ContactBlockSlice>([
+  getSliceComponentProps<Content.EmbedBlockSlice>([
     "slice",
     "index",
     "slices",

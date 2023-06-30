@@ -1,8 +1,8 @@
 {
-  "id": "contact_block",
+  "id": "embed_block",
   "type": "SharedSlice",
-  "name": "ContactBlock",
-  "description": "ContactBlock",
+  "name": "EmbedBlock",
+  "description": "EmbedBlock",
   "variations": [
     {
       "id": "default",
@@ -24,6 +24,10 @@
             "allowTargetBlank": false,
             "multi": "paragraph"
           }
+        },
+        "embedCode": {
+          "type": "Embed",
+          "config": { "label": "Embed Code", "placeholder": "" }
         }
       },
       "items": {}

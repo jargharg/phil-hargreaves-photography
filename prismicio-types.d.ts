@@ -93,7 +93,8 @@ interface ContactDocumentData {
 type ContactDocumentDataSlices2Slice =
   | TextBlockSlice
   | WideImageBlockSlice
-  | EmphasisBlockSlice;
+  | EmphasisBlockSlice
+  | EmbedBlockSlice;
 /**
  * Contact document from Prismic
  *
@@ -211,7 +212,8 @@ type ContentPageDocumentDataSlices2Slice =
   | QuotesBlockSlice
   | EmphasisBlockSlice
   | TestimonialBlockSlice
-  | ImageCarouselBlockSlice;
+  | ImageCarouselBlockSlice
+  | EmbedBlockSlice;
 /**
  * Content Page document from Prismic
  *
@@ -757,7 +759,8 @@ type LandingPageDocumentDataSlices2Slice =
   | WideImageBlockSlice
   | QuotesBlockSlice
   | EmphasisBlockSlice
-  | ImageCarouselBlockSlice;
+  | ImageCarouselBlockSlice
+  | EmbedBlockSlice;
 /**
  * Landing Page document from Prismic
  *
@@ -839,60 +842,70 @@ export type AllDocumentTypes =
   | LandingPageDocument
   | LegalDocument;
 /**
- * Primary content in ContactBlock → Primary
+ * Primary content in EmbedBlock → Primary
  *
  */
-interface ContactBlockSliceDefaultPrimary {
+interface EmbedBlockSliceDefaultPrimary {
   /**
-   * Title field in *ContactBlock → Primary*
+   * Title field in *EmbedBlock → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact_block.primary.title
+   * - **API ID Path**: embed_block.primary.title
    * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
   title: prismic.KeyTextField;
   /**
-   * Intro field in *ContactBlock → Primary*
+   * Intro field in *EmbedBlock → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact_block.primary.intro
+   * - **API ID Path**: embed_block.primary.intro
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
   intro: prismic.RichTextField;
+  /**
+   * Embed Code field in *EmbedBlock → Primary*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: embed_block.primary.embedCode
+   * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+   *
+   */
+  embedCode: prismic.EmbedField;
 }
 /**
- * Default variation for ContactBlock Slice
+ * Default variation for EmbedBlock Slice
  *
  * - **API ID**: `default`
  * - **Description**: `Default`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type ContactBlockSliceDefault = prismic.SharedSliceVariation<
+export type EmbedBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<ContactBlockSliceDefaultPrimary>,
+  Simplify<EmbedBlockSliceDefaultPrimary>,
   never
 >;
 /**
- * Slice variation for *ContactBlock*
+ * Slice variation for *EmbedBlock*
  *
  */
-type ContactBlockSliceVariation = ContactBlockSliceDefault;
+type EmbedBlockSliceVariation = EmbedBlockSliceDefault;
 /**
- * ContactBlock Shared Slice
+ * EmbedBlock Shared Slice
  *
- * - **API ID**: `contact_block`
- * - **Description**: `ContactBlock`
+ * - **API ID**: `embed_block`
+ * - **Description**: `EmbedBlock`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type ContactBlockSlice = prismic.SharedSlice<
-  "contact_block",
-  ContactBlockSliceVariation
+export type EmbedBlockSlice = prismic.SharedSlice<
+  "embed_block",
+  EmbedBlockSliceVariation
 >;
 /**
  * Primary content in EmphasisBlock → Primary
@@ -1432,10 +1445,10 @@ declare module "@prismicio/client" {
       LegalDocumentData,
       LegalDocument,
       AllDocumentTypes,
-      ContactBlockSliceDefaultPrimary,
-      ContactBlockSliceDefault,
-      ContactBlockSliceVariation,
-      ContactBlockSlice,
+      EmbedBlockSliceDefaultPrimary,
+      EmbedBlockSliceDefault,
+      EmbedBlockSliceVariation,
+      EmbedBlockSlice,
       EmphasisBlockSliceDefaultPrimary,
       EmphasisBlockSliceDefault,
       EmphasisBlockSliceVariation,

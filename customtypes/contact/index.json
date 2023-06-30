@@ -64,7 +64,8 @@
           "choices": {
             "text_block": { "type": "SharedSlice" },
             "wide_image_block": { "type": "SharedSlice" },
-            "emphasis_block": { "type": "SharedSlice" }
+            "emphasis_block": { "type": "SharedSlice" },
+            "embed_block": { "type": "SharedSlice" }
           }
         }
       }

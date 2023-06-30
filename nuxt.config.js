@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import linkResolver from './app/prismic/linkResolver'
+import generateAllRoutes from './helpers/generateAllRoutes-nuxt3'
 import smConfig from './slicemachine.config.json'
 
 const EXCLUDED_SITEMAP_ROUTES = ['/preview/', '/404/', '/slice-simulator/']
@@ -10,8 +12,19 @@ if (!smConfig.apiEndpoint) {
 }
 
 export default defineNuxtConfig({
+  hooks: {
+    async 'nitro:config' (nitroConfig) {
+      if (nitroConfig.dev) { return }
+      const prismicRoutes = await generateAllRoutes(smConfig.apiEndpoint, linkResolver)
+      nitroConfig.prerender.routes.push(...prismicRoutes)
+    },
+  },
+
   nitro: {
     preset: 'cloudflare_pages',
+    prerender: {
+      crawlLinks: false,
+    },
   },
 
   modern: process.env.NODE_ENV !== 'development' ? 'client' : false,

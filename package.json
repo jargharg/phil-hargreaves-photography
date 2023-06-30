@@ -7,6 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "serve": "npx serve ./dist",
     "slicemachine": "start-slicemachine --port 9999",
     "worker:dev": "yarn build && npx wrangler dev",
     "worker:publish": "yarn build && npx wrangler publish --env production",

@@ -1,7 +1,13 @@
 <template>
   <article>
     <HeroSection :title="doc.title" :tagline="doc.heroTagline">
-      <FullscreenImage :image="doc.heroImage" />
+      <!-- <FullscreenImage :image="doc.heroImage" /> -->
+
+      <FullscreenImageWithMask
+        v-if="doc.heroImageMask?.url"
+        :image="doc.heroImage"
+        :mask="doc.heroImageMask"
+      />
     </HeroSection>
 
     <PhpSliceZone :slices="doc.slices2" class="slice-zone" />

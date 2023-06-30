@@ -179,6 +179,17 @@ interface ContentPageDocumentData {
    */
   heroTextColor: prismic.SelectField<"Light" | "Dark", "filled">;
   /**
+   * Image Mask (TEST) field in *Content Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contentPage.heroImageMask
+   * - **Tab**: Hero
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  heroImageMask: prismic.ImageField<never>;
+  /**
    * Slice Zone field in *Content Page*
    *
    * - **Field Type**: Slice Zone

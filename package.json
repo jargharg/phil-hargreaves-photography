@@ -14,7 +14,7 @@
     "worker:publish:staging": "npm run build && npx wrangler publish --env staging"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",

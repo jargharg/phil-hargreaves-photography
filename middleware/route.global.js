@@ -1,5 +1,5 @@
 import sleep from '~/helpers/sleep'
-import { DURATION_IN_MS } from '~/composables/defaultTransition'
+import { DURATION_IN_MS } from '~/helpers/defaultTransition'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   if (to.path !== from.path && process.client) {

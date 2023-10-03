@@ -1,12 +1,16 @@
+import clientDetails from '~/clientDetails'
+
 export function mapSeoMetaOptions (
-  title,
-  description,
-  imageField,
-  links = {},
-  overrideFullTitle = false,
-  imageCropName = 'meta',
+  {
+    title,
+    description,
+    image,
+    links = {},
+    overrideFullTitle = false,
+    imageCropName = 'main',
+  },
 ) {
-  const siteName = 'Phil Hargreaves Photography'
+  const { siteName } = clientDetails
   const titleString = overrideFullTitle ? title : `${title} | ${siteName}`
 
   const meta = [
@@ -52,32 +56,32 @@ export function mapSeoMetaOptions (
     )
   }
 
-  if (imageField && imageCropName in imageField && Object.keys(imageField[imageCropName]).length > 0) {
+  if (image && imageCropName in image && Object.keys(image[imageCropName]).length > 0) {
     meta.push(
       {
         hid: 'image',
         name: 'image',
-        content: imageField[imageCropName]?.url || '',
+        content: image[imageCropName]?.url || '',
       },
       {
         hid: 'og:image',
         name: 'og:image',
-        content: imageField[imageCropName]?.url || '',
+        content: image[imageCropName]?.url || '',
       },
       {
         hid: 'og:image:width',
         name: 'og:image:width',
-        content: imageField[imageCropName]?.dimensions?.width || '',
+        content: image[imageCropName]?.dimensions?.width || '',
       },
       {
         hid: 'og:image:height',
         name: 'og:image:height',
-        content: imageField[imageCropName]?.dimensions?.height || '',
+        content: image[imageCropName]?.dimensions?.height || '',
       },
       {
         hid: 'og:image:alt',
         name: 'og:image:alt',
-        content: imageField[imageCropName]?.alt || imageField.alt || '',
+        content: image[imageCropName]?.alt || image.alt || '',
       },
     )
   }

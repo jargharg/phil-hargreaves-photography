@@ -1,13 +1,13 @@
 <template>
   <article>
     <HeroSection :title="doc.title" :tagline="doc.heroTagline">
-      <!-- <FullscreenImage :image="doc.heroImage" /> -->
-
       <FullscreenImageWithMask
         v-if="doc.heroImageMask?.url"
         :image="doc.heroImage"
         :mask="doc.heroImageMask"
       />
+
+      <FullscreenImage v-else :image="doc.heroImage" />
     </HeroSection>
 
     <PhpSliceZone :slices="doc.slices2" class="slice-zone" />
@@ -15,12 +15,13 @@
 </template>
 
 <script>
-import { getDocumentFromPrismic } from '~/composables/getDocumentFromPrismic'
+import { getDocumentFromPrismic } from '~/helpers/getDocumentFromPrismic'
 
 export default {
   async setup () {
-    const doc = await getDocumentFromPrismic('contentPage', { repeatable: true })
-    console.log(doc)
+    const doc = await getDocumentFromPrismic('contentPage', {
+      repeatable: true,
+    })
 
     return { doc }
   },

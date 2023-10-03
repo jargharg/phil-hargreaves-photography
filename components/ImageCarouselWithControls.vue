@@ -10,7 +10,7 @@
             aspectRatio: image.dimensions.width + '/' + image.dimensions.height,
           }"
         >
-          <StSizedImage
+          <SizedImage
             :src="image.url"
             :alt="image.alt"
             :dimensions="image.dimensions"
@@ -39,7 +39,7 @@
 
       <template #placeholder>
         <div class="w-[91%] md:w-2/3 flex flex-col pr-2">
-          <StSizedImage
+          <SizedImage
             :src="items[0].image.url"
             :alt="items[0].image.alt"
             :dimensions="items[0].image.dimensions"

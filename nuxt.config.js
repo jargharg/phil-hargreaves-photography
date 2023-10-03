@@ -1,22 +1,36 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import fs from 'fs'
 import linkResolver from './app/prismic/linkResolver'
-import generateAllRoutes from './helpers/generateAllRoutes-nuxt3'
+import clientDetails from './clientDetails'
+import generateAllRoutesFromPrismic from './helpers/generateAllRoutesFromPrismic'
 import smConfig from './slicemachine.config.json'
 
+const DEFAULT_SITE_URL = 'http://localhost:3000'
 const EXCLUDED_SITEMAP_ROUTES = ['/preview/', '/404/', '/slice-simulator/']
 
 if (!smConfig.apiEndpoint) {
   // eslint-disable-next-line no-console
-  console.warn("Looks like Slice Machine hasn't been bootstrapped already.\nCheck the `Getting Started` section of the README file :)")
+  console.warn("Please add your Prismic repository's endpoint to the `slicemachine.config.json` file.")
 }
 
 export default defineNuxtConfig({
+  devtools: { enabled: process.env.NODE_ENV === 'development' },
+
   hooks: {
     async 'nitro:config' (nitroConfig) {
       if (nitroConfig.dev) { return }
-      const prismicRoutes = await generateAllRoutes(smConfig.apiEndpoint, linkResolver)
+      const prismicRoutes = await generateAllRoutesFromPrismic(smConfig.apiEndpoint, linkResolver)
       nitroConfig.prerender.routes.push(...prismicRoutes)
+    },
+
+    'sitemap:generate:done' () {
+      const sitemapServerPath = './.output/public/sitemap.xml'
+      const sitemapStaticPath = './dist/sitemap.xml'
+
+      if (fs.existsSync(sitemapServerPath)) {
+        fs.renameSync(sitemapServerPath, sitemapStaticPath)
+      }
     },
   },
 
@@ -35,7 +49,7 @@ export default defineNuxtConfig({
       lang: 'en',
     },
 
-    title: 'Phil Hargreaves Photography',
+    title: clientDetails.siteName,
 
     meta: [
       {
@@ -68,54 +82,56 @@ export default defineNuxtConfig({
       {
         hid: 'og:site_name',
         name: 'og:site_name',
-        content: 'Phil Hargreaves Photography',
+        content: clientDetails.siteName,
       },
       {
         hid: 'og:locale',
         name: 'og:locale',
         content: 'en_gb',
       },
-      {
-        hid: 'og:see_also:pinterest',
-        name: 'og:see_also',
-        content: 'https://www.pinterest.co.uk/------',
-      },
-      {
+      (
+        clientDetails.pinterestName?.length && {
+          hid: 'og:see_also:pinterest',
+          name: 'og:see_also',
+          content: `https://www.pinterest.co.uk/${clientDetails.pinterestName}`,
+        }
+      ),
+      (clientDetails.instagramName?.length && {
         hid: 'og:see_also:instagram',
         name: 'og:see_also',
-        content: 'https://www.instagram.com/------',
-      },
-      {
+        content: `https://www.instagram.com/${clientDetails.instagramName}`,
+      }),
+      (clientDetails.linkedinName?.length && {
         hid: 'og:see_also:linkedin',
         name: 'og:see_also',
-        content: 'https://www.linkedin.com/company/------',
-      },
+        content: `https://www.linkedin.com/company/${clientDetails.linkedinName}`,
+      }),
       {
         hid: 'twitter:card',
         name: 'twitter:card',
         content: 'summary',
       },
-      {
+      (clientDetails.twitterName?.length && {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@------',
-      },
-      {
+        content: clientDetails.twitterName,
+      }),
+      (clientDetails.twitterName?.length && {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@studiotreble',
-      },
+        content: clientDetails.twitterName,
+      }),
       {
         hid: 'msapplication-TileColor',
         name: 'msapplication-TileColor',
-        content: '#231f20',
+        content: '#ffffff',
       },
       {
         hid: 'theme-color',
         name: 'theme-color',
         content: '#ffffff',
       },
-      { // TODO: remove this on go live!!!!!!!!!!!!!
+      { // @TODO: remove this on go live!!!!!!!!!!!!!
         hid: 'robots',
         name: 'robots',
         content: 'noindex',
@@ -161,10 +177,14 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/main.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
 
   components: true,
+
+  app: {
+    pageTransition: true,
+    layoutTransition: false,
+  },
 
   modules: [
     '@nuxtjs/prismic',
@@ -177,7 +197,7 @@ export default defineNuxtConfig({
   ],
 
   build: {
-    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@studiotreble', '@egjs/vue3-flicking'],
+    transpile: ['nuxt-sm', 'sm-commons', 'gsap', 'pinia', '@egjs/vue3-flicking'],
   },
 
   postcss: {
@@ -189,9 +209,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: process.env.SITE_URL || 'http://localhost:3000',
-      googleAnalyticsMeasurementIdGA4: process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID_GA4 || null,
-      googleAnalyticsMeasurementIdUA: process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID_UA || null,
+      isDevMode: process.env.NODE_ENV === 'development',
+      siteUrl: process.env.SITE_URL || DEFAULT_SITE_URL,
+      googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID_GA4 || null,
     },
   },
 
@@ -206,43 +226,16 @@ export default defineNuxtConfig({
   image: {
     provider: 'prismic',
     prismic: {},
+    densities: [1, 2],
   },
 
   prismic: {
-    endpoint: smConfig.repositoryName || '',
+    endpoint: smConfig.repositoryName,
     modern: true,
   },
 
-  cookies: {
-    necessary: [
-      {
-        name: 'Cookie Control',
-        description: 'Used to save cookie consents.',
-        cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies'],
-      },
-    ],
-    optional: [
-      {
-        name: 'Statistics',
-        identifier: 'ga',
-        description: 'Analytics cookies help us understand how visitors interact with websites by collecting and reporting information anonymously.',
-        initialState: false,
-        src: 'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
-        async: true,
-        cookies: ['_ga', '_gat', '_gid', 'ga-cookie-consent'],
-        accepted: async () => {
-          // window.$nuxt.$ga.enable() // Activate module
-          // window.$nuxt.$ga.page(window.$nuxt.$route.path) // Track current route
-        },
-        declined: async () => {
-          // window.$nuxt.$cookies.remove('ga') // Remove any existing Google Analytics cookies
-        },
-      },
-    ],
-  },
-
   sitemap: {
-    hostname: process.env.SITE_URL,
+    hostname: process.env.SITE_URL || DEFAULT_SITE_URL,
     trailingSlash: true,
     filter: ({ routes }) => {
       return routes.filter(({ url }) => !EXCLUDED_SITEMAP_ROUTES.find(excludedRoute => url.includes(excludedRoute)))
@@ -254,8 +247,12 @@ export default defineNuxtConfig({
     fallback: 'cream',
   },
 
+  // @TODO style cookie control banner
   cookieControl: {
+    isAcceptNecessaryButtonEnabled: false,
+
     barPosition: 'bottom-full',
+
     colors: {
       barTextColor: '#1D1E1C',
       modalOverlay: '#000',
@@ -282,6 +279,32 @@ export default defineNuxtConfig({
       checkboxActiveCircleBackground: '#000',
       checkboxInactiveCircleBackground: '#fff',
       checkboxDisabledCircleBackground: '#fff',
+    },
+
+    cookies: {
+      necessary: [
+        {
+          name: 'Cookie Control',
+          description: {
+            en: 'Used to save cookie consents.',
+          },
+          targetCookieIds: ['ncc_e', 'ncc_c'],
+        },
+      ],
+
+      optional: [
+        {
+          id: 'ga',
+          name: {
+            en: 'Google Analytics',
+          },
+          description: 'Analytics cookies help us understand how visitors interact with websites by collecting and reporting information anonymously.',
+          initialState: false,
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID_GA4}`,
+          async: true,
+          targetCookieIds: ['_ga', '_gat', '_gid', 'ga-cookie-consent'],
+        },
+      ],
     },
   },
 })

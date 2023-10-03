@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getDocumentFromPrismic } from '~/composables/getDocumentFromPrismic'
+import { getDocumentFromPrismic } from '~/helpers/getDocumentFromPrismic'
 import { useGlobalsStore } from '~/stores/globals'
 
 export default {

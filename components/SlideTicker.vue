@@ -36,7 +36,7 @@
 import gsap from 'gsap'
 import sleep from '~/helpers/sleep'
 import { useGlobalsStore } from '~/stores/globals'
-import { DURATION_IN_MS } from '~/composables/defaultTransition'
+import { DURATION_IN_MS } from '~/helpers/defaultTransition'
 
 export default {
   setup () {

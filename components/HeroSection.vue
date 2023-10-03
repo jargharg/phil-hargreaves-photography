@@ -28,7 +28,7 @@
 import gsap from 'gsap'
 import sleep from '~/helpers/sleep'
 
-import { DURATION_IN_MS } from '~/composables/defaultTransition'
+import { DURATION_IN_MS } from '~/helpers/defaultTransition'
 import { useA11yStore } from '~/stores/a11y'
 
 export default {

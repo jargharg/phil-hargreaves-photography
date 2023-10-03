@@ -1,8 +1,7 @@
 import { createClient } from '@prismicio/client'
 import fetch from 'node-fetch'
 
-export default async function generateAllRoutes (apiEndpoint, linkResolver, lang = 'en-gb') {
-  // @TODO: use payload to pass data into vue files to reduce API calls
+export default async function generateAllRoutesFromPrismic (apiEndpoint, linkResolver, lang = 'en-gb') {
   const getAllDocuments = async () => {
     const getDocumentsByPage = async (page) => {
       const client = createClient(apiEndpoint, { fetch })

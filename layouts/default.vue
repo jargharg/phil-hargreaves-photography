@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import defaultTransition from '~/composables/defaultTransition'
+import defaultTransition from '~/helpers/defaultTransition'
 import { useA11yStore } from '~/stores/a11y'
 
 export default {

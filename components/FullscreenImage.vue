@@ -4,7 +4,7 @@
       <SizedImage
         :src="image.wide.url"
         :alt="image.wide.alt"
-        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        sizes="sm:110vw md:110vw lg:110vw xl:110vw 2xl:110vw"
         :lazy="lazy"
       />
     </div>
@@ -13,7 +13,7 @@
       <SizedImage
         :src="image.url"
         :alt="image.alt"
-        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        sizes="sm:110vw md:110vw lg:110vw xl:110vw 2xl:110vw"
         :lazy="lazy"
       />
     </div>
@@ -22,7 +22,7 @@
       <SizedImage
         :src="image.square.url"
         :alt="image.square.alt"
-        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        sizes="sm:110vw md:110vw lg:110vw xl:110vw 2xl:110vw"
         :lazy="lazy"
       />
     </div>
@@ -31,7 +31,7 @@
       <SizedImage
         :src="image.portrait.url"
         :alt="image.portrait.alt"
-        sizes="sm:220vw md:220vw lg:220vw xl:220vw 2xl:220vw"
+        sizes="sm:110vw md:110vw lg:110vw xl:110vw 2xl:110vw"
         :lazy="lazy"
       />
     </div>
@@ -51,7 +51,7 @@ export default {
       default: true,
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

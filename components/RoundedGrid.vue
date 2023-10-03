@@ -37,7 +37,7 @@
 
 <script>
 import gsap from 'gsap'
-import { DURATION_IN_MS } from '~/composables/defaultTransition'
+import { DURATION_IN_MS } from '~/helpers/defaultTransition'
 import sleep from '~/helpers/sleep'
 
 export default {

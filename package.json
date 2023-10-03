@@ -26,7 +26,6 @@
     "@nuxtjs/prismic": "^3.0.3",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/stylelint-module": "^5.1.0",
-    "@prismicio/slice-simulator-vue": "^0.2.3",
     "@slicemachine/adapter-nuxt": "^0.3.18",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.50.0",

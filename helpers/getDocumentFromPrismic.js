@@ -39,7 +39,9 @@ export async function getDocumentFromPrismic (
     const { id, first_publication_date: publishedDate } = response
     let { data } = response
 
-    colorMode.value = data.heroTextColor === 'Dark' ? 'blue' : 'cream'
+    if (data.heroTextColor) {
+      colorMode.value = data.heroTextColor === 'Dark' ? 'blue' : 'cream'
+    }
 
     if (dataMapFunction) {
       data = dataMapFunction(data)

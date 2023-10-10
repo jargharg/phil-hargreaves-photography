@@ -8,17 +8,15 @@
   </section>
 </template>
 
-<script setup lang="ts">
-import { Content } from "@prismicio/client";
+<script>
+export default {
+  name: 'EmbedBlockSlice',
 
-// The array passed to `getSliceComponentProps` is purely optional.
-// Consider it as a visual hint for you when templating your slice.
-defineProps(
-  getSliceComponentProps<Content.EmbedBlockSlice>([
-    "slice",
-    "index",
-    "slices",
-    "context",
-  ])
-);
+  props: {
+    slice: {
+      type: Object,
+      required: true,
+    },
+  },
+}
 </script>

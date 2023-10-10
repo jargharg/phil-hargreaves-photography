@@ -15,18 +15,15 @@
   </ArticleSection>
 </template>
 
-<script setup lang="ts">
-// eslint-disable-next-line import/named
-import { Content } from '@prismicio/client'
+<script>
+export default {
+  name: 'FullscreenTextWithImageBlockSlice',
 
-// The array passed to `getSliceComponentProps` is purely optional.
-// Consider it as a visual hint for you when templating your slice.
-defineProps(
-  getSliceComponentProps < Content.FullscreenTextWithImageBlockSlice > ([
-    'slice',
-    'index',
-    'slices',
-    'context',
-  ]),
-)
+  props: {
+    slice: {
+      type: Object,
+      required: true,
+    },
+  },
+}
 </script>

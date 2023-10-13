@@ -5,7 +5,7 @@
         <div
           v-for="({ image, caption }, index) in items"
           :key="index"
-          class="flex flex-col pr-2 !h-[70vh]"
+          class="flex flex-col pr-2 !h-[70vh] relative"
           :style="{
             aspectRatio: image.dimensions.width + '/' + image.dimensions.height,
           }"
@@ -17,7 +17,7 @@
             sizes="sm:95vw md:95vw lg:65vw xl:65vw 2xl:65vw"
           />
 
-          <p v-if="caption" class="image-carousel__caption container">
+          <p v-if="caption" class="image-carousel__caption">
             {{ caption }}
           </p>
         </div>
@@ -94,7 +94,8 @@ export default {
   $root: &;
 
   &__caption {
-    @apply mt-2 text-xs text-left opacity-0 transition-opacity duration-500 ease-linear;
+    @apply absolute bottom-4 left-0 text-xs text-left text-white bg-gradient-to-t from-black to-transparent pt-10 px-4;
+    width: calc(100% - theme('spacing.2'));
   }
 
   &__nav-button {

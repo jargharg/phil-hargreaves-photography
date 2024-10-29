@@ -55,9 +55,9 @@ export async function getDocumentFromPrismic (
     overrideFullTitle,
     path,
     siteUrl,
-    description: doc.value.metaDescription,
-    image: doc.value.metaImage,
-    title: doc.value.title,
+    description: doc.value?.metaDescription,
+    image: doc.value?.metaImage,
+    title: doc.value?.title,
   })
 
   return doc

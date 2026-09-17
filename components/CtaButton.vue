@@ -73,7 +73,7 @@ export default {
 .cta-button {
   $root: &;
   @apply flex items-center z-10 whitespace-nowrap;
-  @apply text-center leading-none uppercase text-sm-mobile lg:text-sm tracking-[0.15em] lg:tracking-[0.2em];
+  @apply text-center leading-none uppercase text-sm tracking-[0.15em] lg:tracking-[0.2em];
 
   &:not(:disabled) {
     @apply cursor-pointer;
@@ -94,14 +94,17 @@ export default {
   }
 
   &--border {
-    @apply border border-brand-blue px-12 py-4 rounded-full;
+    @apply border border-blue px-12 py-4 rounded-full;
   }
 
   &__arrow {
     @apply ml-1 h-4;
 
-    &__end, &__line {
-      @apply transition-transform;
+    &__end,
+    &__line {
+      transition-property: transform;
+      transition-timing-function: var(--ease-spring);
+      transition-duration: var(--ease-spring-duration);
     }
   }
 }

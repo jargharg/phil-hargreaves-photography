@@ -1,5 +1,5 @@
 <template>
-  <div class="slice-zone">
+  <div class="slice-zone bg-cream">
     <slice-zone
       v-if="slices.length"
       :slices="slices"
@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .slice-zone {
-  @apply bg-brand-cream;
+  @apply bg-cream;
 
   :deep section:first-of-type {
     margin-top: 0 !important;

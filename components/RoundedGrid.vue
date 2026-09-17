@@ -10,7 +10,6 @@
         v-if="image?.url"
         :src="image.url"
         :alt="image.alt"
-        class="rounded-3xl"
         sizes="sm:100vw md:50vw lg:50vw xl:50vw 2xl:40vw"
       />
     </li>
@@ -149,7 +148,7 @@ export default {
 
   &__image {
     div {
-      @apply bg-brand-blue h-full w-full rounded-3xl;
+      @apply bg-blue h-full w-full rounded-3xl;
     }
 
     &--0 {

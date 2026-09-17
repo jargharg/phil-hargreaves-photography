@@ -1,5 +1,5 @@
 <template>
-  <section ref="elSection" class="hero-section">
+  <section ref="elSection" class="hero-section bg-blue">
     <slot />
 
     <div v-if="withOverlay" class="hero-section__overlay" />
@@ -9,13 +9,13 @@
       class="hero-section__details container"
     >
       <div class="max-w-lg">
-        <Heading v-if="title" class="mb-2 text-2xl xl:text-3xl">
+        <Heading v-if="title" class="mb-6 text-2xl">
           {{ title }}
         </Heading>
 
         <div
           v-if="$prismic.asText(tagline)"
-          class="max-w-sm md:max-w-none prose text-sm md:text-base xl:text-[24px] leading-[1.2]"
+          class="max-w-sm md:max-w-none prose text-base leading-[1.2]"
         >
           <prismic-rich-text :field="tagline" />
         </div>
@@ -104,7 +104,7 @@ export default {
 
 <style lang="scss" scoped>
 .hero-section {
-  @apply relative h-screen w-full overflow-hidden bg-brand-blue;
+  @apply relative h-screen w-full overflow-hidden bg-blue;
   color: var(--hero-text-color);
 
   &__overlay {

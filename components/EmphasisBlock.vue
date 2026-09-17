@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-brand-coral text-brand-cream py-20 xl:py-28 px-5 md:px-8 lg:px-20 h-full flex flex-col justify-center"
+    class="bg-coral text-cream py-20 xl:py-28 px-5 md:px-8 lg:px-20 h-full flex flex-col justify-center"
   >
     <prismic-rich-text
       :field="body"

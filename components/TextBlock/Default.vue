@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-xl flex flex-col gap-8">
+  <div class="max-w-xl flex flex-col gap-6">
     <Heading v-if="heading" level="2" class="text-lg md:text-xl">
       {{ heading }}
     </Heading>

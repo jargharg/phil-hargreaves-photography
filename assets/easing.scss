@@ -1,0 +1,9 @@
+:root {
+  --ease-spring: linear(0, 0.014 1%, 0.06 2.3%, 0.448 9.5%, 0.648 14.4%, 0.729 17.2%, 0.797 20.2%, 0.852 23.5%, 0.896 27.2%, 0.929 31.2%, 0.954 35.7%, 0.985 47.4%, 0.997 64.3%, 1);
+  --ease-spring-duration: 1150ms;
+}
+
+.transition-spring {
+  transition-timing-function: var(--ease-spring);
+  transition-duration: var(--ease-spring-duration);
+}

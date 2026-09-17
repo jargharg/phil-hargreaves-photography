@@ -1,7 +1,7 @@
 <template>
   <ArticleSection :with-margin="false" :with-container="false">
     <TextBoxWithImage
-      class="bg-brand-cream"
+      class="bg-cream"
       :image="slice.primary.image"
       :image-position="slice.primary.isImageOnRight ? 'right' : 'left'"
     >

@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-brand-blue text-base-mobile lg:text-base font-light">
+  <div class="min-h-[100svh] bg-blue text-base font-light">
     <SiteHeader />
 
-    <main class="text-brand-blue">
+    <main class="text-blue bg-cream">
       <NuxtPage :transition="defaultTransition" />
     </main>
 

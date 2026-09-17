@@ -8,12 +8,9 @@
       </div>
 
       <div class="footer__contact">
-        <nuxt-link
-          target="_blank"
-          :href="$prismic.asLink(contact.mapLink)"
-          class="hover:underline"
-        >
-          <prismic-rich-text :field="contact.address" class="mb-4" />
+        <nuxt-link target="_blank" :href="$prismic.asLink(contact.mapLink)"
+          class="hover:underline flex flex-col gap-2 mb-4">
+          <prismic-rich-text :field="contact.address" class="contents" />
         </nuxt-link>
 
         <a class="footer__contact__link" :href="`tel:${contact.number}`">{{
@@ -40,11 +37,7 @@
         </li>
       </ul>
 
-      <SocialLinks
-        icon-color="brand-blue"
-        circle-color="brand-cream"
-        class="footer__social"
-      />
+      <SocialLinks icon-color="blue" circle-color="cream" class="footer__social" />
     </div>
   </footer>
 </template>
@@ -53,7 +46,7 @@
 import { useGlobalsStore } from '../stores/globals'
 
 export default {
-  setup () {
+  setup() {
     const globalsStore = useGlobalsStore()
 
     const contact = toRef(globalsStore, 'contact')
@@ -68,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  @apply w-full bg-brand-blue text-brand-cream text-sm py-10;
+  @apply w-full bg-blue text-cream text-sm py-10;
 
   &__container {
     @apply grid gap-10 lg:gap-5;
@@ -88,36 +81,28 @@ export default {
     }
   }
 
+  a {
+    @apply underline decoration-transparent hover:decoration-current transition-colors;
+  }
+
   &__logo {
     @apply flex justify-center lg:justify-start;
     grid-area: logo;
   }
 
   &__contact {
-    @apply text-sm-mobile text-center flex flex-col items-center justify-start;
+    @apply text-sm text-center flex flex-col gap-2 items-center justify-start;
     grid-area: contact;
-
-    &__link {
-      @apply underline hover:no-underline;
-    }
   }
 
   &__menu {
     @apply flex flex-col items-center lg:items-end justify-end gap-2;
     grid-area: menu;
-
-    a {
-      @apply underline hover:no-underline;
-    }
   }
 
   &__policies {
-    @apply text-sm-mobile flex flex-col items-center lg:items-start justify-end;
+    @apply text-sm flex flex-col gap-2 items-center lg:items-start justify-end;
     grid-area: policies;
-
-    a {
-      @apply underline hover:no-underline;
-    }
   }
 
   &__social {

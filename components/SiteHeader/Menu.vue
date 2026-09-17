@@ -24,8 +24,8 @@
 
       <SocialLinks
         ref="elSocialLinks"
-        icon-color="brand-cream"
-        circle-color="brand-blue"
+        icon-color="cream"
+        circle-color="blue"
       />
     </div>
   </transition>
@@ -113,16 +113,16 @@ export default {
 <style lang="scss" scoped>
 .header-menu {
   @apply fixed top-0 inset-y-0 right-0 z-40;
-  @apply w-full max-w-xl;
+  @apply w-full max-w-[450px];
   @apply h-full flex flex-col items-center justify-between;
-  @apply bg-brand-blue text-brand-cream py-8 px-5;
+  @apply bg-blue text-cream py-8 px-5;
 
   &__nav-items {
     @apply flex flex-col justify-center items-center text-lg;
   }
 
   &__nav-item {
-    @apply block py-4 hover:underline;
+    @apply block py-4 hover:underline uppercase text-sm tracking-widest;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }

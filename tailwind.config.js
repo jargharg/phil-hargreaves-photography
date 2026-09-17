@@ -12,16 +12,26 @@ module.exports = {
     container: false,
 
     fontSize: {
-      xs: '0.75rem', // 12px
-      'sm-mobile': '0.875rem', // 14px
-      sm: '1rem', // 16px
-      'base-mobile': '1rem', // 16px
-      base: '1.25rem', // 20px
-      md: '1.5rem', // 24px
-      lg: '1.75rem', // 28px
-      xl: '2.5rem', // 40px
-      '2xl': '3.75rem', // 60px
-      '3xl': '4.5rem', // 72px
+      xs: '0.75rem',
+      'sm-mobile': '0.875rem',
+      sm: ['clamp(0.625rem, 0.429rem + 0.697svw, 0.875rem)', { lineHeight: 1.35 }],
+      base: ['clamp(0.875rem, 0.777rem + 0.348svw, 1rem)', { lineHeight: 1.35 }],
+      md: '1.5rem',
+      lg: '1.75rem',
+      xl: '2.5rem',
+      '2xl': '3.75rem',
+      '3xl': '4.5rem',
+    },
+
+    colors: {
+      cream: '#fdfbf9',
+      grey: '#D4D5DB',
+      blue: '#112233',
+      coral: '#FF825A',
+      transparent: 'transparent',
+      white: '#ffffff',
+      black: '#000000',
+      current: 'currentColor',
     },
 
     extend: {
@@ -34,13 +44,6 @@ module.exports = {
       screens: {
         sm: '450px',
         '2xl': '1440px',
-      },
-
-      colors: {
-        'brand-cream': '#fdfbf9',
-        'brand-grey': '#D4D5DB',
-        'brand-blue': '#112233',
-        'brand-coral': '#FF825A',
       },
     },
   },

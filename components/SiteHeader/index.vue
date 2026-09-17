@@ -1,21 +1,12 @@
 <template>
   <header class="header">
-    <NuxtLink
-      ref="elLogo"
-      to="/"
-      aria-label="Go to homepage"
-      class="header__logo__wrapper"
-    >
+    <NuxtLink ref="elLogo" to="/" aria-label="Go to homepage" class="header__logo__wrapper">
       <LogoLarge class="header__logo" />
     </NuxtLink>
 
     <div class="header__menu__wrapper">
-      <MenuButton
-        class="header__menu"
-        :is-open="isMenuOpen"
-        :is-floating="isFloating"
-        @click="isMenuOpen = !isMenuOpen"
-      />
+      <MenuButton class="header__menu" :is-open="isMenuOpen" :is-floating="isFloating"
+        @click="isMenuOpen = !isMenuOpen" />
     </div>
 
     <SiteHeaderMenu class="pointer-events-auto" />
@@ -27,7 +18,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useHeaderStore } from '~/stores/header'
 
 export default {
-  setup () {
+  setup() {
     const elLogo = ref(null)
 
     const headerStore = useHeaderStore()
@@ -42,7 +33,7 @@ export default {
         start: () => `${window.innerHeight}px top`,
         end: 999999,
 
-        onToggle ({ isActive }) {
+        onToggle({ isActive }) {
           isFloating.value = isActive
         },
       })
@@ -87,7 +78,12 @@ export default {
     @apply w-full transition-colors duration-[0.6];
 
     &__wrapper {
-      @apply absolute top-4 left-0 pl-4 md:pl-5 lg:pl-9 pr-20 w-full max-w-md lg:max-w-4xl z-30;
+      @apply absolute top-4 left-1/2 -translate-x-1/2 z-30;
+      @apply w-full max-w-md lg:max-w-xl;
+      @apply pl-4 md:pl-5 lg:pl-9;
+      @apply pr-20;
+
+
     }
   }
 
@@ -97,7 +93,7 @@ export default {
     &__wrapper {
       @apply fixed inset-x-0 top-0 z-50;
       @apply flex justify-end items-center text-center pl-4 pr-2 sm:px-4 md:px-6 pt-6;
-      @apply text-brand-blue;
+      @apply text-blue;
       @apply pointer-events-none;
     }
   }

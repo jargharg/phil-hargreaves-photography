@@ -77,11 +77,11 @@ export default {
   }
 
   &--open {
-    @apply text-brand-cream;
+    @apply text-cream;
   }
 
   &--floating {
-    @apply bg-brand-cream text-brand-blue shadow-lg;
+    @apply bg-cream text-blue shadow-lg;
   }
 }
 </style>

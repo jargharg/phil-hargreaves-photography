@@ -93,7 +93,7 @@ export default {
 
 <style lang="scss" scoped>
 .quotes-carousel {
-  @apply w-full bg-brand-grey text-brand-blue py-10 xl:py-20;
+  @apply w-full bg-grey text-blue py-10 xl:py-20;
 
   :deep {
     .carousel {

@@ -1,4 +1,5 @@
 @import url("https://use.typekit.net/xol1nzx.css");
+@import "./easing";
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +8,7 @@
 $max-w-container: 1700px;
 
 body {
-  @apply bg-brand-blue;
+  @apply bg-blue;
 }
 
 *,
@@ -18,6 +19,20 @@ body {
   font-smoothing: antialiased;
   backface-visibility: hidden;
   font-kerning: normal;
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+*:not(textarea, input, select) {
+  text-box: trim-both cap alphabetic;
 }
 
 button,
@@ -54,14 +69,14 @@ a {
 
 html.cream-mode,
 html.cream-mode body {
-  --hero-text-color: theme("colors.brand-cream");
+  --hero-text-color: theme("colors.cream");
   --hero-overlay-color: #333;
 }
 
 html.blue-mode,
 html.blue-mode body {
-  --hero-text-color: theme("colors.brand-blue");
-  --hero-overlay-color: theme("colors.brand-cream");
+  --hero-text-color: theme("colors.blue");
+  --hero-overlay-color: theme("colors.cream");
 }
 
 .prose {
@@ -80,4 +95,8 @@ html.blue-mode body {
   a {
     @apply hover:no-underline;
   }
+}
+
+*::selection {
+  @apply bg-coral text-white;
 }

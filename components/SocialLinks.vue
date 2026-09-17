@@ -39,12 +39,12 @@ export default {
   props: {
     iconColor: {
       type: String,
-      default: 'brand-blue',
+      default: 'blue',
     },
 
     circleColor: {
       type: String,
-      default: 'brand-cream',
+      default: 'cream',
     },
   },
 

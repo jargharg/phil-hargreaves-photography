@@ -1,5 +1,5 @@
 <template>
-  <article class="bg-brand-cream">
+  <article class="bg-cream">
     <HeroSection :with-overlay="false">
       <FullscreenImageCarousel :images="doc.heroImages" />
 
@@ -14,11 +14,11 @@
     </HeroSection>
 
     <section
-      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-5 my-10 md:my-20 px-5"
+      class="max-w-3xl mx-auto flex flex-col items-center text-center gap-10 my-10 md:my-20 px-5"
     >
       <prismic-rich-text
         :field="doc.heroTagline"
-        class="text-xl lg:text-2xl font-serif leading-none font-bold"
+        class="text-xl lg:text-2xl font-serif leading-[0.96] font-bold"
       />
 
       <CtaButton :to="$prismic.asLink(doc.heroCtaLink)" class="-mr-4">
@@ -26,7 +26,7 @@
       </CtaButton>
     </section>
 
-    <section class="container my-10 md:my-20 bg-brand-cream">
+    <section class="container my-10 md:my-20 bg-cream">
       <RoundedGrid
         :images="[doc.introImage1, doc.introImage2, doc.introImage3]"
         :text-blocks="doc.introTextBlocks"

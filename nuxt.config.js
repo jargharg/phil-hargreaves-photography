@@ -208,6 +208,12 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    basicAuthEnabled: process.env.BASIC_AUTH_ENABLED === 'true',
+    basicAuthUsername: process.env.BASIC_AUTH_USERNAME || '',
+    basicAuthPassword: process.env.BASIC_AUTH_PASSWORD || '',
+    basicAuthRealm: process.env.BASIC_AUTH_REALM || 'Protected Area',
+    basicAuthSkipPrerender: process.env.BASIC_AUTH_SKIP_PRERENDER !== 'false',
+
     public: {
       isDevMode: process.env.NODE_ENV === 'development',
       siteUrl: process.env.SITE_URL || DEFAULT_SITE_URL,
